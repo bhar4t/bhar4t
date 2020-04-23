@@ -7,15 +7,18 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.4.1",
+    "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
+    "react-markdown": "^4.3.1",
     "react-scripts": "3.4.1",
     "react-stack-grid": "^0.7.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "react-scripts build && firebase deploy --only hosting",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

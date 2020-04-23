@@ -1,14 +1,49 @@
 body {
   margin: 0;
-  font-family: "Sacramento", cursive;
-  font-family: "Inconsolata", monospace;
+  /* font-family: "Sacramento", cursive;
+  font-family: "Inconsolata", monospace; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fffee0;
-  color: #090a00;
+  cursor: url("/cursor.png"), default;
+  color: #30353a;
+}
+
+pre {
+  display: block;
+  overflow-x: auto;
+  background: rgb(28, 29, 33);
+  color: rgb(192, 197, 206);
+  padding: 1.7em;
+  border-radius: 6px;
+  line-height: 2.3em;
 }
 
 code {
-  font-family: "Sacramento", cursive;
-  font-family: "Inconsolata", monospace;
+  font-family: ibm-plex-mono, Consolas, Monaco, "Lucida Console",
+    "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
+    "Courier New";
+  font-size: 18.5px;
+  color: #d3bf00;
+}
+
+a {
+  color: #000000;
+  text-decoration: und;
+  background-color: transparent;
+}
+
+a:hover {
+  color: black;
+  background: yellow;
+}
+
+::selection {
+  color: black;
+  background: yellow;
+}
+
+/* Code for Firefox */
+::-moz-selection {
+  color: black;
+  background: yellow;
 }
