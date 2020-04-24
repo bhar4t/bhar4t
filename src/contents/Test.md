@@ -10,7 +10,7 @@ Here I’ve found solution by combining both the dependencies i.e. firebase-js-s
 
 Step I: Initially we have to create an Android project in Firebase console. where I have to register my new Android application **name** and **package name** in Firebase console. cause you won’t have an option for the Cordova application.
 
-<img src="/images/registerapp.png" width="100%"/>
+<img name="pinch" src="/images/registerapp.png" width="100%"/>
 
 You’ll see the third option while registering the app as **Debug signing certificate SHA-1**. It seems optional but because we’re creating authentication based application I’ll recommend you generate those certificates. [You can generate debug certificates by following it](https://developers.google.com/android/guides/client-auth) or by the following command default password is `android`
 
@@ -36,7 +36,7 @@ Just copy the **SHA1** fingerprint and paste in the third input field **Debug si
 
 Step II: The below screen will appear after click on the **Register App** button.
 
-<img src="/images/downloadserivcejson.png" width="100%"/>
+<img name="pinch" src="/images/downloadserivcejson.png" width="100%"/>
 
 Click on the **Download google-service.json,** you’ll have a JSON file, place it on the root of your project. and, remember you need to specify in `config.xml` for `google-service.json` so, Cordova will place the copied file inside _platforms/android/app_ directory while generating the app.
 
@@ -59,7 +59,7 @@ tep III: Now, you have to enable the Phone Authentication for your newly registe
 4.  Just **Enable** it from the right upper toggle button
 5.  By clicking on **Save**, we’ve finished the configuration here.
 
-<img src="/images/develop_authentication_signinmethods_phone_enabled.png" width="100%"/>
+<img name="pinch" src="/images/develop_authentication_signinmethods_phone_enabled.png" width="100%"/>
 
 ---
 
@@ -140,7 +140,7 @@ cordova.plugins.firebase.auth
   });
 ```
 
-After invoking `verifyPhoneNumber` OTP will be sent to given mobile number. then the last process to be required is to verify the OTP and generated verification id for this again we’re going to use a function `signInAndRetrieveDataWithCredential()` from `firebase-js-sdk`.
+After invoking `verifyPhoneNumber` OTP will be sent to given mobile number. then the last process to be required is to verify the `otp` and generated `verification_id` for this again we’re going to use a function `signInAndRetrieveDataWithCredential` from `firebase-js-sdk`.
 
 ```js
 const credential = firebase.auth.PhoneAuthProvider.credential(
@@ -158,7 +158,7 @@ auth
   });
 ```
 
-Done! If OTP and, verification_id verify successfully automatically your registered listener `onAuthStateChanged()` will be invoked.
+Done! If `otp` and, `verification_id` verify successfully automatically your registered listener `onAuthStateChanged()` will be invoked.
 
 Thank You!
 

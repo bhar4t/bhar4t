@@ -1,12 +1,26 @@
 import React from "react";
 // import Grid from "./Grid";
 import Layout from "./layouts/Layout";
+import CodeBlock from "./CodeBlock";
 
 import ReactMarkdown from "react-markdown";
 import Test from "./contents/Test.md";
 
 function App() {
   const [md, setMd] = React.useState("");
+
+  React.useEffect(() => {
+    const images = document.getElementsByName("pinch");
+    console.log(images);
+    for (let i = 0, len = images.length; i < len; i++) {
+      const img = images[i];
+      console.log(img)
+      img.addEventListener('click', () => console.log('Haha'));
+    }
+    return () => {
+    };
+  }, [])
+
   React.useEffect(() => {
     fetch(Test)
       .then((response) => response.text())
@@ -21,14 +35,15 @@ function App() {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-evenly",
         }}
       >
         <h1>Code</h1>
         <span>with</span>
-        <h1>Bharat Sahu!</h1>
+        <h1 style={{ fontFamily: "Sacramento" }}>Bharat Sahu!</h1>
       </div>
       <div>Sorry, I'm doing some work on site.</div>
+      <ReactMarkdown escapeHtml={false} renderers={{ code: CodeBlock }} source={md} />
+
       <div>
         <span>
           <a href="https://stackoverflow.com/users/7242575/bhar4t">
@@ -52,7 +67,6 @@ function App() {
           <a href="https://www.facebook.com/bharat.sahu">FB</a>
         </span>
       </div>
-      <ReactMarkdown escapeHtml={false} source={md} />
     </Layout>
   );
 }

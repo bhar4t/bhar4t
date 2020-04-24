@@ -1,10 +1,21 @@
 body {
   margin: 0;
-  /* font-family: "Sacramento", cursive;
-  font-family: "Inconsolata", monospace; */
+  font-family: "Sacramento", cursive;
+
+  font-family: "Inter", sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: url("/cursor.png"), default;
+  color: #30353a;
+}
+
+p,
+ul,
+ol {
+  line-height: 1.8em;
+  margin-bottom: 40px;
+  font-size: 20px;
   color: #30353a;
 }
 
@@ -28,13 +39,17 @@ code {
 
 a {
   color: #000000;
-  text-decoration: und;
+  text-decoration: underline;
   background-color: transparent;
 }
 
 a:hover {
   color: black;
   background: yellow;
+}
+
+img {
+  margin: 8px 0px 16px 0px;
 }
 
 ::selection {
