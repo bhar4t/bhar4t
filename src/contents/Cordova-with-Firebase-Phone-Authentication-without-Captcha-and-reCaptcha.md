@@ -1,4 +1,4 @@
-# Cordova with Firebase Phone Authentication without Captcha/reCaptcha
+## Cordova with Firebase Phone Authentication without Captcha/reCaptcha
 
 We’re going to use Firebase Phone Authentication using firebase-js-sdk without Captcha with ReactJS application in a simple way. This article is for people who has basic knowledge of Cordova and Firebase phone authentication.
 
@@ -51,7 +51,7 @@ Click on the **Download google-service.json,** you’ll have a JSON file, place 
 
 after this click on Next, Next… Finally, you’ve set up an Android project in Firebase.
 
-tep III: Now, you have to enable the Phone Authentication for your newly registered Android application.
+Step III: Now, you have to enable the Phone Authentication for your newly registered Android application.
 
 1.  Select **Authentication** from **Develop** option.
 2.  Choose **Sign-in method**
@@ -106,13 +106,13 @@ const db = config.firestore();
 export { auth, firebase };
 ```
 
-You can get configuration details in `google-service.json` for firebase app initialization or if you feel the hassle to get those keys/configurations detail in one place, Add a web app in the same project of Firebase console where we added the Android app before. you’ll have exactly the same configuration detail as mentioned above in **_Project Settings > Web Apps > Firebase SDK snippet_** copy and paste the config in your project.
+You can get configuration details in `google-service.json` for firebase app initialization or if you feel the hassle to get those keys/configurations detail in one place, Add a web app in the same project of Firebase console where we added the Android app before. you’ll have exactly the same configuration detail as mentioned above in **Project Settings > Web Apps > Firebase SDK snippet** copy and paste the config in your project.
 
 Here I have exported instances `auth,` `firebase` now I can use it wherever I want.
 
 Its time to design the login page, Here we’ll talk about code snippet, not about UI but in the [**Github repository**](https://github.com/bhar4t/auth-cordova)**,** you’ll get the full code.
 
-4. I have created a `Login.js` page, where I have to register a listener method for an authenticated user. You can register your listener in React’s lifecycle method [static getDerivedStateFromProps()](https://reactjs.org/docs/react-component.html#static-getderivedstatefromprops) and, if you’re using React Hooks you can register it in [useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect).
+4. I have created a `Login.js` page, where I have to register a listener method for an authenticated user. You can register your listener in React’s lifecycle method [static getDerivedStateFromProps](https://reactjs.org/docs/react-component.html#static-getderivedstatefromprops) and, if you’re using React Hooks you can register it in [useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect).
 
 ```js
 import { auth, firebase } from "./store";
@@ -135,16 +135,16 @@ Create a function, that will starts the phone number verification process for th
 ```js
 cordova.plugins.firebase.auth
   .verifyPhoneNumber("+91" + phoneNumber, 0)
-  .then((verification_id) => {
-    // Pass verification_id
+  .then((verificationId) => {
+    // Pass verificationId
   });
 ```
 
-After invoking `verifyPhoneNumber` OTP will be sent to given mobile number. then the last process to be required is to verify the `otp` and generated `verification_id` for this again we’re going to use a function `signInAndRetrieveDataWithCredential` from `firebase-js-sdk`.
+After invoking `verifyPhoneNumber` OTP will be sent to given mobile number. then the last process to be required is to verify the `otp` and generated `verificationId` for this again we’re going to use a function `signInAndRetrieveDataWithCredential` from `firebase-js-sdk`.
 
 ```js
 const credential = firebase.auth.PhoneAuthProvider.credential(
-  verification_id,
+  verificationId,
   otp
 );
 
@@ -158,13 +158,11 @@ auth
   });
 ```
 
-Done! If `otp` and, `verification_id` verify successfully automatically your registered listener `onAuthStateChanged()` will be invoked.
-
-Thank You!
+Done! If `otp` and, `verificationId` verify successfully automatically your registered listener `onAuthStateChanged` will be invoked.
 
 References:
 
-1.  [https://github.com/firebase/firebase-js-sdk](https://github.com/firebase/firebase-js-sdk)
-2.  [https://github.com/chemerisuk/cordova-plugin-firebase-authentication](https://github.com/chemerisuk/cordova-plugin-firebase-authentication)
+1.  [firebase-js-sdk](https://github.com/firebase/firebase-js-sdk)
+2.  [cordova-plugin-firebase-authentication](https://github.com/chemerisuk/cordova-plugin-firebase-authentication)
 
-[Also available on Medium](https://medium.com/@BHAR4T/cordova-with-firebase-phone-authentication-without-captcha-6663427920d9)
+[Read on Medium](https://medium.com/@BHAR4T/cordova-with-firebase-phone-authentication-without-captcha-6663427920d9)

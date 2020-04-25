@@ -10,6 +10,35 @@ body {
   color: #30353a;
 }
 
+h1 {
+  font-size: 5rem;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  font-family: "Sacramento", cursive;
+  padding: 0.2em 0em 1em 0em;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 3rem;
+  width: 100%;
+  margin: auto;
+  color: black;
+  opacity: 90%;
+  padding: 0.8em 0em 0.8em 0em;
+}
+
+h3 {
+  font-weight: 300;
+  line-height: 1.5em;
+}
+
+h5 {
+  font-size: 1em;
+  font-weight: 200;
+}
+
 p,
 ul,
 ol {
@@ -39,7 +68,7 @@ code {
 
 a {
   color: #000000;
-  text-decoration: underline;
+  text-decoration: none;
   background-color: transparent;
 }
 
@@ -61,4 +90,25 @@ img {
 ::-moz-selection {
   color: black;
   background: yellow;
+}
+
+/* Custome Button */
+.simpleButton {
+  background-color: transparent;
+  border-radius: 3px;
+  border: 1px solid #000000;
+  display: inline-block;
+  cursor: pointer;
+  color: #000000;
+  font-size: 12px;
+  padding: 4px 18px;
+  text-decoration: none;
+  margin: 12px 12px 12px 0px;
+}
+.simpleButton:hover {
+  background-color: transparent;
+}
+.simpleButton:active {
+  position: relative;
+  top: 1px;
 }

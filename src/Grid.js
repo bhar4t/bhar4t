@@ -4,7 +4,7 @@ import StackGrid from "react-stack-grid";
 const GitHub = () => (
   <>
     <div
-      class="github-card"
+      className="github-card"
       data-github="bhar4t"
       data-width="400"
       data-height="316"
@@ -16,7 +16,7 @@ const GitHub = () => (
 
 const LinkedIn = () => (
   <div
-    class="LI-profile-badge"
+    className="LI-profile-badge"
     data-version="v1"
     data-size="large"
     data-locale="en_US"
@@ -25,7 +25,7 @@ const LinkedIn = () => (
     data-vanity="bhar4t"
   >
     <a
-      class="LI-simple-link"
+      className="LI-simple-link"
       href="https://in.linkedin.com/in/bhar4t?trk=profile-badge"
     >
       Bharat Sahu
@@ -34,7 +34,7 @@ const LinkedIn = () => (
 );
 
 const Twitter = () => (
-  <a class="twitter-timeline" href="https://twitter.com/bhar4t">
+  <a className="twitter-timeline" href="https://twitter.com/bhar4t">
     Tweets by bhar4t
   </a>
 );
