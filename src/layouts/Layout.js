@@ -1,7 +1,11 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { DayNight } from "../components/Icons";
 
 export default function (props) {
+  const [nightMode, setNightMode] = React.useState(
+    Boolean(JSON.parse(localStorage.getItem("NIGHT_MODE")))
+  );
   const [width, setWidth] = React.useState(window.innerWidth);
   const [isMobile, setMobile] = React.useState(width <= 768);
   const handler = React.useCallback(() => {
@@ -9,6 +13,11 @@ export default function (props) {
     setMobile(window.innerWidth <= 768);
   }, [setWidth]);
   useEventListener("resize", handler);
+
+  React.useEffect(() => {
+    document.documentElement.setAttribute("data-theme", nightMode && "dark");
+    localStorage.setItem("NIGHT_MODE", nightMode);
+  }, [nightMode]);
 
   const Button = (props) => (
     <a href={props.path} className="simpleButton">
@@ -36,8 +45,14 @@ export default function (props) {
         <Button label="About" path="/" />
         <Button label="Work" path="/" />
       </div>
-      <div>
-        <img src="/svgs/sun.svg" height="32px" alt="day night mode" />
+      <div
+        onClick={(e) => {
+          console.log("Called");
+          e.preventDefault();
+          setNightMode(!nightMode);
+        }}
+      >
+        <DayNight nightMode={nightMode} />
       </div>
     </div>
   );

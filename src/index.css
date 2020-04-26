@@ -1,13 +1,25 @@
+:root {
+  --bg-color: #fff;
+  --text-color: #30353a;
+  --a-color: #000;
+}
+
+[data-theme="dark"] {
+  --bg-color: #000;
+  --text-color: #989898;
+  --a-color: #fff;
+}
+
 body {
   margin: 0;
   font-family: "Sacramento", cursive;
-
   font-family: "Inter", sans-serif;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: url("/cursor.png"), default;
-  color: #30353a;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.5s ease;
 }
 
 h1 {
@@ -24,8 +36,8 @@ h2 {
   font-size: 3rem;
   width: 100%;
   margin: auto;
-  color: black;
-  opacity: 90%;
+  color: var(--a-color);
+  opacity: 0.8;
   padding: 0.8em 0em 0.8em 0em;
 }
 
@@ -45,7 +57,7 @@ ol {
   line-height: 1.8em;
   margin-bottom: 40px;
   font-size: 20px;
-  color: #30353a;
+  color: var(--text-color);
 }
 
 pre {
@@ -67,7 +79,7 @@ code {
 }
 
 a {
-  color: #000000;
+  color: var(--a-color);
   text-decoration: none;
   background-color: transparent;
 }
@@ -94,19 +106,21 @@ img {
 
 /* Custome Button */
 .simpleButton {
-  background-color: transparent;
+  background-color: var(--bg-color);
   border-radius: 3px;
-  border: 1px solid #000000;
+  /* border: 1px solid var(--text-color); */
   display: inline-block;
   cursor: pointer;
-  color: #000000;
+  color: var(--a-color);
   font-size: 12px;
   padding: 4px 18px;
   text-decoration: none;
   margin: 12px 12px 12px 0px;
 }
 .simpleButton:hover {
-  background-color: transparent;
+  background-color: var(--a-color);
+  color: var(--bg-color);
+  /* border: 1px solid var(--bg-color); */
 }
 .simpleButton:active {
   position: relative;
