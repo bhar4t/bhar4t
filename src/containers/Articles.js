@@ -1,29 +1,37 @@
 import React from "react";
-// import Grid from "./Grid";
+import ReactMarkdown from "react-markdown";
 import Layout from "../layouts/Layout";
 import CodeBlock from "../components/CodeBlock";
-import ReactMarkdown from "react-markdown";
+import Loader from "../components/Loader";
+// import Grid from "./Grid";
 
 function Articles(props) {
-  const [article, setArticle] = React.useState("Loading..");
+  const [article, setArticle] = React.useState("");
+  const [isLoading, setLoader] = React.useState(false);
 
   React.useEffect(() => {
+    setLoader(true);
     import(`../contents/${props.match.params.id}.md`).then((file) => {
       fetch(file.default)
         .then((response) => response.text())
         .then((markdown) => {
           setArticle(markdown);
+          setLoader(false);
         });
     });
   }, [props.match.params.id]);
 
   return (
-    <Layout social>
-      <ReactMarkdown
-        escapeHtml={false}
-        renderers={{ code: CodeBlock }}
-        source={article}
-      />
+    <Layout {...props} social>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <ReactMarkdown
+          escapeHtml={false}
+          renderers={{ code: CodeBlock }}
+          source={article}
+        />
+      )}
     </Layout>
   );
 }

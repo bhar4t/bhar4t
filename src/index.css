@@ -2,6 +2,7 @@
   --bg-color: #fff;
   --text-color: #30353a;
   --a-color: #000;
+  --primary: #d3bf00;
 }
 
 [data-theme="dark"] {
@@ -75,7 +76,7 @@ code {
     "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
     "Courier New";
   font-size: 18.5px;
-  color: #d3bf00;
+  color: var(--primary);
 }
 
 a {
@@ -86,7 +87,7 @@ a {
 
 a:hover {
   color: black;
-  background: yellow;
+  background: var(--primary);
 }
 
 img {
@@ -95,13 +96,13 @@ img {
 
 ::selection {
   color: black;
-  background: yellow;
+  background: var(--primary);
 }
 
 /* Code for Firefox */
 ::-moz-selection {
   color: black;
-  background: yellow;
+  background: var(--primary);
 }
 
 /* Custome Button */
@@ -125,4 +126,55 @@ img {
 .simpleButton:active {
   position: relative;
   top: 1px;
+}
+
+/* Pre Title */
+.pre-title {
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 200;
+  font-family: monospace;
+  opacity: 40%;
+  font-size: 3em;
+  padding: 0.8em 0em;
+}
+
+/* Basic-Flex */
+.basic-flex {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+/* Loader */
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid var(--primary);
+  border-color: var(--primary) transparent var(--primary) transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -1,4 +1,4 @@
-## Cordova with Firebase Phone Authentication without Captcha/reCaptcha
+## Cordova with Firebase Phone Authentication without Captcha
 
 We’re going to use Firebase Phone Authentication using firebase-js-sdk without Captcha with ReactJS application in a simple way. This article is for people who has basic knowledge of Cordova and Firebase phone authentication.
 
