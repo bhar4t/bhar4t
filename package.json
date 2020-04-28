@@ -15,7 +15,6 @@
     "react-markdown": "^4.3.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "react-stack-grid": "^0.7.1",
     "react-syntax-highlighter": "^12.2.1",
     "webfontloader": "^1.6.28"
   },

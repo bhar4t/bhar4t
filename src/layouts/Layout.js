@@ -2,6 +2,24 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { DayNight } from "../components/Icons";
 
+const buttons = [
+  { label: "Home", path: "/" },
+  { label: "About", path: "/" },
+  { label: "Work", path: "/" },
+];
+
+const links = [
+  {
+    title: "StackOverflow",
+    url: "https://stackoverflow.com/users/7242575/bhar4t",
+  },
+  { title: "GitHub", url: "https://github.com/bhar4t" },
+  { title: "LinkedIn", url: "https://www.linkedin.com/in/bhar4t/" },
+  { title: "Twitter", url: "https://twitter.com/bhar4t" },
+  { title: "instagram", url: "https://www.instagram.com/bhar4t" },
+  { title: "FaceBook", url: "https://www.facebook.com/bharat.sahu" },
+];
+
 export default function (props) {
   const [width, setWidth] = React.useState(window.innerWidth);
   const [isMobile, setMobile] = React.useState(width <= 768);
@@ -11,40 +29,14 @@ export default function (props) {
   }, [setWidth]);
   useEventListener("resize", handler);
 
-  const Button = (props) => (
-    <a href={props.path} className="simpleButton">
-      {props.label}
-    </a>
-  );
-
-  const Header = () => (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        width: "100%",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          alignItems: "center",
-        }}
-      >
-        <Button label="Home" path="/" />
-        <Button label="About" path="/" />
-        <Button label="Work" path="/" />
-      </div>
+  const Footer = () => useFooter();
+  const SocialLinks = () => useSocial();
+  const Header = () =>
+    useHeader(
       <div onClick={props.toggleNightMode}>
         <DayNight nightMode={props.nightMode} />
       </div>
-    </div>
-  );
-
-  const Footer = () => useFooter();
-  const SocialLinks = () => useSocial();
+    );
 
   if (isMobile)
     return (
@@ -105,67 +97,40 @@ function useEventListener(eventName, handler, element = window) {
   }, [eventName, element]);
 }
 
+function useHeader(NightMode) {
+  const Button = ({ path, label }) => (
+    <a href={path} className="simpleButton">
+      {label}
+    </a>
+  );
+  return (
+    <div className="header">
+      <div className="header-buttons">
+        {buttons.map((e, i) => (
+          <Button key={i} label={e.label} path={e.path} />
+        ))}
+      </div>
+      {NightMode}
+    </div>
+  );
+}
+
 function useFooter() {
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "18vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <span style={{ color: "gray", fontSize: 12 }}>&copy; 2020</span>
+    <div className="footer">
+      <span style={{ fontSize: 12 }}>&copy; 2020</span>
     </div>
   );
 }
 
 function useSocial() {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-        border: "3px yellow dashed",
-        padding: 30,
-        borderRadius: 8,
-        fontSize: 18,
-        lineHeight: "1.9em",
-        flexWrap: "wrap",
-      }}
-    >
-      <a
-        style={{ padding: "0px 10px" }}
-        href="https://stackoverflow.com/users/7242575/bhar4t"
-      >
-        StackOverflow
-      </a>
-      <a style={{ padding: "0px 10px" }} href="https://github.com/bhar4t">
-        GitHub
-      </a>
-      <a
-        style={{ padding: "0px 10px" }}
-        href="https://www.linkedin.com/in/bhar4t/"
-      >
-        LinkedIn
-      </a>
-      <a style={{ padding: "0px 10px" }} href="https://twitter.com/bhar4t">
-        Twitter
-      </a>
-      <a
-        style={{ padding: "0px 10px" }}
-        href="https://www.instagram.com/bhar4t"
-      >
-        instagram
-      </a>
-      <a
-        style={{ padding: "0px 10px" }}
-        href="https://www.facebook.com/bharat.sahu"
-      >
-        FaceBook
-      </a>
+    <div className="social-links">
+      {links.map((e, i) => (
+        <a key={i} style={{ padding: "0px 10px" }} href={e.url}>
+          {e.title}
+        </a>
+      ))}
     </div>
   );
 }
