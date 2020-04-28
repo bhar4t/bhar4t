@@ -16,7 +16,22 @@ class CodeBlock extends PureComponent {
   render() {
     const { language, value } = this.props;
     return (
-      <SyntaxHighlighter language={language} style={pojoaque}>
+      <SyntaxHighlighter
+        language={language}
+        style={pojoaque}
+        codeTagProps="code"
+        customStyle={{
+          display: "block",
+          overflowX: "auto",
+          background: "rgb(28, 29, 33)",
+          color: "rgb(192, 197, 206)",
+          padding: "1.7em",
+          borderEadius: 6,
+          lineHeight: "2.3em",
+          fontFamily:
+            "ibm-plex-mono, Consolas, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New'",
+        }}
+      >
         {value}
       </SyntaxHighlighter>
     );

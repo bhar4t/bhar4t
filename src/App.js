@@ -1,6 +1,7 @@
 import React from "react";
 import Main from "./containers/Main";
 import Articles from "./containers/Articles";
+import PrivacyPolicy from "./containers/PrivacyPolicy";
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
@@ -32,6 +33,17 @@ function App() {
           path="/articles/:id"
           render={(props) => (
             <Articles
+              {...props}
+              nightMode={nightMode}
+              toggleNightMode={toggleNightMode}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/privacy-policy"
+          render={(props) => (
+            <PrivacyPolicy
               {...props}
               nightMode={nightMode}
               toggleNightMode={toggleNightMode}

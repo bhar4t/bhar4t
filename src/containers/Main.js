@@ -7,15 +7,15 @@ import Index from "../contents/index.md";
 
 function Main(props) {
   const [md, setMd] = React.useState("");
-  const [isLoading, setLoader] = React.useState(false);
+  // const [isLoading, setLoader] = React.useState(false);
 
   React.useEffect(() => {
-    setLoader(true);
+    // setLoader(true);
     fetch(Index)
       .then((response) => response.text())
       .then((text) => {
         setMd(text);
-        setLoader(false);
+        // setLoader(false);
       });
   }, []);
 

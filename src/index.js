@@ -1,9 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-// import "./custom.scss";
+import WebFont from "webfontloader";
 import App from "./App";
-import * as serviceWorker from "./serviceWorker";
+import "./index.css";
+
+WebFont.load({
+  google: {
+    families: [
+      "Sacramento",
+      "sans-serif",
+      "Inter: 100, 200, 300, 400, 500, 600, 700",
+      "sans-serif",
+    ],
+  },
+});
 
 ReactDOM.render(<App />, document.getElementById("root"));
-serviceWorker.unregister();
+
+// import "./custom.scss";
+// import * as serviceWorker from "./serviceWorker";
+// serviceWorker.unregister();

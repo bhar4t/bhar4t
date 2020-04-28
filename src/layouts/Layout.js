@@ -57,7 +57,7 @@ export default function (props) {
         </Row>
         <Row>
           <Col xs={12}>
-            <SocialLinks />
+            {props.social && <SocialLinks />}
             <Footer />
           </Col>
         </Row>
@@ -79,7 +79,7 @@ export default function (props) {
         <Row>
           <Col />
           <Col xs={10}>
-            <SocialLinks />
+            {props.social && <SocialLinks />}
             <Footer />
           </Col>
           <Col />
