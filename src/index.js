@@ -15,7 +15,7 @@ WebFont.load({
   },
 });
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.hydrate(<App />, document.getElementById("root"));
 
 // import "./custom.scss";
 // import * as serviceWorker from "./serviceWorker";

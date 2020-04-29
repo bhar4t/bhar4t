@@ -122,7 +122,6 @@ img {
 .simpleButton:hover {
   background-color: var(--a-color);
   color: var(--bg-color);
-  /* border: 1px solid var(--bg-color); */
 }
 .simpleButton:active {
   position: relative;
@@ -139,7 +138,7 @@ img {
   align-items: center;
   font-weight: 200;
   font-family: monospace;
-  opacity: 40%;
+  opacity: 0.4;
   font-size: 3em;
   padding: 0.8em 0em;
 }

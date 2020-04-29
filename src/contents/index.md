@@ -1,5 +1,3 @@
-# Bharat Sahu!
-
 ### [Cordova with Firebase Phone Authentication without Captcha](articles/Cordova-with-Firebase-Phone-Authentication-without-Captcha-and-reCaptcha)
 
 ##### 26 January 2020

@@ -22,6 +22,7 @@ function Main(props) {
   return (
     <Layout {...props} social>
       <span className="pre-title">Code with</span>
+      <h1>Bharat Sahu</h1>
       <ReactMarkdown
         escapeHtml={false}
         renderers={{ code: CodeBlock }}
