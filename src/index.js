@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import WebFont from "webfontloader";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 
@@ -15,7 +16,12 @@ WebFont.load({
   },
 });
 
-ReactDOM.hydrate(<App />, document.getElementById("root"));
+ReactDOM.hydrate(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
 
 // import "./custom.scss";
 // import * as serviceWorker from "./serviceWorker";

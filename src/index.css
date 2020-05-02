@@ -151,6 +151,7 @@ img {
   align-items: center;
   justify-content: center;
   margin: auto;
+  background-color: transparent;
 }
 
 /* Loader */

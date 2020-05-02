@@ -3,7 +3,6 @@ import ReactMarkdown from "react-markdown";
 import Layout from "../layouts/Layout";
 import CodeBlock from "../components/CodeBlock";
 import Loader from "../components/Loader";
-// import Grid from "./Grid";
 
 function Articles(props) {
   const [article, setArticle] = React.useState("");

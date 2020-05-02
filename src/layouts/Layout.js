@@ -31,53 +31,43 @@ export default function (props) {
 
   const Footer = () => useFooter();
   const SocialLinks = () => useSocial();
+
+  const [nightMode, setNightMode] = React.useState(
+    Boolean(JSON.parse(localStorage.getItem("NIGHT_MODE")))
+  );
+  const toggleNightMode = () => setNightMode(!nightMode);
+
+  React.useEffect(() => {
+    document.documentElement.setAttribute("data-theme", nightMode && "dark");
+    localStorage.setItem("NIGHT_MODE", nightMode);
+  }, [nightMode]);
   const Header = () =>
     useHeader(
-      <div onClick={props.toggleNightMode}>
-        <DayNight nightMode={props.nightMode} />
+      <div onClick={toggleNightMode}>
+        <DayNight nightMode={nightMode} />
       </div>
     );
 
-  if (isMobile)
-    return (
-      <Container>
-        <Row>
-          <Col xs={12}>{<Header />}</Col>
-        </Row>
+  return (
+    <Container>
+      <Col xs={12}>{<Header />}</Col>
+      {isMobile ? (
         <Row>
           <Col xs={12}>{props.children}</Col>
         </Row>
-        <Row>
-          <Col xs={12}>
-            {props.social && <SocialLinks />}
-            <Footer />
-          </Col>
-        </Row>
-      </Container>
-    );
-  else
-    return (
-      <Container>
-        <Row>
-          <Col />
-          <Col xs={12}>{<Header />}</Col>
-          <Col />
-        </Row>
+      ) : (
         <Row>
           <Col />
           <Col xs={10}>{props.children}</Col>
           <Col />
         </Row>
-        <Row>
-          <Col />
-          <Col xs={10}>
-            {props.social && <SocialLinks />}
-            <Footer />
-          </Col>
-          <Col />
-        </Row>
-      </Container>
-    );
+      )}
+      <div style={{ position: "static", bottom: 0 }}>
+        {props.social && <SocialLinks />}
+        <Footer />
+      </div>
+    </Container>
+  );
 }
 
 function useEventListener(eventName, handler, element = window) {
