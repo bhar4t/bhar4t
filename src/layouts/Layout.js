@@ -38,9 +38,11 @@ export default function (props) {
   const toggleNightMode = () => setNightMode(!nightMode);
 
   React.useEffect(() => {
-    document.documentElement.setAttribute("data-theme", nightMode && "dark");
+    if (nightMode) document.documentElement.setAttribute("theme", "dark");
+    else document.documentElement.removeAttribute("theme");
     localStorage.setItem("NIGHT_MODE", nightMode);
   }, [nightMode]);
+
   const Header = () =>
     useHeader(
       <div onClick={toggleNightMode}>

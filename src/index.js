@@ -22,7 +22,3 @@ ReactDOM.hydrate(
   </BrowserRouter>,
   document.getElementById("root")
 );
-
-// import "./custom.scss";
-// import * as serviceWorker from "./serviceWorker";
-// serviceWorker.unregister();

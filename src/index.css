@@ -5,7 +5,7 @@
   --primary: #d3bf00;
 }
 
-[data-theme="dark"] {
+[theme="dark"] {
   --bg-color: #000;
   --text-color: #989898;
   --a-color: #fff;
@@ -17,7 +17,8 @@ body {
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: url("/cursor.png"), default;
+  cursor: url(/images/cursor.png), auto;
+  /* cursor: url("/content_images/registerapp.png"), auto; */
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.5s ease;
