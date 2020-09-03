@@ -1,7 +1,5 @@
 Hello, I am Bharat Sahu!
 
-<br />
-
 - I'm currently working at SmileBots.
 - Trying to learn everything.
 - Love with Open Source, want to contribute more to Open Source projects.
@@ -21,17 +19,23 @@ Hello, I am Bharat Sahu!
 
 <br/>
 <br/>
----
 
 ### Languages and tools:
+
+- JavaScript
+- NodeJS
+- Cordova
+- Firebase
+- Django
+- ReactJS
 
 <br />
 
 ### Latest blogs
 
-- blog 1
+- [Generate incremental Firebase Firestore order or number vs ordered document ID](https://bhar4t.com/articles/Generate-incremental-Firebase-Firestore-order-or-number-vs-ordered-document-ID)
 
-- blog 2
+- [Cordova with Firebase Phone Authentication without Captcha and reCaptcha](https://bhar4t.com/articles/Cordova-with-Firebase-Phone-Authentication-without-Captcha-and-reCaptcha)
 
 <br />
 
