@@ -11,7 +11,7 @@ Hello, I am Bharat Sahu!
 
 ### Connect with me:
 
-[<img align="left" alt="bhar4t.com" src="./images/link-2.svg" />][website]
+[<img align="left" alt="bhar4t.com" src="https://raw.githubusercontent.com/bhar4t/bhar4t/ab2734417cb287c9be1434892a0303a8900ffd40/images/link-2.svg" />][website]
 
 [<img align="left" alt="twitter" src="./images/twitter.svg" />][twitter]
 
