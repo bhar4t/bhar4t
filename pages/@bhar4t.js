@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Home({ allPostsData }) {
   return (
-    <Layout home>
+    <Layout home canonical="bhar4t">
       <span className={utilStyles.preTitle}>Hi, I'm</span>
       <h1 className={utilStyles.h1}>Bharat Sahu</h1>
       <section>

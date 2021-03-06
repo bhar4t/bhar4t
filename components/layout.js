@@ -219,7 +219,7 @@ export default function Layout({ children, home, ...props }) {
           href={
             props.id
               ? `https://bhar4t.com/articles/${props.id}`
-              : "https://bhar4t.com/"
+              : `https://bhar4t.com/${props.canonical || ""}`
           }
         />
 
