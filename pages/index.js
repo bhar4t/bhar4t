@@ -9,7 +9,7 @@ export default function Home({ allPostsData }) {
     <Layout home>
       <span className={utilStyles.preTitle}>Code with</span>
       <h1 className={utilStyles.h1}>Bharat Sahu</h1>
-      <section>
+      <section key="home">
         {allPostsData.map(({ id, date, title }) => (
           <>
             <h3 className={utilStyles.listItem} key={id}>
