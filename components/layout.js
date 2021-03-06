@@ -10,7 +10,7 @@ export const siteTitle = "Code with Bharat Sahu";
 
 const buttons = [
   { label: "HOME", path: "/" },
-  { label: "@bhar4t", path: "/@bhar4t" },
+  { label: "@bhar4t", path: "/bhar4t" },
 ];
 
 const links = [
@@ -244,7 +244,7 @@ export default function Layout({ children, home, ...props }) {
               Back to home
             </a>
           )}
-          <SocialLinks />
+          {!props.removeSocialLinks && <SocialLinks />}
         </Container>
       </main>
       <footer>

@@ -1,14 +1,12 @@
-Hello, I am Bharat Sahu!
+# Hi, I'm Bharat Sahu!
 
-- I'm currently working at SmileBots.
+- I'm currently working at @[SmileBots](https://github.com/SmileBots) as Technical Lead.
 - Trying to learn everything.
 - Love with Open Source, want to contribute more to Open Source projects.
 - Music, green tea, beer
 
-<br />
-
 ### Connect with me:
-
+---
 [<img align="left" alt="bhar4t.com" src="https://raw.githubusercontent.com/bhar4t/bhar4t/ab2734417cb287c9be1434892a0303a8900ffd40/images/link-2.svg" />][website]
 
 [<img align="left" alt="twitter" src="https://raw.githubusercontent.com/bhar4t/bhar4t/a7c220bf929e902c25387ea80efb71532733c3e0/images/twitter.svg" />][twitter]
@@ -18,21 +16,24 @@ Hello, I am Bharat Sahu!
 [<img align="left" alt="instagram" src="https://raw.githubusercontent.com/bhar4t/bhar4t/a7c220bf929e902c25387ea80efb71532733c3e0/images/instagram.svg" />][instagram]
 
 <br/>
-<br/>
 
 ### Languages and tools:
+---
+- [JavaScript](https://www.javascript.com/)
+- [NodeJS](https://nodejs.org/en/)
+- [Cordova](https://cordova.apache.org/)
+- [Firebase](https://firebase.google.com/)
+- [Django](https://www.djangoproject.com/)
+- [ReactJS](https://reactjs.org/)
 
-- JavaScript
-- NodeJS
-- Cordova
-- Firebase
-- Django
-- ReactJS
-
-<br />
+### Projects
+---
+- Lokus
+- Real Deals
+- MoreMitaan
 
 ### Latest blogs
-
+---
 - [Generate incremental Firebase Firestore order or number vs ordered document ID](https://bhar4t.com/articles/Generate-incremental-Firebase-Firestore-order-or-number-vs-ordered-document-ID)
 
 - [Cordova with Firebase Phone Authentication without Captcha and reCaptcha](https://bhar4t.com/articles/Cordova-with-Firebase-Phone-Authentication-without-Captcha-and-reCaptcha)
