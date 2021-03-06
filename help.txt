@@ -1,0 +1,63 @@
+create-next-app
+
+Note: If you need to link to an external page outside the Next.js app, just use an <a> tag without Link.
+
+If you need to add attributes like, for example, className, add it to the a tag, not to the Link tag. Here’s an example.
+
+The public directory is also useful for robots.txt, Google Site Verification, and any other static assets.
+
+Important: To use this CSS Modules, the CSS file name must end with .module.css.
+
+To use this in Layout, you need to:
+
+Import it as styles
+Use styles.<class-name> as className
+In this case, the class name is container, so we’ll use styles.container
+
+Global Styles:
+To load global CSS files, create a file called _app.js under pages and add the following content:
+In Next.js, you can add global CSS files by importing them from _app.js. You cannot import global CSS anywhere else.
+To use CSS Modules, import a CSS file named *.module.css from any component.
+To use global CSS, import a CSS file in pages/_app.js.
+
+fetch data:
+import fetch from 'node-fetch'
+export async function getSortedPostsData() {
+  // Instead of the file system,
+  // fetch post data from an external API endpoint
+  const res = await fetch('..')
+  return res.json()
+}
+OR
+const databaseClient = someDatabaseSDK.createClient(...)
+export async function getSortedPostsData() {
+  // Instead of the file system,
+  // fetch post data from a database
+  return databaseClient.query('SELECT posts...')
+}
+This is possible because getStaticProps runs only on the server-side. It will never be run on the client-side. It won’t even be included in the JS bundle for the browser. That means you can write code such as direct database queries without them being sent to browsers.
+Development vs. Production:
+1. In development (npm run dev or yarn dev), getStaticProps runs on every request.
+2. In production, getStaticProps runs at build time.
+getStaticProps can only be exported from a page. You can’t export it from non-page files.
+
+Fetching Data at Request Time
+If you need to fetch data at request time instead of at build time, you can try Server-side Rendering:
+
+To use Server-side Rendering, you need to export getServerSideProps instead of getStaticProps from your page.
+
+How to Statically Generate Pages with Dynamic Routes
+we’ll create a page called [id].js under pages/posts. Pages that begin with [ and end with ] are dynamic pages in Next.js.
+
+Catch-all Routes
+Dynamic routes can be extended to catch all paths by adding three dots (...) inside the brackets. For example:
+pages/posts/[...id].js matches /posts/a, but also /posts/a/b, /posts/a/b/c and so on.
+
+Fallback
+Recall that we returned fallback: false from getStaticPaths. What does this mean?
+If fallback is false, then any paths not returned by getStaticPaths will result in a 404 page.
+If fallback is true, then the behavior of getStaticProps changes:
+The paths returned from getStaticPaths will be rendered to HTML at build time.
+The paths that have not been generated at build time will not result in a 404 page. Instead, Next.js will serve a “fallback” version of the page on the first request to such a path.
+In the background, Next.js will statically generate the requested path. Subsequent requests to the same path will serve the generated page, just like other pages pre-rendered at build time.
+This is beyond the scope of our lessons, but you can learn more about fallback: true in our documentation.
