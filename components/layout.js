@@ -10,7 +10,7 @@ export const siteTitle = "Code with Bharat Sahu";
 
 const buttons = [
   { label: "HOME", path: "/" },
-  { label: "ABOUT", path: "/about" },
+  { label: "@bhar4t", path: "/@bhar4t" },
 ];
 
 const links = [

@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Home({ allPostsData }) {
   return (
     <Layout home>
-      <span className={utilStyles.preTitle}>Code with</span>
+      <span className={utilStyles.preTitle}>Hi, I'm</span>
       <h1 className={utilStyles.h1}>Bharat Sahu</h1>
       <section>
         {allPostsData.map(({ id, date, title }) => (
