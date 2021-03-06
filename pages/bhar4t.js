@@ -1,5 +1,5 @@
 import Layout from "../components/layout";
-import { getAllPostIds, getReadMeData } from "../lib/readme";
+import { getReadMeData } from "../lib/readme";
 
 export default function Home({ postData }) {
   return (
@@ -9,16 +9,8 @@ export default function Home({ postData }) {
   );
 }
 
-export async function getStaticPaths() {
-  const paths = getAllPostIds();
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }) {
-  const postData = await getReadMeData("README");
+export async function getStaticProps() {
+  const postData = await getReadMeData();
   return {
     props: {
       postData,
