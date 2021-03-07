@@ -5,7 +5,7 @@
 - Love with Open Source, want to contribute more to Open Source projects.
 - Music, green tea, beer
 
-### Connect with me:
+### Connect With Me:
 ---
 [<img align="left" alt="bhar4t.com" src="https://raw.githubusercontent.com/bhar4t/bhar4t/ab2734417cb287c9be1434892a0303a8900ffd40/images/link-2.svg" />][website]
 
@@ -17,7 +17,7 @@
 
 <br/>
 
-### Languages and tools:
+### Languages & Tools:
 ---
 - [JavaScript](https://www.javascript.com/)
 - [NodeJS](https://nodejs.org/en/)
@@ -32,7 +32,7 @@
 - Real Deals
 - MoreMitaan
 
-### Latest blogs
+### Latest Blogs
 ---
 - [Generate incremental Firebase Firestore order or number vs ordered document ID](https://bhar4t.com/articles/Generate-incremental-Firebase-Firestore-order-or-number-vs-ordered-document-ID)
 
