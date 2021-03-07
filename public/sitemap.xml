@@ -1,27 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
 <url>
   <loc>https://bhar4t.com/</loc>
-  <lastmod>2020-04-25T16:39:28+00:00</lastmod>
+  <lastmod>2021-03-07T09:11:55+00:00</lastmod>
+  <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://bhar4t.com/privacy-policy</loc>
-  <lastmod>2020-04-25T16:39:28+00:00</lastmod>
+  <loc>https://bhar4t.com/bhar4t</loc>
+  <lastmod>2021-03-07T09:11:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<!-- Articles -->
+<url>
+  <loc>https://bhar4t.com/articles/Cordova-with-Firebase-Phone-Authentication-without-Captcha-and-reCaptcha</loc>
+  <lastmod>2021-03-07T09:11:55+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bhar4t.com/articles/Generate-incremental-Firebase-Firestore-order-or-number-vs-ordered-document-ID</loc>
+  <lastmod>2021-03-07T09:11:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<!-- Privacy Policy -->
+<url>
+  <loc>https://bhar4t.com/privacy-policy</loc>
   <lastmod>2020-04-25T16:39:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<!-- RSS Feeds -->
+<url>
+  <loc>https://bhar4t.com/rss/feed.json</loc>
+  <lastmod>2020-04-25T16:39:28+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://bhar4t.com/articles/Cordova-with-Firebase-Phone-Authentication-without-Captcha-and-reCaptcha</loc>
+  <loc>https://bhar4t.com/rss/atom.xml</loc>
   <lastmod>2020-04-25T16:39:28+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
-
-
+<url>
+  <loc>https://bhar4t.com/rss/feed.xml</loc>
+  <lastmod>2020-04-25T16:39:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
 </urlset>
