@@ -3,7 +3,7 @@
 - I'm currently working at @[SmileBots](https://github.com/SmileBots) as Technical Lead.
 - Trying to learn everything.
 - Love with Open Source, want to contribute more to Open Source projects.
-- Music, green tea, beer
+- Music, Green tea and, Beer sometimes.
 
 ### Connect With Me:
 ---
