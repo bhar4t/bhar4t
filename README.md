@@ -1,4 +1,4 @@
-# Hi, I'm Bharat Sahu!
+## Hi, I'm Bharat Sahu!
 
 - I'm currently working at @[SmileBots](https://github.com/SmileBots) as Technical Lead.
 - Trying to learn everything.
