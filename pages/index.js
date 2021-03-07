@@ -1,6 +1,7 @@
 import Layout from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
 import { getSortedPostsData } from "../lib/articles";
+import generateRssFeed from "../lib/rss";
 import Link from "next/link";
 import Date from "../components/date";
 
@@ -31,6 +32,7 @@ export default function Home({ allPostsData }) {
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
+  await generateRssFeed();
   return {
     props: {
       allPostsData,

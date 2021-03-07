@@ -1,0 +1,38 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Bharat Sahu | BHAR4T",
+    "home_page_url": "https://bhar4t.com",
+    "feed_url": "https://bhar4t.com/rss/feed.json",
+    "description": "Code with Bharat Sahu!",
+    "icon": "https://bhar4t.com/images/link-2.svg",
+    "author": {
+        "name": "Bharat Sahu",
+        "url": "https://twitter.com/bhar4t"
+    },
+    "items": [
+        {
+            "id": "https://bhar4t.com/Cordova-with-Firebase-Phone-Authentication-without-Captcha-and-reCaptcha",
+            "content_html": "Cordova with Firebase Phone Authentication without Captcha",
+            "url": "https://bhar4t.com/Cordova-with-Firebase-Phone-Authentication-without-Captcha-and-reCaptcha",
+            "title": "Cordova with Firebase Phone Authentication without Captcha",
+            "summary": "Cordova with Firebase Phone Authentication without Captcha",
+            "date_modified": "2020-04-10T00:00:00.000Z",
+            "author": {
+                "name": "Bharat Sahu",
+                "url": "https://twitter.com/bhar4t"
+            }
+        },
+        {
+            "id": "https://bhar4t.com/Generate-incremental-Firebase-Firestore-order-or-number-vs-ordered-document-ID",
+            "content_html": "Generate incremental Firebase Firestore order/number vs ordered document ID",
+            "url": "https://bhar4t.com/Generate-incremental-Firebase-Firestore-order-or-number-vs-ordered-document-ID",
+            "title": "Generate incremental Firebase Firestore order/number vs ordered document ID",
+            "summary": "Generate incremental Firebase Firestore order/number vs ordered document ID",
+            "date_modified": "2020-01-26T00:00:00.000Z",
+            "author": {
+                "name": "Bharat Sahu",
+                "url": "https://twitter.com/bhar4t"
+            }
+        }
+    ]
+}
