@@ -150,11 +150,11 @@ export default function Layout({ children, home, ...props }) {
         {/* Media Card (Open Graph) */}
         <meta
           property="og:title"
-          content={props.title || "Bharat Sahu | BHAR4T"}
+          content={props.title || "Code with Bharat Sahu | JavaScript, ReactJS, NextJS, Firebase, Cordova | BHAR4T"}
         />
         <meta
           property="og:site_name"
-          content={props.title || "Code with Bharat Sahu | BHAR4T"}
+          content={props.title || "Bharat Sahu | BHAR4T"}
         />
         <meta
           property="og:url"
