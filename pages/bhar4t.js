@@ -1,5 +1,5 @@
 import Layout from "../components/layout";
-import { getReadMeData } from "../lib/readme";
+import { getReadMeData } from "../lib/articles";
 
 export default function Home({ postData }) {
   return (
