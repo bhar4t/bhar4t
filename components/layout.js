@@ -5,25 +5,25 @@ import { Container, Row, Col } from "react-bootstrap";
 import { DayNight } from "./Icons";
 import mobile from "is-mobile";
 
-const name = "Bharat Sahu";
-export const siteTitle = "Code with Bharat Sahu";
-
 const buttons = [
   { label: "HOME", path: "/" },
   { label: "@bhar4t", path: "/bhar4t" },
 ];
 
 const links = [
-  {
-    title: "StackOverflow",
-    url: "https://stackoverflow.com/users/7242575/bhar4t",
-  },
+  // {
+  //   title: "StackOverflow",
+  //   url: "https://stackoverflow.com/users/7242575/bhar4t",
+  // },
   { title: "GitHub", url: "https://github.com/bhar4t" },
   { title: "LinkedIn", url: "https://www.linkedin.com/in/bhar4t/" },
   { title: "Twitter", url: "https://twitter.com/bhar4t" },
-  { title: "instagram", url: "https://www.instagram.com/bhar4t" },
-  { title: "FaceBook", url: "https://www.facebook.com/bharat.sahu" },
+  // { title: "instagram", url: "https://www.instagram.com/bhar4t" },
+  // { title: "FaceBook", url: "https://www.facebook.com/bharat.sahu" },
 ];
+
+const apple_icons = ["57x57", "60x60", "72x72", "76x76", "114x114", "120x120", "144x144", "152x152", "180x180"];
+const favicons = ["16x16", "32x32", "96x96"];
 
 export default function Layout({ children, home, ...props }) {
   const localNightMode =
@@ -48,9 +48,7 @@ export default function Layout({ children, home, ...props }) {
   const Header = () =>
     useHeader(
       <div onClick={setNightMode}>
-        <div>
-          <DayNight nightMode={nightMode} />
-        </div>
+        <DayNight nightMode={nightMode} />
       </div>
     );
   return (
@@ -72,74 +70,29 @@ export default function Layout({ children, home, ...props }) {
 
         {/* Favicon Generator */}
         <link
-          rel="apple-touch-icon"
-          sizes="57x57"
-          href="/images/apple-icon-57x57.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="60x60"
-          href="/images/apple-icon-60x60.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="72x72"
-          href="/images/apple-icon-72x72.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="76x76"
-          href="/images/apple-icon-76x76.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="114x114"
-          href="/images/apple-icon-114x114.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="120x120"
-          href="/images/apple-icon-120x120.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="144x144"
-          href="/images/apple-icon-144x144.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="152x152"
-          href="/images/apple-icon-152x152.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/images/apple-icon-180x180.png"
-        />
-        <link
           rel="icon"
           type="image/png"
           sizes="192x192"
           href="/images/android-icon-192x192.png"
         />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/images/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="96x96"
-          href="/images/favicon-96x96.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/images/favicon-16x16.png"
-        />
+        {apple_icons.map(size =>
+          <link
+            rel="apple-touch-icon"
+            sizes={size}
+            href={`/images/apple-icon-${size}.png`}
+          />
+        )}
+        {
+          favicons.map(size => (
+            <link
+              rel="icon"
+              type="image/png"
+              sizes={size}
+              href={`/images/favicon-${size}.png`}
+            />
+          ))
+        }
+
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta
           name="msapplication-TileImage"
