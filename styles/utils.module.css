@@ -26,6 +26,7 @@
   padding-bottom: 2rem;
 }
 
+/* ERROR Page */
 .errContainer {
   padding: 20;
   user-select: none;
@@ -47,6 +48,7 @@
   text-align: center;
 }
 
+/* Privacy-Policy Page */
 .privacyPolicy {
   padding: 20;
   user-select: none;
