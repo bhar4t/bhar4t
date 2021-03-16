@@ -11,9 +11,9 @@ export default function Home({ allPostsData }) {
       <span className={utilStyles.preTitle}>Code with</span>
       <h1 className={utilStyles.h1}>Bharat Sahu</h1>
       <section key="home">
-        {allPostsData.map(({ id, date, title }) => (
-          <>
-            <h3 className={utilStyles.listItem} key={id}>
+        {allPostsData.map(({ id, date, title }, i) => (
+          <div key={id}>
+            <h3 className={utilStyles.listItem}>
               <Link href="/articles/[id]" as={`/articles/${id}`}>
                 <a>{title}</a>
               </Link>
@@ -23,7 +23,7 @@ export default function Home({ allPostsData }) {
               <Date dateString={date} />
             </small>
             <br />
-          </>
+          </div>
         ))}
       </section>
     </Layout>

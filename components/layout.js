@@ -75,16 +75,18 @@ export default function Layout({ children, home, ...props }) {
           sizes="192x192"
           href="/images/android-icon-192x192.png"
         />
-        {apple_icons.map(size =>
+        {apple_icons.map((size, i) =>
           <link
+            key={i}
             rel="apple-touch-icon"
             sizes={size}
             href={`/images/apple-icon-${size}.png`}
           />
         )}
         {
-          favicons.map(size => (
+          favicons.map((size, i) => (
             <link
+              key={i}
               rel="icon"
               type="image/png"
               sizes={size}
@@ -176,33 +178,51 @@ export default function Layout({ children, home, ...props }) {
           }
         />
 
+        {/* Bootstrap */}
+        <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossOrigin="anonymous"
+          rel="preload"
+          as="style"
+          onLoad="this.onload=null;this.rel='stylesheet'"
+        />
+        {/* Google Font */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&family=Sacramento&display=swap"
+          rel="preload"
+          as="style"
+          onLoad="this.onload=null;this.rel='stylesheet'"
+        ></link>
+
         <title>{props.title || "Bharat Sahu | BHAR4T"}</title>
       </Head>
-      <header className={styles.header}>{<Header />}</header>
-      <main>
-        <Container>
-          {mobile() ? (
-            <Row>
-              <Col xs={12}>{children}</Col>
-            </Row>
-          ) : (
+        <header className={styles.header}>{<Header />}</header>
+        <main>
+          <Container>
+            {mobile() ? (
               <Row>
-                <Col />
-                <Col xs={8}>{children}</Col>
-                <Col />
+                <Col xs={12}>{children}</Col>
               </Row>
+            ) : (
+                <Row>
+                  <Col />
+                  <Col xs={8}>{children}</Col>
+                  <Col />
+                </Row>
+              )}
+            {!home && (
+              <a href="/" className={styles.simpleButton}>
+                Back to home
+              </a>
             )}
-          {!home && (
-            <a href="/" className={styles.simpleButton}>
-              Back to home
-            </a>
-          )}
-          {!props.removeSocialLinks && <SocialLinks />}
-        </Container>
-      </main>
-      <footer>
-        <Footer />
-      </footer>
+            {!props.removeSocialLinks && <SocialLinks />}
+          </Container>
+        </main>
+        <footer>
+          <Footer />
+        </footer>
     </>
   );
 }

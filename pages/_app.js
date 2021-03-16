@@ -14,7 +14,6 @@ export default function App({ Component, pageProps }) {
           rel="preload"
           as="style"
           onLoad="this.onload=null;this.rel='stylesheet'"
-
         />
         {/* Google Font */}
         <link
