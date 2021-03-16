@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import utilStyles from "../styles/utils.module.css";
+
 export default function privacyPolicy() {
     return (
-        <div style={{ padding: 20, userSelect: "none" }}>
+        <div className={utilStyles.privacyPolicy}>
             <h1>Privacy Policy for BHAR4T.COM</h1>
             <p>At Bharat Sahu | BHAR4T, accessible from https://bhar4t.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Bharat Sahu | BHAR4T and how we use it.</p>
             <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
