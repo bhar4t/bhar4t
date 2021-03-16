@@ -11,13 +11,13 @@ const buttons = [
 ];
 
 const links = [
+  { title: "Twitter", url: "https://twitter.com/bhar4t" },
+  { title: "GitHub", url: "https://github.com/bhar4t" },
   // {
   //   title: "StackOverflow",
   //   url: "https://stackoverflow.com/users/7242575/bhar4t",
   // },
-  { title: "GitHub", url: "https://github.com/bhar4t" },
-  { title: "LinkedIn", url: "https://www.linkedin.com/in/bhar4t/" },
-  { title: "Twitter", url: "https://twitter.com/bhar4t" },
+  // { title: "LinkedIn", url: "https://www.linkedin.com/in/bhar4t/" },
   // { title: "instagram", url: "https://www.instagram.com/bhar4t" },
   // { title: "FaceBook", url: "https://www.facebook.com/bharat.sahu" },
 ];
@@ -52,7 +52,7 @@ export default function Layout({ children, home, ...props }) {
       </div>
     );
   return (
-    <html lang="en">
+    <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -203,7 +203,7 @@ export default function Layout({ children, home, ...props }) {
       <footer>
         <Footer />
       </footer>
-    </html>
+    </>
   );
 }
 

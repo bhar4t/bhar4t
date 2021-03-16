@@ -4,7 +4,7 @@ const DayNight = ({ nightMode }) => (
   <svg
     height="32px"
     width="32px"
-    fill={nightMode ? "white" : "black"}
+    fill={nightMode ? "#ffffff" : '#000000'}
     viewBox="-12 0 480 480"
     xmlns="http://www.w3.org/2000/svg"
   >
