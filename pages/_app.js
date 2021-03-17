@@ -20,8 +20,10 @@ export default function App({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&family=Sacramento&display=swap"
           rel="preload"
           as="style"
+          crossOrigin="anonymous"
           onLoad="this.onload=null;this.rel='stylesheet'"
         ></link>
+        <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover' />
       </Head>
       <Component {...pageProps} />
     </>

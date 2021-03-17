@@ -13,13 +13,6 @@ const buttons = [
 const links = [
   { title: "Twitter", url: "https://twitter.com/bhar4t" },
   { title: "GitHub", url: "https://github.com/bhar4t" },
-  // {
-  //   title: "StackOverflow",
-  //   url: "https://stackoverflow.com/users/7242575/bhar4t",
-  // },
-  // { title: "LinkedIn", url: "https://www.linkedin.com/in/bhar4t/" },
-  // { title: "instagram", url: "https://www.instagram.com/bhar4t" },
-  // { title: "FaceBook", url: "https://www.facebook.com/bharat.sahu" },
 ];
 
 const apple_icons = ["57x57", "60x60", "72x72", "76x76", "114x114", "120x120", "144x144", "152x152", "180x180"];
@@ -95,12 +88,12 @@ export default function Layout({ children, home, ...props }) {
           ))
         }
 
-        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="msapplication-TileColor" content="#d3bf00" />
         <meta
           name="msapplication-TileImage"
           content="/images/ms-icon-144x144.png"
         />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#d3bf00" />
 
         {/* Media Card (Open Graph) */}
         <meta
@@ -177,25 +170,6 @@ export default function Layout({ children, home, ...props }) {
               : `https://bhar4t.com/${props.canonical || ""}`
           }
         />
-
-        {/* Bootstrap */}
-        <link
-          rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-          crossOrigin="anonymous"
-          rel="preload"
-          as="style"
-          onLoad="this.onload=null;this.rel='stylesheet'"
-        />
-        {/* Google Font */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&family=Sacramento&display=swap"
-          rel="preload"
-          as="style"
-          onLoad="this.onload=null;this.rel='stylesheet'"
-        ></link>
-
         <title>{props.title || "Bharat Sahu | BHAR4T"}</title>
       </Head>
         <header className={styles.header}>{<Header />}</header>

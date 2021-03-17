@@ -4,7 +4,7 @@ import Date from "../../components/date";
 import Head from "next/head";
 import utilStyles from "../../styles/utils.module.css";
 
-export const config = { amp: 'hybrid' };
+// export const config = { amp: 'hybrid' };
 
 export default function Article({ postData }) {
   return (

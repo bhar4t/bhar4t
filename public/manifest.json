@@ -1,6 +1,7 @@
 {
   "short_name": "BHAR4T",
   "name": "Let's code with Bharat Sahu!",
+  "description": "Code with Bharat Sahu | JavaScript, ReactJS, NextJS, Firebase, Cordova | BHAR4T",
   "icons": [
     {
       "src": "favicon.ico",
@@ -42,10 +43,45 @@
       "sizes": "192x192",
       "type": "image/png",
       "density": "4.0"
+    },
+    {
+      "src": "/images/bhar4t.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "density": "5.0",
+      "purpose": "any maskable"
     }
   ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "shortcuts": [
+    {
+      "name": "Cordova with Firebase Phone Authentication without Captcha",
+      "short_name": "Firebase authenticaion in Cordova",
+      "description": "We’re going to use Firebase Phone Authentication using firebase-js-sdk without Captcha with ReactJS application in a simple way. This article is for people who has basic knowledge of Cordova and Firebase phone authentication.",
+      "url": "/articles/Cordova-with-Firebase-Phone-Authentication-without-Captcha-and-reCaptcha",
+      "icons": [{ "src": "/images/android-icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Generate incremental Firebase Firestore order/number vs ordered document ID",
+      "short_name": "Incremental firestore ID",
+      "description": "Before going for incremental Firestore order or incremental document ID please go through Firestore documentation..",
+      "url": "/articles/Generate-incremental-Firebase-Firestore-order-or-number-vs-ordered-document-ID",
+      "icons": [{ "src": "/images/android-icon-192x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshot1.png",
+      "type": "image/png",
+      "sizes": "1241x2207"
+    },
+    {
+      "src": "/images/screenshot2.jpg",
+      "type": "image/jpg",
+      "sizes": "1241x2207"
+    }
+  ]
 }
