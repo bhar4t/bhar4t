@@ -41,7 +41,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 3px yellow dashed;
+  border: 3px #ffff0017 dashed;
   padding: 30px;
   border-radius: 8px;
   font-size: 18px;
