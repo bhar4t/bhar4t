@@ -61,3 +61,7 @@ The paths returned from getStaticPaths will be rendered to HTML at build time.
 The paths that have not been generated at build time will not result in a 404 page. Instead, Next.js will serve a “fallback” version of the page on the first request to such a path.
 In the background, Next.js will statically generate the requested path. Subsequent requests to the same path will serve the generated page, just like other pages pre-rendered at build time.
 This is beyond the scope of our lessons, but you can learn more about fallback: true in our documentation.
+
+NEXTJS PWA
+-----------
+  REF: https://github.com/shadowwalker/next-pwa
