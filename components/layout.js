@@ -8,6 +8,7 @@ import mobile from "is-mobile";
 const buttons = [
   { label: "HOME", path: "/" },
   { label: "@bhar4t", path: "/bhar4t" },
+  { label: "RÉSUMÉ", path: "/resume" },
 ];
 
 const links = [
@@ -188,15 +189,22 @@ export default function Layout({ children, home, ...props }) {
               )}
             {!home && (
               <a href="/" className={styles.simpleButton}>
-                Back to home
+                Back to Home
+              </a>
+            )}
+            {props.download && (
+              <a href="/resume.pdf" className={styles.simpleButton}>
+                Download as PDF
               </a>
             )}
             {!props.removeSocialLinks && <SocialLinks />}
           </Container>
         </main>
-        <footer>
-          <Footer />
-        </footer>
+        {!props.removeFooter &&
+          <footer>
+            <Footer />
+          </footer>
+        }
     </>
   );
 }
