@@ -2,6 +2,8 @@
 title: "Generate incremental Firebase Firestore order/number vs ordered document ID"
 date: "2020-01-26"
 cover: "firebase_increment.jpeg"
+tags: "Firebase, Javascript, Firestore"
+author: "Bharat Sahu"
 ---
 
 Before going for incremental Firestore order or incremental document ID please go through [Firestore documentation](https://firebase.google.com/docs/firestore/manage-data/add-data) you’ll get some use cases there with an important note:
