@@ -21,6 +21,8 @@ first of all, you need to see the `bind()` method, and how it works. look at the
     }
 
     let printName = printFullName.bind(name)
+    printName()
+    // John Doe
 ```
 
 If you need to create your own `bind()` method, you've to breakdown the above-mentioned snippet.

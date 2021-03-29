@@ -1,7 +1,7 @@
 ---
 title: "Function currying in JavaScript"
 date: "2021-03-29"
-cover: "apply-bind-call.png"
+cover: "currying.png"
 tags: "javascript, currying, bind, closure"
 author: "Bharat Sahu"
 ---
