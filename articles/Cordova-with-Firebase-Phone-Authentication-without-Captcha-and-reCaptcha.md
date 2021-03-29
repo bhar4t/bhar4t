@@ -166,9 +166,8 @@ auth
 
 Done! If `otp` and, `verificationId` verify successfully automatically your registered listener `onAuthStateChanged` will be invoked.
 
-References:
-
-1.  [firebase-js-sdk](https://github.com/firebase/firebase-js-sdk)
-2.  [cordova-plugin-firebase-authentication](https://github.com/chemerisuk/cordova-plugin-firebase-authentication)
+### References:
+- [firebase-js-sdk](https://github.com/firebase/firebase-js-sdk)
+- [cordova-plugin-firebase-authentication](https://github.com/chemerisuk/cordova-plugin-firebase-authentication)
 
 [Read on Medium](https://medium.com/@BHAR4T/cordova-with-firebase-phone-authentication-without-captcha-6663427920d9)

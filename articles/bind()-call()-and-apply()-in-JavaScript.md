@@ -1,6 +1,6 @@
 ---
 title: "bind(), call() and apply() in JavaScript"
-date: "2021-03-29"
+date: "2021-03-27"
 cover: "apply-bind-call.png"
 tags: "Javascript, JS, bind, call, apply"
 author: "Bharat Sahu"
@@ -127,12 +127,9 @@ The full code snippets will be:
 
 
 ### References:
-
-[Function.prototype.apply()][apply]
-<br>
-[Function.prototype.bind()][bind]
-<br>
-[Function.prototype.call()][call]
+- [Function.prototype.apply()][apply]
+- [Function.prototype.bind()][bind]
+- [Function.prototype.call()][call]
 
 <!-- Links -->
 [apply]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply

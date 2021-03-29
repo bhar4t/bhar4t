@@ -126,12 +126,9 @@ So the full implementation of our polyfill for `bind()` is which works exactly l
 ```
 
 ### References:
-
-[Function.prototype.apply()][apply]
-<br>
-[Function.prototype.bind()][bind]
-<br>
-[Function.prototype.call()][call]
+- [Function.prototype.apply()][apply]
+- [Function.prototype.bind()][bind]
+- [Function.prototype.call()][call]
 
 <!-- Links -->
 [rest_parameters]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters

@@ -34,13 +34,10 @@
 
 ### Latest Blogs
 ---
-
 - [bind(), call() and apply() in JavaScript](https://bhar4t.com/articles/bind()-call()-and-apply()-in-JavaScript)
-
 - [Polyfill for bind(), Step-by-step](https://bhar4t.com/articles/Polyfill-for-bind()-step-by-step)
-
+- [Function currying in JavaScript](https://bhar4t.com/articles/Function-currying-in-JavaScript)
 - [Generate incremental Firebase Firestore order or number vs ordered document ID](https://bhar4t.com/articles/Generate-incremental-Firebase-Firestore-order-or-number-vs-ordered-document-ID)
-
 - [Cordova with Firebase Phone Authentication without Captcha and reCaptcha](https://bhar4t.com/articles/Cordova-with-Firebase-Phone-Authentication-without-Captcha-and-reCaptcha)
 
 <br />
