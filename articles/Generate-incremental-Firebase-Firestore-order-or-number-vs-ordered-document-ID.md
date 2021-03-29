@@ -2,7 +2,7 @@
 title: "Generate incremental Firebase Firestore order/number vs ordered document ID"
 date: "2020-01-26"
 cover: "firebase_increment.jpeg"
-tags: "Firebase, Javascript, Firestore"
+keywords: "Firebase, Javascript, Firestore"
 author: "Bharat Sahu"
 ---
 

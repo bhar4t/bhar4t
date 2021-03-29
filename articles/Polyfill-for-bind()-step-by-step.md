@@ -2,7 +2,7 @@
 title: "Polyfill for bind(), step-by-step"
 date: "2021-03-28"
 cover: "implement-bind-polyfill.png"
-tags: "Javascript, JS, Polyfill"
+keywords: "Javascript, JS, Polyfill"
 author: "Bharat Sahu"
 ---
 

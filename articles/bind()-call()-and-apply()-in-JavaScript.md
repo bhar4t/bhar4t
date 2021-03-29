@@ -2,7 +2,7 @@
 title: "bind(), call() and apply() in JavaScript"
 date: "2021-03-27"
 cover: "apply-bind-call.png"
-tags: "Javascript, JS, bind, call, apply"
+keywords: "Javascript, JS, bind, call, apply"
 author: "Bharat Sahu"
 ---
 

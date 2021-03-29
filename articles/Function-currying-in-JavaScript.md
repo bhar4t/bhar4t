@@ -2,7 +2,7 @@
 title: "Function currying in JavaScript"
 date: "2021-03-29"
 cover: "currying.png"
-tags: "javascript, currying, bind, closure"
+keywords: "javascript, currying, bind, closure"
 author: "Bharat Sahu"
 ---
 

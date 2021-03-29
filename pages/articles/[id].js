@@ -8,7 +8,7 @@ import utilStyles from "../../styles/utils.module.css";
 
 export default function Article({ postData }) {
   return (
-    <Layout title={postData.title} cover={postData.cover} id={postData.id}>
+    <Layout title={postData.title} cover={postData.cover} id={postData.id} keywords={postData.keywords}>
       <Head>
         <title>{postData.title}</title>
       </Head>

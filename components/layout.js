@@ -19,7 +19,7 @@ const links = [
 const apple_icons = ["57x57", "60x60", "72x72", "76x76", "114x114", "120x120", "144x144", "152x152", "180x180"];
 const favicons = ["16x16", "32x32", "96x96"];
 
-export default function Layout({ children, home, ...props }) {
+export default function Layout({ children, home, keywords, ...props }) {
   const localNightMode =
     typeof localStorage !== "undefined" &&
     Boolean(JSON.parse(localStorage.getItem("NIGHT_MODE")));
@@ -58,7 +58,7 @@ export default function Layout({ children, home, ...props }) {
         />
         <meta
           name="keywords"
-          content="Bharat, Sahu, BHAR4T, JavaScript, JS, Node, NodeJS, Cordova, Firebase, Firestore, Java, HTML, CSS, Bootstrap, India, Bharat Lal Sahu, Raipur, Chhattisgarh, React, ReactJS, Programmer, Programming, Coding, Bharat Sahu, Mats University, SmileBots, 9589183373, seizedbharat@gmail.com"
+          content={keywords ?  `${keywords}, Bharat, Sahu, BHAR4T,` : "Bharat, Sahu, BHAR4T, JavaScript, JS, Node, NodeJS, Cordova, Firebase, Firestore, Java, HTML, CSS, Bootstrap, India, Bharat Lal Sahu, Raipur, Chhattisgarh, React, ReactJS, Programmer, Programming, Coding, Bharat Sahu, Mats University, SmileBots, 9589183373, seizedbharat@gmail.com"}
         />
         <link rel="manifest" href="/manifest.json" />
 

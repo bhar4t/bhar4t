@@ -2,7 +2,7 @@
 title: "Cordova with Firebase Phone Authentication without Captcha"
 date: "2020-04-10"
 cover: "cordova_firebase.png"
-tags: "Firebase, Javascript, Firestore, Cordova, Authentication"
+keywords: "Firebase, Javascript, Firestore, Cordova, Authentication"
 author: "Bharat Sahu"
 ---
 
