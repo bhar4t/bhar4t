@@ -51,7 +51,35 @@ Shocked! Why this happening?
 
 Here, we are storing a reference of `name.showFullName()` to `printName` variable. After that, we are calling it without an object reference, so this will now refer to the window (global) object or undefined (in strict mode).
 
-The apply(), bind() and, call() is saviour here.
+Similarly, other examples are:
+
+```js
+    function DemoFunction() {
+        console.log(this);
+    }
+    // Constructor invocation
+    new DemoFunction(); // logs an instance of DemoFunction
+```
+
+```js
+    const demoObject = {
+        demoMethod() {
+            console.log(this);
+        }
+    };
+    // Method invocation
+    demoObject.demoMethod(); // logs demoObject
+```
+
+```js
+    function demoFunction() {
+        console.log(this);
+    }
+    // Simple invocation
+    demoFunction(); // logs global object (window)
+```
+
+So, The apply(), bind() and, call() is saviour here. Here the value of `this` equals to the first argument.
 
 Now we define another name object as `name2`:
 
