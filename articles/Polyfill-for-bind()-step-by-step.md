@@ -36,7 +36,7 @@ First, you need to make it available for all the method so we're going to take h
     }
 ```
 
-Now `polyfill_bind()` will be available for any method you define in your code like other methods `toString()`, `toLocaleString()` etc.
+The `polyfill_bind()` is user defined function you can name anything as you want and, now it will be available for any function you define in your code like other function `toString()`, `toLocaleString()` etc.
 
 And now we're able to make a call similar to the original `bind()` method:
 

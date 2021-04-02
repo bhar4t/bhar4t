@@ -1,11 +1,11 @@
 import { DiscussionEmbed } from 'disqus-react';
 
-const Disqus = ({ post }) => {
+const Disqus = ({ id, title }) => {
     const shortName = "disqus_8RPT4iKIjZ";
     const config = {
-        url: `https://bhar4t/articles/${post.id}`,
-        identifier: post.id,
-        title: post.title
+        url: `https://bhar4t/articles/${id}`,
+        identifier: id,
+        title: title
     }
 
     return (

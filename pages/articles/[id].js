@@ -20,7 +20,7 @@ export default function Article({ postData }) {
         </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
-      <Disqus post={postData} />
+      <Disqus id={postData.id} title={postData.title} />
     </Layout>
   );
 }
