@@ -71,6 +71,27 @@
       "url": "/articles/Generate-incremental-Firebase-Firestore-order-or-number-vs-ordered-document-ID",
       "icons": [{ "src": "/images/android-icon-192x192.png", "sizes": "192x192" }]
     }
+    {
+      "name": "bind(), call() and apply() in JavaScript",
+      "short_name": "bind, call and, apply in JS",
+      "description": "The `this` keyword in JavaScript is not like other programming language's `this`, it behaves differently in different scenario..",
+      "url": "https://bhar4t.com/articles/bind()-call()-and-apply()-in-JavaScript",
+      "icons": [{ "src": "/images/android-icon-192x192.png", "sizes": "192x192" }]
+    }
+    {
+      "name": "Polyfill for bind(), Step-by-step",
+      "short_name": "Polyfill for bind in JS",
+      "description": "Polyfill is nothing but support to older browsers which doesn't have new methods. In this tutorial, you'll learn how to write the Polyfill for the `bind()` method in step by step..",
+      "url": "https://bhar4t.com/articles/Polyfill-for-bind()-step-by-step",
+      "icons": [{ "src": "/images/android-icon-192x192.png", "sizes": "192x192" }]
+    }
+    {
+      "name": "Function currying in JavaScript",
+      "short_name": "Function currying in JS",
+      "description": "In Mathematics and Computer Science, currying is the technique of converting a function that takes multiple arguements into a sequence of functions that each take a single argument..",
+      "url": "https://bhar4t.com/articles/Function-currying-in-JavaScript",
+      "icons": [{ "src": "/images/android-icon-192x192.png", "sizes": "192x192" }]
+    }
   ],
   "screenshots": [
     {
