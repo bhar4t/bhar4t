@@ -36,7 +36,7 @@ First, you need to make it available for all the method so we're going to take h
     }
 ```
 
-The `polyfill_bind()` is user defined function you can name anything as you want and, now it will be available for any function you define in your code like other function `toString()`, `toLocaleString()` etc.
+The polyfill_bind() is a user-defined function you can name anything you want and, now it will be available for any function you define in your code like other functions toString(), toLocaleString(), etc.
 
 And now we're able to make a call similar to the original `bind()` method:
 
@@ -131,6 +131,8 @@ So the full implementation of our polyfill for `bind()` is which works exactly l
 - [Function.prototype.apply()][apply]
 - [Function.prototype.bind()][bind]
 - [Function.prototype.call()][call]
+
+[Read on Medium](https://bhar4t.medium.com/polyfill-for-bind-step-by-step-c0f19a5dbd17)
 
 <!-- Links -->
 [rest_parameters]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
