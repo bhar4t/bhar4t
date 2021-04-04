@@ -15,14 +15,30 @@ export default function App({ Component, pageProps }) {
           as="style"
           onLoad="this.onload=null;this.rel='stylesheet'"
         />
-        {/* Google Font */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&family=Sacramento&display=swap"
+            rel="preload"
+            href="/fonts/Sacramento/Sacramento-Regular.ttf"
+            as="font"
+            crossOrigin=""
+          />
+        <link
           rel="preload"
-          as="style"
-          crossOrigin="anonymous"
-          onLoad="this.onload=null;this.rel='stylesheet'"
-        ></link>
+          href="/fonts/Inter/static/Inter-Thin.ttf"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/Inter/static/Inter-Light.ttf"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/Inter/static/Inter-Regular.ttf"
+          as="font"
+          crossOrigin=""
+        />
         <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover' />
       </Head>
       <Component {...pageProps} />

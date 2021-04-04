@@ -1,3 +1,32 @@
+@font-face {
+  font-family: "Sacramento";
+  src: url("/fonts/Sacramento/Sacramento-Regular.ttf");
+  font-style: regular;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/static/Inter-Thin.ttf");
+  font-style: medium;
+  font-weight: 100;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/static/Inter-Light.ttf");
+  font-style: medium;
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/static/Inter-Regular.ttf");
+  font-style: medium;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --bg-color: #fff;
   --text-color: #30353a;
