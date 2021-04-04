@@ -15,6 +15,7 @@ export default function App({ Component, pageProps }) {
           as="style"
           onLoad="this.onload=null;this.rel='stylesheet'"
         />
+        {/* Local fonts */}
         <link
             rel="preload"
             href="/fonts/Sacramento/Sacramento-Regular.ttf"
