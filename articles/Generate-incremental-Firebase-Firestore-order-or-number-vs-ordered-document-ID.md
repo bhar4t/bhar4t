@@ -4,6 +4,7 @@ date: "2020-01-26"
 cover: "firebase_increment.jpeg"
 keywords: "Firebase, Javascript, Firestore"
 author: "Bharat Sahu"
+description: "I don’t recommend custom document ID over Firestore auto-generated ids cause the scalability comes from how Firestore spreads the document out over its storage layer. In a simplified way: sequential IDs have more hashing collisions.."
 ---
 
 Before going for incremental Firestore order or incremental document ID please go through [Firestore documentation](https://firebase.google.com/docs/firestore/manage-data/add-data) you’ll get some use cases there with an important note:

@@ -4,6 +4,7 @@ date: "2020-04-10"
 cover: "cordova_firebase.png"
 keywords: "Firebase, Javascript, Firestore, Cordova, Authentication"
 author: "Bharat Sahu"
+description: "We’re going to use Firebase Phone Authentication using firebase-js-sdk without Captcha with ReactJS application in a simple way. This article is for people who has basic knowledge of Cordova and Firebase phone authentication."
 ---
 
 We’re going to use Firebase Phone Authentication using firebase-js-sdk without Captcha with ReactJS application in a simple way. This article is for people who has basic knowledge of Cordova and Firebase phone authentication.

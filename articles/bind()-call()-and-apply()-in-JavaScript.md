@@ -4,6 +4,7 @@ date: "2021-03-27"
 cover: "apply-bind-call.png"
 keywords: "Javascript, JS, bind, call, apply"
 author: "Bharat Sahu"
+description: "The `this` keyword in JavaScript is not like other programming language's `this`, it behaves differently in different scenario."
 ---
 
 The `this` keyword in JavaScript is not like other programming language's `this`, it behaves differently in different scenario.

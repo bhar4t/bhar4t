@@ -4,6 +4,7 @@ date: "2021-03-28"
 cover: "implement-bind-polyfill.png"
 keywords: "Javascript, JS, Polyfill"
 author: "Bharat Sahu"
+description: "Polyfill is nothing but support to older browsers which doesn't have new methods. In this tutorial, you'll learn how to write the Polyfill for the `bind()` method in step by step."
 ---
 
 Polyfill is nothing but support to older browsers which doesn't have new methods. In this tutorial, you'll learn how to write the Polyfill for the `bind()` method in step by step.
