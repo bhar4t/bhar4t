@@ -3,6 +3,7 @@
 - I'm currently working at @[SmileBots](https://github.com/SmileBots) as Technical Lead.
 - Trying to learn everything.
 - Love with Open Source, want to contribute more to Open Source projects.
+- See my [Resume](https://bhar4t.com/resume).
 - Music, Green tea and, Beer sometimes.
 
 ### Connect With Me:

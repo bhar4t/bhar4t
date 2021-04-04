@@ -8,13 +8,13 @@ import mobile from "is-mobile";
 const buttons = [
   { label: "HOME", path: "/" },
   { label: "@bhar4t", path: "/bhar4t" },
-  { label: "RÉSUMÉ", path: "/resume" },
+  // { label: "RÉSUMÉ", path: "/resume" },
 ];
 
-const links = [
-  { title: "Twitter", url: "https://twitter.com/bhar4t" },
-  { title: "GitHub", url: "https://github.com/bhar4t" },
-];
+// const links = [
+//   { title: "Twitter", url: "https://twitter.com/bhar4t" },
+//   { title: "GitHub", url: "https://github.com/bhar4t" },
+// ];
 
 const apple_icons = ["57x57", "60x60", "72x72", "76x76", "114x114", "120x120", "144x144", "152x152", "180x180"];
 const favicons = ["16x16", "32x32", "96x96"];
@@ -197,14 +197,14 @@ export default function Layout({ children, home, keywords, ...props }) {
                 Download as PDF
               </a>
             )}
-            {!props.removeSocialLinks && <SocialLinks />}
+            {/* {!props.removeSocialLinks && <SocialLinks />} */}
           </Container>
         </main>
-        {!props.removeFooter &&
+        {/* {!props.removeFooter &&
           <footer>
             <Footer />
           </footer>
-        }
+        } */}
     </>
   );
 }
@@ -227,22 +227,22 @@ function useHeader(NightMode) {
   );
 }
 
-function useFooter() {
-  return (
-    <div className={styles.footer}>
-      <span style={{ fontSize: 12 }}>&copy; 2020</span>
-    </div>
-  );
-}
+// function useFooter() {
+//   return (
+//     <div className={styles.footer}>
+//       <span style={{ fontSize: 12 }}>&copy; 2020</span>
+//     </div>
+//   );
+// }
 
-function useSocial() {
-  return (
-    <div className={styles.socialLinks}>
-      {links.map((e, i) => (
-        <a key={i} style={{ padding: "0px 10px" }} href={e.url}>
-          {e.title}
-        </a>
-      ))}
-    </div>
-  );
-}
+// function useSocial() {
+//   return (
+//     <div className={styles.socialLinks}>
+//       {links.map((e, i) => (
+//         <a key={i} style={{ padding: "0px 10px" }} href={e.url}>
+//           {e.title}
+//         </a>
+//       ))}
+//     </div>
+//   );
+// }
