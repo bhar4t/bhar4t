@@ -19,7 +19,7 @@ Suppose we have 2 collections first as _Organisations_ and the other is _Purchas
 ```json
 organisation: {
   name: 'traderA',
-  serialNumerGenerated: 0,
+  serialNumberGenerated: 0,
 }
 ```
 
@@ -52,7 +52,7 @@ return db
       if (!orgDoc.exists) throw "Document does not exist!";
 
       // Increment one serialNumberGenerated to the organisations.
-      const nextSerial = orgDoc.data().serialNumerGenerated + 1;
+      const nextSerial = orgDoc.data().serialNumberGenerated + 1;
 
       trx.set(purchaseRef, {
         created_at: new Date(),
@@ -60,7 +60,7 @@ return db
         serialNumber: nextSerial, // OR concat with String.
       });
 
-      trx.update(orgRef, { serialNumerGenerated: nextSerial });
+      trx.update(orgRef, { serialNumberGenerated: nextSerial });
     });
   })
   .then(() => console.log("Transaction successfully committed!"))
