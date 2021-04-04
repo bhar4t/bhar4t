@@ -36,8 +36,8 @@ export default function Layout({ children, home, keywords, ...props }) {
     localStorage.setItem("NIGHT_MODE", nightMode);
   }, [nightMode]);
 
-  const Footer = () => useFooter();
-  const SocialLinks = () => useSocial();
+  // const Footer = () => useFooter();
+  // const SocialLinks = () => useSocial();
 
   const Header = () =>
     useHeader(
