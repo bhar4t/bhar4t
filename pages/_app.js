@@ -9,11 +9,11 @@ function App({ Component, pageProps }) {
       <Head>
         {/* Local fonts */}
         <link
-            rel="preload"
-            href="/fonts/Sacramento/Sacramento-Regular.ttf"
-            as="font"
-            crossOrigin=""
-          />
+          rel="preload"
+          href="/fonts/Sacramento/Sacramento-Regular.ttf"
+          as="font"
+          crossOrigin=""
+        />
         <link
           rel="preload"
           href="/fonts/Inter/static/Inter-Thin.ttf"
