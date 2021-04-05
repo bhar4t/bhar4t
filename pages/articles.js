@@ -18,7 +18,7 @@ export default function Home({ allPostsData }) {
           <div key={id} style={{ display: 'flex', flexWrap: 'wrap', lineHeight: 1.5, border: '1px solid #f5f0c2', borderRadius: 4, width: '100%', margin: '10px 0px', }}>
             <div style={{ flex: 2, display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center', padding: 4 }}>
               <div style={{ height: 'auto', width: '30vh',padding: 2, objectFit: 'contain'  }}>
-                <img height="100%" width="100%" src={`/img/${cover}`} alt={title}></img>
+                <img loading="lazy" height="100%" width="100%" src={`/img/${cover}`} alt={title}></img>
               </div>
             </div>
             <div style={{ flex: 6, padding: 6 }}>
