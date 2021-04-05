@@ -3,11 +3,6 @@ import withDarkMode from 'next-dark-mode'
 import Head from "next/head";
 import "../styles/global.css";
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
-
-export const config = {
-  amp: 'hybrid',
-}
-
 function App({ Component, pageProps }) {
   return (
     <>
