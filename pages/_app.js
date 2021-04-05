@@ -1,8 +1,10 @@
+// import App from 'next/app'
+import withDarkMode from 'next-dark-mode'
 import Head from "next/head";
 import "../styles/global.css";
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
     <>
       <Head>
@@ -37,3 +39,5 @@ export default function App({ Component, pageProps }) {
     </>
   );
 }
+
+export default withDarkMode(App)

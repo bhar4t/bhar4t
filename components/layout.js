@@ -1,48 +1,34 @@
 import React from "react";
 import Head from "next/head";
-import styles from "./layout.module.css";
+import { useDarkMode } from 'next-dark-mode'
 import { Container, Row, Col } from "react-bootstrap";
 import { DayNight } from "./Icons";
 import mobile from "is-mobile";
+import styles from "./layout.module.css";
 
 const buttons = [
   { label: "HOME", path: "/" },
   { label: "@bhar4t", path: "/bhar4t" },
-  // { label: "RÉSUMÉ", path: "/resume" },
 ];
-
-// const links = [
-//   { title: "Twitter", url: "https://twitter.com/bhar4t" },
-//   { title: "GitHub", url: "https://github.com/bhar4t" },
-// ];
 
 const apple_icons = ["57x57", "60x60", "72x72", "76x76", "114x114", "120x120", "144x144", "152x152", "180x180"];
 const favicons = ["16x16", "32x32", "96x96"];
 
 export default function Layout({ children, home, keywords, ...props }) {
-  const localNightMode =
-    typeof localStorage !== "undefined" &&
-    Boolean(JSON.parse(localStorage.getItem("NIGHT_MODE")));
-  let [nightMode, toggleNightMode] = React.useState(localNightMode);
-  const setNightMode = () => toggleNightMode(!nightMode);
-
+  const { darkModeActive, switchToDarkMode, switchToLightMode, } = useDarkMode();
+  
   React.useEffect(() => {
-    document.documentElement.setAttribute("data-theme", nightMode && "dark");
-    localStorage.setItem("NIGHT_MODE", nightMode);
+    document?.documentElement?.setAttribute("data-theme", darkModeActive ? 'dark' : 'light');
   }, []);
 
   React.useEffect(() => {
-    document.documentElement.setAttribute("data-theme", nightMode && "dark");
-    localStorage.setItem("NIGHT_MODE", nightMode);
-  }, [nightMode]);
-
-  // const Footer = () => useFooter();
-  // const SocialLinks = () => useSocial();
+    document?.documentElement?.setAttribute("data-theme", darkModeActive ? 'dark' : 'light');
+  }, [darkModeActive]);
 
   const Header = () =>
     useHeader(
-      <div onClick={setNightMode}>
-        <DayNight nightMode={nightMode} />
+      <div onClick={darkModeActive ? switchToLightMode : switchToDarkMode}>
+        <DayNight nightMode={darkModeActive} />
       </div>
     );
   return (
@@ -197,14 +183,8 @@ export default function Layout({ children, home, keywords, ...props }) {
                 Download as PDF
               </a>
             )}
-            {/* {!props.removeSocialLinks && <SocialLinks />} */}
           </Container>
         </main>
-        {/* {!props.removeFooter &&
-          <footer>
-            <Footer />
-          </footer>
-        } */}
     </>
   );
 }
@@ -226,23 +206,3 @@ function useHeader(NightMode) {
     </div>
   );
 }
-
-// function useFooter() {
-//   return (
-//     <div className={styles.footer}>
-//       <span style={{ fontSize: 12 }}>&copy; 2020</span>
-//     </div>
-//   );
-// }
-
-// function useSocial() {
-//   return (
-//     <div className={styles.socialLinks}>
-//       {links.map((e, i) => (
-//         <a key={i} style={{ padding: "0px 10px" }} href={e.url}>
-//           {e.title}
-//         </a>
-//       ))}
-//     </div>
-//   );
-// }
