@@ -9,6 +9,6 @@ module.exports = withPWA({
     webpack5: true,
   },
   env: {
-    HELLO='Greet to Backend'
+    HELLO: 'Greet to Frontend'
   }
 })
