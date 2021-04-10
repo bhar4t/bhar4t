@@ -15,18 +15,18 @@
 .errContainer {
   padding: 20;
   user-select: none;
-   height: 100vh;
-   width: 100vw;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .errImg {
-   height: 50%;
-   width: auto;
-   object-fit: contain;
+  height: 50%;
+  width: auto;
+  object-fit: contain;
 }
 
 .errText {
@@ -41,32 +41,87 @@
 
 /* Pre Title */
 .preTitle {
-	width: 100%;
-	text-align: center;
-	margin: auto;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-weight: 200;
-	font-family: monospace;
-	opacity: 0.7;
-	padding: 0.8em 0em 0.5em 0em;
-	font-size: 2em;
-	letter-spacing: 4px;
-	overflow: hidden;
-	background: linear-gradient(90deg, #000, #fff, #000);
-	background-repeat: no-repeat;
-	background-size: 80%;
-	animation: animate 4s linear infinite;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: rgba(255, 255, 255, 0);
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 200;
+  font-family: monospace;
+  opacity: 0.7;
+  padding: 0.8em 0em 0.5em 0em;
+  font-size: 2em;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 4s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
   }
-  
-  @keyframes animate {
-	0% {
-	  background-position: -500%;
-	}
-	100% {
-	  background-position: 500%;
-	}
+  100% {
+    background-position: 500%;
   }
+}
+
+/* /articles */
+.articleList {
+  margin-top: 25vh;
+}
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1.5;
+  border: 1px solid #f5f0c2;
+  border-radius: 4;
+  width: 100%;
+  margin: 10px 0px;
+}
+.imgContainer {
+  flex: 2;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 4;
+}
+.img {
+  height: auto;
+  width: 30vh;
+  padding: 2;
+  object-fit: contain;
+}
+.textContainer {
+  flex: 6;
+  padding: 6;
+}
+.articleTitle {
+  padding: 6px 2px;
+}
+.articleDesc {
+  padding: 6px 4px;
+  font-size: 14;
+}
+.articleKeys {
+  font-size: 11;
+  padding: 6px 4px;
+  margin: 2;
+}
+.articleKey {
+  background-color: #d3bf00;
+  border-radius: 5;
+  margin-left: 4;
+  padding: 3px 5px;
+}
+.articleAuthor {
+  padding: 6px 3px;
+  color: #d3bf00;
+  font-size: 14;
+}
