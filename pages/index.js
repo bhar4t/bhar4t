@@ -8,8 +8,8 @@ import Date from "../components/date";
 export default function Home({ allPostsData }) {
   return (
     <Layout home>
-      <span className={utilStyles.preTitle}>Code with</span>
-      <h1 className={utilStyles.h1}>Bharat Sahu</h1>
+      <span className={utilStyles.preTitle}>{process.env.PRE_TITLE}</span>
+      <h1 className={utilStyles.h1}>{process.env.TITLE}</h1>
       <section key="home">
         {allPostsData.map(({ id, date, title }, i) => (
           <div key={id}>
