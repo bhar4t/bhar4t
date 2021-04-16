@@ -18,7 +18,6 @@ export default function Home({ allPostsData }) {
                 <a>{title}</a>
               </Link>
             </h3>
-
             <small className={utilStyles.lightText}>
               <Date dateString={date} />
             </small>

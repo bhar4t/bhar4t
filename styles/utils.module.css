@@ -125,3 +125,10 @@
   color: #d3bf00;
   font-size: 14;
 }
+
+/* BHAR4T */
+.git {
+  color: "gray";
+  font-size: 11px;
+  user-select: "none";
+}
