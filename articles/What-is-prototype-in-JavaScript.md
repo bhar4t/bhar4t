@@ -7,7 +7,7 @@ author: "Bharat Sahu"
 description: "We often heard JavaScript is prototype-based language but what is prototype in JavaScript? Why it is known to be as prototype-based language?"
 ---
 
-[DRAFT]
+[Working on it..]
 
 The entire inheritance concept in JavaScript is based on prototype, prototype inheritence is whenever we create any `object` or `function` in JavaScript it automatically inherit properties and methods from certain template object or prototype object.
 
