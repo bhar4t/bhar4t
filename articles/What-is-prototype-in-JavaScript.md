@@ -2,12 +2,10 @@
 title: "What is prototype in JavaScript?"
 date: "2021-04-22"
 cover: "prototype-javascript.png"
-keywords: "javascript, js, prototype, inheritance, chain"
+keywords: "javascript, prototype, inheritance, chain, __proto__"
 author: "Bharat Sahu"
 description: "We often heard JavaScript is prototype-based language but what is prototype in JavaScript? Why it is known to be as prototype-based language?"
 ---
-
-[Working on it..]
 
 The entire inheritance concept in JavaScript is based on prototype, prototype inheritence is whenever we create any `object` or `function` in JavaScript it automatically inherit properties and methods from certain template object or prototype object.
 
@@ -36,6 +34,34 @@ console.log(object.__proto__);
 ```
 
 The output you are seeing here will be the same as `Object.prototype`.
+
+### What is `__proto__`?
+
+The `__proto__` attribute used to assign the properties and methods from prototype template. Whenver we want to inherit propeties and methods from prototype template we can just assign it into child's `__proto__` attribute, You can directly understand this field by below example:
+
+```js
+const human = {
+  teeth: 32,
+};
+
+const john = {
+  __proto__: human,
+  leg: 2,
+};
+
+console.log(john.teeth);
+// 32
+```
+
+So, here in the above example we've created a `human` object and it have a field as `teeth` with value `32`, and we've also created another object as `john`, and it have 2 fields first is field `leg` and it have value as `2`, but here we want to inherit properties from `human` object in `john` object, so we've just assigned `human` into `john`'s `__proto__`.
+
+Let's see how it printing the value.. whenever we access `john.teeth`, javascript engine will try to find the `teeth` field inside `john` object and when it didn't find, it will go to `john`'s `__proto__` and if `teeth` available, it will print the value.
+
+So whenver the finding goes on various level, known to be as Prototypical Chain.
+
+### References:
+
+- [https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes)
 
 <!-- Links -->
 

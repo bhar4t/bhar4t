@@ -58,6 +58,13 @@
   "background_color": "#ffffff",
   "shortcuts": [
     {
+      "name": "What is prototype in JavaScript?",
+      "short_name": "Prototype in JavaScript?",
+      "description": "We often heard JavaScript is prototype-based language but what is prototype in JavaScript? Why it is known to be as prototype-based language?",
+      "url": "/articles/What-is-prototype-in-JavaScript",
+      "icons": [{ "src": "/images/android-icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
       "name": "Hoisting in JavaScript",
       "short_name": "Hoisting in JavaScript",
       "description": "When you use variables and functions before declaration without getting any error known to be as `Hoisting`.",
