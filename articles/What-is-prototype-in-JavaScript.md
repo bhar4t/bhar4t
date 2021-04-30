@@ -59,10 +59,13 @@ Let's see how it printing the value.. whenever we access `john.teeth`, javascrip
 
 So whenver the finding goes on various level, known to be as Prototypical Chain.
 
+We've already seen the example, how to use the `prototype` property, how can we make available other properties and methods for newly created objects in the article [Polyfill for bind()-step-by-step][polyfill_for_bind].
+
 ### References:
 
 - [https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes)
 
 <!-- Links -->
 
-[call_apply_bind]: /articles/bind()-call()-and-apply()-in-JavaScript
+[call_apply_bind]: https://bhar4t.com/articles/bind()-call()-and-apply()-in-JavaScript
+[polyfill_for_bind]: https://bhar4t.com/articles/Polyfill-for-bind()-step-by-step
