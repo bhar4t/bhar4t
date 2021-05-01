@@ -47,7 +47,8 @@
 
 ---
 
-- [What is prototype in JavaScript](https://bhar4t.com/articles/What-is-prototype-in-JavaScript)
+- [What is Temporal Dead Zone in JavaScript?](https://bhar4t.com/articles/What-is-Temporal-Dead-Zone-in-JavaScript)
+- [What is prototype in JavaScript?](https://bhar4t.com/articles/What-is-prototype-in-JavaScript)
 - [Hoisting in JavaScript](https://bhar4t.com/articles/hoisting-in-JavaScript)
 - [bind(), call() and apply() in JavaScript](<https://bhar4t.com/articles/bind()-call()-and-apply()-in-JavaScript>)
 - [Polyfill for bind(), Step-by-step](<https://bhar4t.com/articles/Polyfill-for-bind()-step-by-step>)

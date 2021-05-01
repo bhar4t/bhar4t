@@ -58,6 +58,13 @@
   "background_color": "#ffffff",
   "shortcuts": [
     {
+      "name": "What is Temporal Dead Zone in JavaScript?",
+      "short_name": "TDZ in JavaScript",
+      "description": "The Temporal Dead Zone (TDZ) is a specific time between whenever we declare any variable using `let` keyword and initializing declared variable a value, the time span between these two events known to be as temporal dead zone.",
+      "url": "/articles/What-is-Temporal-Dead-Zone-in-JavaScript",
+      "icons": [{ "src": "/images/android-icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
       "name": "What is prototype in JavaScript?",
       "short_name": "Prototype in JavaScript?",
       "description": "We often heard JavaScript is prototype-based language but what is prototype in JavaScript? Why it is known to be as prototype-based language?",
