@@ -1,8 +1,9 @@
 ## Hi, I'm Bharat Sahu!
 
-- Currently looking for a new oppurtunity.
-- Worked in @[SmileBots](https://github.com/SmileBots) as Tech Lead for 3+ years.
+- Senior Software Engineer at @accenture.
+- Previously worked in @[SmileBots](https://github.com/SmileBots) as Tech Lead for 3+ years.
 - Trying to learn everything.
+- Exploring the JS.
 - Love with Open Source, want to contribute more to Open Source projects.
 - See my [Resume](https://bhar4t.com/resume).
 - Music, Green tea and, Beer sometimes.
