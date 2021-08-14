@@ -9,6 +9,7 @@ import styles from "./layout.module.css";
 const buttons = [
   { label: "HOME", path: "/" },
   { label: "@bhar4t", path: "/bhar4t" },
+  { label: "PACKAGES", path: "/packages" },
 ];
 
 const apple_icons = ["57x57", "60x60", "72x72", "76x76", "114x114", "120x120", "144x144", "152x152", "180x180"];
