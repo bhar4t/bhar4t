@@ -4,7 +4,8 @@ import Layout from "../components/layout";
 export default function Packages() {
   return (
     <Layout home canonical="packages" removeSocialLinks>
-      <div>Repositories and Packages</div>
+      <div>NPM Packages</div>
+      <div>Games</div>
       <div>Coming Soon...</div>
     </Layout>
   );
