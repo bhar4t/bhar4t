@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { useDarkMode } from 'next-dark-mode'
 import { Container, Row, Col } from "react-bootstrap";
+import ProgressBar from "../components/ProgressBar";
 import { DayNight } from "./Icons";
 import mobile from "is-mobile";
 import styles from "./layout.module.css";
@@ -160,6 +161,7 @@ export default function Layout({ children, home, keywords, ...props }) {
         />
         <title>{props.title || "Bharat Sahu | BHAR4T"}</title>
       </Head>
+        <ProgressBar />
         <header className={styles.header}>{<Header />}</header>
         <main>
           <Container>
