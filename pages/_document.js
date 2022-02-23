@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import MouseContextProvider from "../context/mouse-context"
 
 const APP_NAME = 'BHARAT SAHU | BHAR4T'
 const APP_DESCRIPTION = 'Code with BHARAT SAHU | BHAR4T'
@@ -28,8 +29,10 @@ export default class extends Document {
           <link rel='shortcut icon' href='/images/favicon.ico' />
         </Head>
         <body>
-          <Main />
-          <NextScript />
+          <MouseContextProvider>
+            <Main />
+            <NextScript />
+          </MouseContextProvider>
         </body>
       </Html>
     )

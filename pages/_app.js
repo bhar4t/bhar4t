@@ -1,9 +1,16 @@
 // import App from 'next/app'
+import { useContext } from "react";
 import withDarkMode from 'next-dark-mode'
 import Head from "next/head";
+import DotRing from '../components/DotRing/DotRing';
+import { MouseContext } from "../context/mouse-context";
 import "../styles/global.css";
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
+
 function App({ Component, pageProps }) {
+  
+  const { cursorType, cursorChangeHandler } = useContext(MouseContext);
+
   return (
     <>
       <Head>
@@ -34,7 +41,12 @@ function App({ Component, pageProps }) {
         />
         <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover' />
       </Head>
-      <Component {...pageProps} />
+      <DotRing />
+      <Component
+        onMouseEnter={() => cursorChangeHandler("hovered")} 
+        onMouseLeave={() => cursorChangeHandler("")}
+        {...pageProps}
+      />
     </>
   );
 }
