@@ -1,7 +1,7 @@
 ## Hi, I'm Bharat Sahu!
 
-- Senior Software Engineer at @[accenture](https://github.com/Accenture).
-- Previously worked in @[SmileBots](https://github.com/SmileBots) as Tech Lead for 3+ years.
+- For more than 4 years experience in IT.
+- Senior Software Engineer at @[accenture](https://github.com/Accenture), previously worked with @[SmileBots](https://github.com/SmileBots) as Tech Lead .
 - Trying to learn everything.
 - Exploring the JS.
 - Love with Open Source, want to contribute more to Open Source projects.
