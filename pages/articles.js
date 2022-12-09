@@ -25,7 +25,8 @@ export default function Home({ allPostsData }) {
               <a className={articleTitle}>{title}</a>
               <div className={articleDesc}>{description}</div>
               <div className={articleKeys}>
-                {keywords.split(', ').map(e => <span className={articleKey}>{e}</span>)}</div>
+                {keywords.split(', ').map(e => <span className={articleKey}>{e}</span>)}
+              </div>
               <div className={articleAuthor}><Link href="/bhar4t" as={`/bhar4t`}>{author + ", "}</Link>{<Date dateString={date} />}</div>
             </div>
           </div>

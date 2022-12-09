@@ -79,10 +79,11 @@
   display: flex;
   flex-wrap: wrap;
   line-height: 1.5;
-  border: 1px solid #f5f0c2;
+  border: 1px solid #d3bf00;
   border-radius: 4px;
   width: 100%;
   margin: 10px 0px;
+  padding: 8px;
 }
 .imgContainer {
   flex: 2;
