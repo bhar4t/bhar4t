@@ -1,7 +1,7 @@
 ## Hi, I'm Bharat Sahu!
 
 - For more than 4 years experience in IT.
-- Previously worked with @[accenture](https://github.com/Accenture) as Senior Software Engineer, and @[SmileBots](https://github.com/SmileBots) as Tech Lead .
+- Working as Sr Software Developer at @[TEKsystems](https://github.com/orgs/Teksystems).
 - Trying to learn everything.
 - Exploring the JS.
 - Love with Open Source, want to contribute more to Open Source projects.
