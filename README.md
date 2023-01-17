@@ -83,6 +83,7 @@
 
 [For More](https://bhar4t.com/articles)
 
+![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=bhar4t.bhar4t)
 <br />
 
 [website]: https://bhar4t.com/
