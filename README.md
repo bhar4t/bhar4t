@@ -1,11 +1,11 @@
 ## Hi, I'm Bharat Sahu!
 
-- For more than 4 years experience in IT.
-- Working as Sr Software Developer at @[TEKsystems](https://github.com/orgs/Teksystems).
+- For more than `4 years` experience in IT.
+- Working as Sr Software Developer at `[TEKsystems](https://github.com/orgs/Teksystems)`.
 - Trying to learn everything.
-- Exploring the JS.
-- Love with Open Source, want to contribute more to Open Source projects.
-- See my [Resume](https://bhar4t.com/resume).
+- Exploring the `JS`.
+- Love with `Open Source`, want to contribute more to Open Source projects.
+- See my `[Resume](https://bhar4t.com/resume)`.
 - Music, Green tea and, Beer sometimes.
 
 ### Connect With Me:
