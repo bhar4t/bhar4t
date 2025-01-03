@@ -1,11 +1,11 @@
 {
   "name": "bhar4t",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && next build",
+    "start": "SET NODE_OPTIONS=--openssl-legacy-provider && next start"
   },
   "dependencies": {
     "bootstrap": "^4.6.0",
