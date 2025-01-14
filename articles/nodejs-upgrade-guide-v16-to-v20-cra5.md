@@ -33,6 +33,7 @@ Upgrading Node.js first ensures compatibility with other dependencies. If depend
   ```bash
   set NODE_OPTIONS=--openssl-legacy-provider
   ```
+For Linux or Mac users can use `export` keyword instead of `set` before start start the app.
 However, avoided this workaround by updating dependencies.
 
 ### 3. Dependency Updates
@@ -41,7 +42,7 @@ Ran the following command to address dependency issues:
 npm audit fix --dev
 ```
 
-Once the command executed, multiple dependencies updated along with `react-scripts` which was `v4.0.3`, now it is `^5.0.1`. Changed multiple codes that related to my listed dependencies in `package.json` for you it will different.
+Once the command executed, multiple dependencies updated along with `react-scripts` which was `v4.0.3`, now it is `^5.0.1`. Changed multiple codes related to my listed dependencies in `package.json`, this will be different in case of your application.
 
 ---
 
@@ -61,7 +62,7 @@ Once the command executed, multiple dependencies updated along with `react-scrip
    - Removed unnecessary `return` statements. earlier these was not throwing any error.
      
 3. **TinyMCE Plugin Errors**:
-   - Errors for plugins: `"hr"`, `"spellchecker"`, `"template"`, `"print"`, `"paste"`.
+   - Errors for plugins: `"hr"`, `"spellchecker"`, `"template"`, `"print"`, `"paste"`, as the package has upgraded after npm audit fix command.
    - **Fix**: Removed explicit imports from the file the editor has initialised, in my case it was in file `WYSIWYGEditor/index.tsx`.
    - Reference: [TinyMCE Docs][TinyMCE]
 
@@ -81,7 +82,7 @@ Once the command executed, multiple dependencies updated along with `react-scrip
      ```
 
 5. **Buffer Issue** / **Polyfill Issue**:
-   - Imported `Buffer` explicitly after installation due to `react-scripts` v5 changes. listed other important dependencies for polyfills for future refreneces.
+   - Imported `Buffer` explicitly after installation due to `react-scripts` v5 doesn't support some core modules. listed other important dependencies for polyfills for you it may help.
     ```json
       "buffer": "npm:buffer@^6.0.3",
       "crypto": "npm:crypto-browserify@^3.12.0",
@@ -99,20 +100,21 @@ Once the command executed, multiple dependencies updated along with `react-scrip
      ```
 
 7. **Replaced `mime-types` with `mime`**:
-    - The `mime-types` is not getting updates, ref: [Mime types docs][mime_types], it also saves to add @types/mime-types explicitly.
+    - The `mime-types` is not getting updates, ref: [Mime types docs][mime_types], as it throwing error due to one of core module not existing and it also saves to add @types/mime-types explicitly.
     - Reference: [Mime-Types Issue][mime_types_issue].
 
 8. **Optional Chaining in Environment Variables**:
-    - Fixed `process?.env?.REACT_APP_MA_BASE_DEAL` to `process.env.REACT_APP_MA_BASE_DEAL`, in file `src\components\ModalSessionDetails\index.tsx` line number: 60.
+    - Fixed `process?.env?.REACT_APP_MA_BASE_DEAL` to `process.env.REACT_APP_MA_BASE_DEAL`, we should avoid optional channing while using environment variable.
     - Reference: [Create React App Issue][optional_chain].
 
 9. **Enforced Specific Package Version**:
-    - Added `overrides` in `package.json` for `react-error-overlay`:
+    - To resolve white screen issue, Added `overrides` in `package.json` for `react-error-overlay`, some dependent packages using different version so here we need to enforce while writing in package.json:
       ```json
       "overrides": {
         "react-error-overlay": "6.0.9"
       }
       ```
+    if you're using `yarn`, need to pass same object with `"resolutions"` instead of `"overrides"`.
 
 10. **React-Refresh Issue**:
     - Added `FAST_REFRESH=false` in `.env` to resolve intermittent blank-page issue.
