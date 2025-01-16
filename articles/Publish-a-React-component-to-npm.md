@@ -7,9 +7,6 @@ author: "Bharat Sahu"
 description: "Learn how to publish your own React component to npm in a few simple steps. This guide covers everything from setting up your project to publishing your component for others to use."
 ---
 
-
-# Publish a React Component to npm
-
 ## Steps to Publish Your React Component
 
 ### 1. Create a React Application

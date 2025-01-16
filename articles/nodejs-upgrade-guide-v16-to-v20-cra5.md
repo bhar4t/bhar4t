@@ -7,9 +7,6 @@ author: "Bharat Sahu"
 description: "A comprehensive guide to upgrading your Node.js version from 16 to 20, addressing common issues and fixes with CRA 5 and dependencies."
 ---
 
-
-# Upgrade: Node.js and Dependencies
-
 This document outlines the steps taken to upgrade the project from Node.js **v16.16.0** to **v20.9.0** and address related issues for a smooth migration.
 
 # Stack
