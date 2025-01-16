@@ -1,8 +1,8 @@
 ---
-title: "Step-by-Step Guide to Upgrading Node.js: From Version 16 to 20 (Including CRA 5 Fixes)"
+title: "Step-by-Step Guide to Upgrading Node.js: From Version 16 to 20 (Including ReactJS CRA 5 Fixes)"
 date: "2025-01-14"
 cover: "node-upgrade-20.webp"
-keywords: "Node.js upgrade, CRA 5 upgrade, create-react-app fixes, Node.js v20, dependency management, upgrading Node.js, react-scripts 5 issues, javascript, react, ERR_OSSL_EVP_UNSUPPORTED, "
+keywords: "Node.js upgrade, CRA 5 upgrade, create-react-app, Node.js v20, dependency management, upgrading Node.js, react-scripts 5 issues, javascript, react, ERR_OSSL_EVP_UNSUPPORTED"
 author: "Bharat Sahu"
 description: "A comprehensive guide to upgrading your Node.js version from 16 to 20, addressing common issues and fixes with CRA 5 and dependencies."
 ---
