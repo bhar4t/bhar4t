@@ -98,6 +98,43 @@ Once the command executed, multiple dependencies updated along with `react-scrip
      ```json
      '@typescript-eslint/no-non-null-asserted-optional-chain': 'off'
      ```
+    - Updated the multiple pacakages related to eslint/prettier as react-scripts 5 includes eslint under the hood and to utilize in-built eslint and also to get rid of below issue:
+      ```bash
+        ERROR in [eslint] Failed to load config "prettier" to extend from.
+        Referenced from: C:\Users\path\to\.eslintrc.js
+      ```
+      <img name="@babel/plugin-proposal-private-property-in-object" alt="babel-preset-react-app" src="https://firebasestorage.googleapis.com/v0/b/bhar4t-app.appspot.com/o/prettier.png?alt=media&token=1bd1df03-fd91-4273-8e3e-77c7dbea39af"></img>
+
+      Removed:
+        | Package                            | Old Version  | New Version / Action             |
+        |------------------------------------|--------------|-----------------------------------|
+        | eslint-config-standard             | ^16.0.3      | Removed                          |
+        | eslint-plugin-import               | ^2.23.4      | Removed                          |
+        | eslint-plugin-promise              | ^5.1.0       | Removed                          |
+        | eslint-plugin-react                | ^7.24.0      | Removed                          |
+
+      Updated:
+        | Package                            | Old Version  | New Version / Action             |
+        |------------------------------------|--------------|-----------------------------------|
+        | prettier                           | 2.1.1        | ^3.0.3                           |
+        | eslint-plugin-prettier             | 3.3.0        | ^5.2.2 (Enforce)                 |
+        | eslint-config-prettier             | ^8.3.0       | ^10.0.1 (-D)                     |
+        | pretty-quick                       | ^3.1.1       | ^4.0.0 (-D)                      |
+        | @typescript-eslint/eslint-plugin   | 4.28.3       | ^5.6.0 (-D)                      |
+        | @typescript-eslint/parser          | 4.28.3       | ^5.6.0 (-D)                      |
+
+        ```js
+          // package.json (Included)
+          "resolutions": {
+            "eslint": "^8.3.0",
+            "eslint-plugin-prettier": "^5.2.2",
+            "prettier": "^3.0.3"
+          }
+
+          // .eslintrc.js
+          extends: [ 'eslint:recommended' ],  // Added along with other existing value
+          plugins: ['react-hooks'],           // Added along with other existing value
+        ```
 
 7. **Replaced `mime-types` with `mime`**:
     - The `mime-types` is not getting updates, ref: [Mime types docs][mime_types], as it throwing error due to one of core module not existing and it also saves to add @types/mime-types explicitly.
