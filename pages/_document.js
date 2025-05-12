@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import MouseContextProvider from "../context/mouse-context"
 
-const APP_NAME = 'BHARAT SAHU | BHAR4T'
+const APP_NAME = 'Webkoof.in'
 const APP_DESCRIPTION = 'Code with BHARAT SAHU | BHAR4T'
 
 export default class extends Document {

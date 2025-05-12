@@ -7,7 +7,7 @@ module.exports = withPWA({
   },
   webpack5: true,
   env: {
-    PRE_TITLE: 'Code with',
-    TITLE: 'Bharat Sahu',
+    PRE_TITLE: 'welcome to',
+    TITLE: 'Webkoof.in',
   }
 })
