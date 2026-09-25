@@ -59,7 +59,7 @@ export default function Dashboard(props) {
 }
 ```
 
-###  After Applying the Rule (Cursor AI Output)
+### After Applying the Rule (Cursor AI Output)
 With your new recipe rule file active in the folder background, the AI naturally adheres to clean architectural principles:
 
 ```jsx
@@ -83,6 +83,7 @@ export const Dashboard = ({ user }) => {
 ```
 
 ---
+
 ## How This Works Under the Hood
 
 The secret lies in the `.mdc` header block:
