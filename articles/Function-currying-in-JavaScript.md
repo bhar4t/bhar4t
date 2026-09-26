@@ -2,7 +2,7 @@
 title: "Function currying in JavaScript"
 date: "2021-03-29"
 cover: "currying.png"
-keywords: "javascript, currying, bind, closure"
+keywords: "javascript, currying, bind, closure, curry function javascript, partial application, higher order functions, functional programming javascript, javascript closures explained, currying interview question"
 author: "Bharat Sahu"
 description: "In Mathematics and Computer Science, currying is the technique of converting a function that takes multiple arguements into a sequence of functions that each take a single argument."
 ---

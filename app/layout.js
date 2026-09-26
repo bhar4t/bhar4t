@@ -3,6 +3,8 @@ import MouseContextProvider from "../context/mouse-context";
 import { ThemeProvider, THEME_BOOT_SCRIPT } from "../context/theme-context";
 import DotRing from "../components/DotRing/DotRing";
 import RegisterServiceWorker from "../components/RegisterServiceWorker";
+import { SITE_URL, AUTHOR_NAME } from "../lib/seo";
+import { websiteSchema } from "../lib/structuredData";
 
 const APP_NAME = "Webkoof.in";
 const APP_DESCRIPTION = "Code with BHARAT SAHU | BHAR4T";
@@ -12,10 +14,25 @@ const FAVICON_SIZES = ["16x16", "32x32", "96x96"];
 
 // Replaces the static <head> tags previously rendered by pages/_document.js
 export const metadata = {
+  metadataBase: new URL(SITE_URL),
   applicationName: APP_NAME,
   title: APP_NAME,
   description: APP_DESCRIPTION,
   manifest: "/manifest.json",
+  authors: [{ name: AUTHOR_NAME, url: SITE_URL }],
+  creator: AUTHOR_NAME,
+  publisher: APP_NAME,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -60,6 +77,10 @@ export default function RootLayout({ children }) {
         <link rel="preload" href="/fonts/Inter/static/Inter-Regular.ttf" as="font" crossOrigin="" />
         {/* Applies the persisted theme before paint to avoid a flash */}
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema()) }}
+        />
       </head>
       <body>
         <ThemeProvider>

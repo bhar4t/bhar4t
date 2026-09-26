@@ -2,7 +2,7 @@
 title: "Generate incremental Firebase Firestore order/number vs ordered document ID"
 date: "2020-01-26"
 cover: "firebase_increment.jpeg"
-keywords: "Firebase, Javascript, Firestore"
+keywords: "Firebase, Javascript, Firestore, Firestore transactions, auto-generated document id, Firestore serial number, Firestore document ordering, NoSQL database design, Firestore best practices, FieldValue.increment"
 author: "Bharat Sahu"
 description: "I don’t recommend custom document ID over Firestore auto-generated ids cause the scalability comes from how Firestore spreads the document out over its storage layer. In a simplified way: sequential IDs have more hashing collisions.."
 ---

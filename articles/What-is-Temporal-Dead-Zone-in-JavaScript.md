@@ -2,7 +2,7 @@
 title: "What is Temporal Dead Zone in JavaScript?"
 date: "2021-05-01"
 cover: "tdz.png"
-keywords: "javascript, js, temporal, dead, zone, let, const, var, tdz"
+keywords: "javascript, js, temporal, dead, zone, let, const, var, tdz, TDZ javascript explained, let const hoisting, ReferenceError javascript, javascript scoping rules, ES6 let const, javascript interview questions"
 author: "Bharat Sahu"
 description: "The Temporal Dead Zone (TDZ) is a specific time between whenever we declare any variable using `let` keyword and initializing declared variable a value, the time span between these two events known to be as temporal dead zone."
 ---
@@ -31,4 +31,4 @@ It doesn't mean variable created with `const` and `let` are not hoisted but in t
 
 <!-- Links -->
 
-[hoisting_in_javascript]: https://bhar4t.com/articles/hoisting-in-JavaScript
+[hoisting_in_javascript]: https://webkoof.in/articles/hoisting-in-JavaScript

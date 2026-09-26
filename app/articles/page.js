@@ -2,15 +2,25 @@ import Layout from "../../components/layout";
 import utilStyles from "../../styles/utils.module.css";
 import { getSortedPostsData } from "../../lib/articles";
 import generateRssFeed from "../../lib/rss";
-import { buildPageMetadata } from "../../lib/seo";
+import { buildPageMetadata, SITE_URL } from "../../lib/seo";
+import { breadcrumbSchema } from "../../lib/structuredData";
 import Link from "next/link";
 import Date from "../../components/date";
 
-export const metadata = buildPageMetadata();
+export const metadata = buildPageMetadata({
+  title: "Articles",
+  description: "JavaScript, React, Next.js, Node.js and Firebase tutorials and deep-dives, written by Bharat Sahu.",
+  canonical: "articles",
+});
 
 export default async function Articles() {
   const allPostsData = getSortedPostsData();
   await generateRssFeed();
+
+  const breadcrumb = breadcrumbSchema([
+    { name: "Home", url: SITE_URL },
+    { name: "Articles", url: `${SITE_URL}/articles` },
+  ]);
 
   const {
     preTitle, articleList, card, imgContainer, img, textContainer, articleTitle, articleDesc, articleKeys, articleKey, articleAuthor
@@ -18,7 +28,9 @@ export default async function Articles() {
 
   return (
     <Layout home>
-      <span className={preTitle}>Articles</span>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <span className={preTitle}>Blog</span>
+      <h1 className={utilStyles.h1}>Articles</h1>
       <section className={articleList}>
         {allPostsData.map(({ id, date, title, cover, author, description, keywords }, i) => (
           <div key={id} className={card}>

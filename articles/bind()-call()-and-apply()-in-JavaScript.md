@@ -2,7 +2,7 @@
 title: "bind(), call() and apply() in JavaScript"
 date: "2021-03-27"
 cover: "apply-bind-call.png"
-keywords: "Javascript, JS, bind, call, apply"
+keywords: "Javascript, JS, bind, call, apply, this keyword in javascript, function borrowing, javascript this context, method invocation, javascript interview questions, ES6 javascript"
 author: "Bharat Sahu"
 description: "The `this` keyword in JavaScript is not like other programming language's `this`, it behaves differently in different scenario."
 ---

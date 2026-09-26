@@ -2,7 +2,7 @@
 title: "Polyfill for bind(), step-by-step"
 date: "2021-03-28"
 cover: "implement-bind-polyfill.png"
-keywords: "Javascript, JS, Polyfill"
+keywords: "Javascript, JS, Polyfill, custom bind implementation, Function.prototype.bind, rest parameters, spread operator javascript, javascript polyfill tutorial, javascript coding interview question"
 author: "Bharat Sahu"
 description: "Polyfill is nothing but support to older browsers which doesn't have new methods. In this tutorial, you'll learn how to write the Polyfill for the `bind()` method in step by step."
 ---

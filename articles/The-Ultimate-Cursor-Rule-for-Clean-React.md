@@ -2,7 +2,7 @@
 title: "The Ultimate Cursor Rule for Clean React.js Components"
 date: "2026-09-25"
 cover: "cursor_react.png"
-keywords: "React, Cursor, AI Automation, JavaScript"
+keywords: "React, Cursor, AI Automation, JavaScript, Cursor AI rules, .cursorrules, .mdc file, AI code generation, Cursor IDE, vibe coding, clean code react, AI pair programming, Cursor rules for React 2026, prompt engineering for developers"
 author: "Bharat Sahu"
 description: "Stop AI from writing messy, outdated React code. Use this native configuration file to force Cursor to generate optimized, production-ready components—no npm packages required."
 ---

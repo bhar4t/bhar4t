@@ -2,7 +2,7 @@
 title: "Hoisting in JavaScript"
 date: "2021-04-05"
 cover: "hoisting.png"
-keywords: "javascript, js, hoisting, let, const, var"
+keywords: "javascript, js, hoisting, let, const, var, memory creation phase, javascript execution context, var let const difference, javascript interview questions, temporal dead zone, block scope javascript"
 author: "Bharat Sahu"
 description: "When you use variables and functions before declaration without getting any error known to be as `Hoisting`."
 ---

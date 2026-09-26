@@ -1,11 +1,18 @@
 import Link from 'next/link';
 import utilStyles from "../../styles/utils.module.css";
+import { buildPageMetadata } from "../../lib/seo";
+
+export const metadata = buildPageMetadata({
+  title: "Privacy Policy",
+  description: "Privacy Policy for Webkoof.in — how we collect, use, and protect visitor information.",
+  canonical: "privacy-policy",
+});
 
 export default function PrivacyPolicy() {
     return (
         <div className={utilStyles.privacyPolicy}>
-            <h1>Privacy Policy for BHAR4T.COM</h1>
-            <p>At Bharat Sahu | BHAR4T, accessible from https://bhar4t.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Bharat Sahu | BHAR4T and how we use it.</p>
+            <h1>Privacy Policy for Webkoof.in</h1>
+            <p>At Webkoof.in, accessible from https://webkoof.in, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Webkoof.in and how we use it.</p>
             <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
             <p>This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in Bharat Sahu | BHAR4T. This policy is not applicable to any information collected offline or via channels other than this website.</p>
             <h2>Consent</h2>

@@ -2,7 +2,7 @@
 title: "What is prototype in JavaScript?"
 date: "2021-04-22"
 cover: "prototype-javascript.png"
-keywords: "javascript, prototype, inheritance, chain, __proto__"
+keywords: "javascript, prototype, inheritance, chain, __proto__, prototype chain javascript, prototypal inheritance, Object.prototype, javascript OOP, __proto__ vs prototype, javascript interview questions"
 author: "Bharat Sahu"
 description: "We often heard JavaScript is prototype-based language but what is prototype in JavaScript? Why it is known to be as prototype-based language?"
 ---
@@ -67,5 +67,5 @@ We've already seen the example, how to use the `prototype` property, how can we 
 
 <!-- Links -->
 
-[call_apply_bind]: https://bhar4t.com/articles/bind()-call()-and-apply()-in-JavaScript
-[polyfill_for_bind]: https://bhar4t.com/articles/Polyfill-for-bind()-step-by-step
+[call_apply_bind]: https://webkoof.in/articles/bind()-call()-and-apply()-in-JavaScript
+[polyfill_for_bind]: https://webkoof.in/articles/Polyfill-for-bind()-step-by-step

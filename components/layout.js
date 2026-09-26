@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import ProgressBar from "../components/ProgressBar";
 import { DayNight } from "./Icons";
 import { useDarkMode } from "../context/theme-context";
@@ -17,9 +18,15 @@ export default function Layout({ children, home, download }) {
 
   const Header = () =>
     useHeader(
-      <div onClick={darkModeActive ? switchToLightMode : switchToDarkMode}>
+      <button
+        type="button"
+        className={styles.themeToggle}
+        onClick={darkModeActive ? switchToLightMode : switchToDarkMode}
+        aria-label={darkModeActive ? "Switch to light mode" : "Switch to dark mode"}
+        aria-pressed={darkModeActive}
+      >
         <DayNight nightMode={darkModeActive} />
-      </div>
+      </button>
     );
 
   return (
@@ -34,9 +41,9 @@ export default function Layout({ children, home, download }) {
             <div className={styles.col} />
           </div>
           {!home && (
-            <a href="/" className={styles.simpleButton}>
+            <Link href="/" className={styles.simpleButton}>
               Back to Home
-            </a>
+            </Link>
           )}
           {download && (
             <a href="/resume.pdf" className={styles.simpleButton}>
@@ -51,9 +58,9 @@ export default function Layout({ children, home, download }) {
 
 function useHeader(NightMode) {
   const Button = ({ path, label }) => (
-    <a href={path} className={styles.simpleButton}>
+    <Link href={path} className={styles.simpleButton}>
       {label}
-    </a>
+    </Link>
   );
   return (
     <div className={styles.header}>

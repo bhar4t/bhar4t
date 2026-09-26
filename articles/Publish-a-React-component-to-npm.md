@@ -2,7 +2,7 @@
 title: "How to publish a React component to npm?"
 date: "2021-08-06"
 cover: "npm.webp"
-keywords: "javascript, React, component, publish, how, own"
+keywords: "javascript, React, component, publish, how, own, npm publish tutorial, react component library, babel cli, peerDependencies react, create react app component, open source react package, npm package publishing guide 2026"
 author: "Bharat Sahu"
 description: "Learn how to publish your own React component to npm in a few simple steps. This guide covers everything from setting up your project to publishing your component for others to use."
 ---

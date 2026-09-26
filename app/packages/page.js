@@ -1,14 +1,19 @@
 import Layout from "../../components/layout";
 import { buildPageMetadata } from "../../lib/seo";
-import { articleKeys, articleKey, card, textContainer, articleTitle, articleDesc } from "../../styles/utils.module.css";
+import { articleKeys, articleKey, card, textContainer, articleTitle, articleDesc, h1 } from "../../styles/utils.module.css";
 
-export const metadata = buildPageMetadata({ canonical: "packages" });
+export const metadata = buildPageMetadata({
+  title: "Open Source NPM Packages",
+  description: "Open source NPM packages built and published by Bharat Sahu for JavaScript and React developers.",
+  canonical: "packages",
+});
 
 export default async function Packages() {
   const data = await getPackagesData();
 
   return (
     <Layout home>
+      <h1 className={h1}>Open Source NPM Packages</h1>
       {
         data.map((pkg) => (
           <div key={pkg.name} className={card}>
