@@ -1,13 +1,16 @@
-import Layout from "../components/layout";
-import { articleKeys, articleKey, card, textContainer, articleTitle, articleDesc } from "../styles/utils.module.css";
+import Layout from "../../components/layout";
+import { buildPageMetadata } from "../../lib/seo";
+import { articleKeys, articleKey, card, textContainer, articleTitle, articleDesc } from "../../styles/utils.module.css";
 
-export default function Packages({ data }) {
-  console.log(data)
+export const metadata = buildPageMetadata({ canonical: "packages" });
+
+export default async function Packages() {
+  const data = await getPackagesData();
+
   return (
-    <Layout home canonical="packages" removeSocialLinks>
+    <Layout home>
       {
-        data
-          .map((pkg, i) => (
+        data.map((pkg) => (
           <div key={pkg.name} className={card}>
             <div className={textContainer}>
               <a href={pkg.npm} className={articleTitle}>{pkg.name}</a>
@@ -17,31 +20,29 @@ export default function Packages({ data }) {
               </div>
               <div className={articleDesc}>{pkg.description}</div>
               <div className={articleKeys}>
-                  {pkg.keywords.map(e => <span key={e} className={articleKey}>{e}</span>)}
+                {pkg.keywords.map(e => <span key={e} className={articleKey}>{e}</span>)}
               </div>
             </div>
           </div>
-          ))
+        ))
       }
     </Layout>
   );
 }
 
-// This gets called on every request
-export async function getServerSideProps() {
-  // Fetch data from external API
+// Fetched per-request (not statically cached), mirroring the previous getServerSideProps behavior
+async function getPackagesData() {
   const res = await fetch(process.env.NPM_URL, {
-    method: 'POST', // or 'PUT'
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     },
     body: JSON.stringify(process.env.PACKAGES.split(" ")),
-  })
-  const data = await res.json()
-  const formattedData = getFormattedData(data)
-  // Pass data to the page via props
-  return { props: { data: formattedData } }
+    cache: 'no-store',
+  });
+  const data = await res.json();
+  return getFormattedData(data);
 }
 
 function getFormattedData(data) {

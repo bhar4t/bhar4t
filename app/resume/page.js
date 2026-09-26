@@ -1,4 +1,4 @@
-import Layout from "../components/layout";
+import Layout from "../../components/layout";
 
 const styles = {
     height: '84vh'
@@ -6,7 +6,7 @@ const styles = {
 
 export default function Resume() {
     return (
-        <Layout removeSocialLinks removeFooter download>
+        <Layout download>
             <div style={styles}>
                 <iframe
                     height="100%"

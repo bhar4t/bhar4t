@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useContext } from "react";
 import styles from "./DotRing.module.css";
 import useMousePosition from "../../hooks/useMousePosition";

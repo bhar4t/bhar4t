@@ -2,10 +2,16 @@ import Layout from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
 import { getSortedPostsData } from "../lib/articles";
 import generateRssFeed from "../lib/rss";
+import { buildPageMetadata } from "../lib/seo";
 import Link from "next/link";
 import Date from "../components/date";
 
-export default function Home({ allPostsData }) {
+export const metadata = buildPageMetadata();
+
+export default async function Home() {
+  const allPostsData = getSortedPostsData();
+  await generateRssFeed();
+
   return (
     <Layout home>
       <span className={utilStyles.preTitle}>{process.env.PRE_TITLE}</span>
@@ -14,9 +20,7 @@ export default function Home({ allPostsData }) {
         {allPostsData.map(({ id, date, title }, i) => (
           <div key={id}>
             <h3 className={utilStyles.listItem}>
-              <Link href="/articles/[id]" as={`/articles/${id}`}>
-                <a>{title}</a>
-              </Link>
+              <Link href={`/articles/${id}`}>{title}</Link>
             </h3>
             <small className={utilStyles.lightText}>
               <Date dateString={date} />
@@ -27,14 +31,4 @@ export default function Home({ allPostsData }) {
       </section>
     </Layout>
   );
-}
-
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-  await generateRssFeed();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
 }
