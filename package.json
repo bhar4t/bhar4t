@@ -1,7 +1,8 @@
 {
   "name": "bhar4t",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
