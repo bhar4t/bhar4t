@@ -1,7 +1,7 @@
 ---
 title: "The Ultimate Cursor Rule for Clean React.js Components"
 date: "2026-09-25"
-cover: "cordova_firebase.png"
+cover: "cursor_react.png"
 keywords: "React, Cursor, AI Automation, JavaScript"
 author: "Bharat Sahu"
 description: "Stop AI from writing messy, outdated React code. Use this native configuration file to force Cursor to generate optimized, production-ready components—no npm packages required."

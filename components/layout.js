@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import mobile from "is-mobile";
 import ProgressBar from "../components/ProgressBar";
 import { DayNight } from "./Icons";
 import { useDarkMode } from "../context/theme-context";
@@ -29,18 +27,12 @@ export default function Layout({ children, home, download }) {
       <ProgressBar />
       <header className={styles.header}>{<Header />}</header>
       <main>
-        <Container>
-          {mobile() ? (
-            <Row>
-              <Col xs={12}>{children}</Col>
-            </Row>
-          ) : (
-            <Row>
-              <Col />
-              <Col xs={8}>{children}</Col>
-              <Col />
-            </Row>
-          )}
+        <div className={styles.container}>
+          <div className={styles.row}>
+            <div className={styles.col} />
+            <div className={styles.col8}>{children}</div>
+            <div className={styles.col} />
+          </div>
           {!home && (
             <a href="/" className={styles.simpleButton}>
               Back to Home
@@ -51,7 +43,7 @@ export default function Layout({ children, home, download }) {
               Download as PDF
             </a>
           )}
-        </Container>
+        </div>
       </main>
     </>
   );

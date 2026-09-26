@@ -1,5 +1,4 @@
 import "../styles/global.css";
-import "bootstrap/dist/css/bootstrap-grid.min.css";
 import MouseContextProvider from "../context/mouse-context";
 import { ThemeProvider, THEME_BOOT_SCRIPT } from "../context/theme-context";
 import DotRing from "../components/DotRing/DotRing";
@@ -14,7 +13,7 @@ const FAVICON_SIZES = ["16x16", "32x32", "96x96"];
 // Replaces the static <head> tags previously rendered by pages/_document.js
 export const metadata = {
   applicationName: APP_NAME,
-  title: "Bharat Sahu | BHAR4T",
+  title: APP_NAME,
   description: APP_DESCRIPTION,
   manifest: "/manifest.json",
   appleWebApp: {
