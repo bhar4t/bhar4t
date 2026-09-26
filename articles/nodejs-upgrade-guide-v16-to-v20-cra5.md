@@ -50,7 +50,7 @@ Once the command executed, multiple dependencies updated along with `react-scrip
    
    babel-preset-react-app is part of the create-react-app project, which is not maintianed anymore. It is thus unlikely that this bug will ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to your devDependencies to work around this error. This will make this message go away.
    ```
-   <img name="@babel/plugin-proposal-private-property-in-object" alt="babel-preset-react-app" src="https://firebasestorage.googleapis.com/v0/b/bhar4t-app.appspot.com/o/babel-warning.png?alt=media&token=7876ae3c-e356-4bb3-93a1-6b917b08f282"></img>
+   <img name="@babel/plugin-proposal-private-property-in-object" alt="babel-preset-react-app" src="/img/babel-warning.png"></img>
    - **Fix**: Added `@babel/plugin-proposal-private-property-in-object` to devDependencies.
    - **Result**: Warning resolved.
 
@@ -100,7 +100,7 @@ Once the command executed, multiple dependencies updated along with `react-scrip
         ERROR in [eslint] Failed to load config "prettier" to extend from.
         Referenced from: C:\Users\path\to\.eslintrc.js
       ```
-      <img name="@babel/plugin-proposal-private-property-in-object" alt="babel-preset-react-app" src="https://firebasestorage.googleapis.com/v0/b/bhar4t-app.appspot.com/o/prettier.png?alt=media&token=1bd1df03-fd91-4273-8e3e-77c7dbea39af"></img>
+      <img name="@babel/plugin-proposal-private-property-in-object" alt="babel-preset-react-app" src="/img/prettier.png"></img>
 
       Removed:
         - `eslint-config-standard`: `^16.0.3`
@@ -156,7 +156,7 @@ Once the command executed, multiple dependencies updated along with `react-scrip
           at computeFullKey (react-refresh-devel...js)
           at ...
       ```
-      <img name="pinch" src="https://firebasestorage.googleapis.com/v0/b/bhar4t-app.appspot.com/o/react-refresh.png?alt=media&token=a98b84a4-86d6-426a-9eae-908038a81b2a" width="100%"></img>
+      <img name="pinch" src="/img/react-refresh.png" width="100%"></img>
 
 11. **Engine Specification**:
     - Added the following in `package.json`:
@@ -195,7 +195,7 @@ Once the command executed, multiple dependencies updated along with `react-scrip
       - [StackOverflow Reference 2][stackoverflow2]
       - [StackOverflow Reference 3][stackoverflow3].
 
-      <img name="pinch" width="100%" src="https://firebasestorage.googleapis.com/v0/b/bhar4t-app.appspot.com/o/middleware.png?alt=media&token=f5019dcc-5c60-4e9b-a54c-9841d0de1592"></img>
+      <img name="pinch" width="100%" src="/img/middleware.png"></img>
       
 
 <!-- Links -->

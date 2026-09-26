@@ -17,7 +17,7 @@ Here I’ve found solution by combining both the dependencies i.e. firebase-js-s
 
 Step I: Initially we have to create an Android project in Firebase console. where I have to register my new Android application **name** and **package name** in Firebase console. cause you won’t have an option for the Cordova application.
 
-<img name="pinch" src="https://firebasestorage.googleapis.com/v0/b/bhar4t-app.appspot.com/o/registerapp.png?alt=media" width="100%"/>
+<img name="pinch" src="/img/registerapp.png" width="100%"/>
 
 You’ll see the third option while registering the app as **Debug signing certificate SHA-1**. It seems optional but because we’re creating authentication based application I’ll recommend you generate those certificates. [You can generate debug certificates by following it](https://developers.google.com/android/guides/client-auth) or by the following command default password is `android`
 
@@ -43,7 +43,7 @@ Just copy the **SHA1** fingerprint and paste in the third input field **Debug si
 
 Step II: The below screen will appear after click on the **Register App** button.
 
-<img name="pinch" src="https://firebasestorage.googleapis.com/v0/b/bhar4t-app.appspot.com/o/downloadserivcejson.png?alt=media" width="100%"/>
+<img name="pinch" src="/img/downloadserivcejson.webp" width="100%"/>
 
 Click on the **Download google-service.json,** you’ll have a JSON file, place it on the root of your project. and, remember you need to specify in `config.xml` for `google-service.json` so, Cordova will place the copied file inside _platforms/android/app_ directory while generating the app.
 
@@ -66,7 +66,7 @@ Step III: Now, you have to enable the Phone Authentication for your newly regist
 4.  Just **Enable** it from the right upper toggle button
 5.  By clicking on **Save**, we’ve finished the configuration here.
 
-<img name="pinch" src="https://firebasestorage.googleapis.com/v0/b/bhar4t-app.appspot.com/o/develop_authentication_signinmethods_phone_enabled.png?alt=media" width="100%"/>
+<img name="pinch" src="/img/develop_authentication_signinmethods_phone_enabled.webp" width="100%"/>
 
 ---
 

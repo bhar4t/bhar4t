@@ -10,11 +10,16 @@ export const metadata = buildPageMetadata({
 });
 
 export default async function Packages() {
-  const data = await getPackagesData();
+  const { data, error } = await getPackagesData();
 
   return (
     <Layout home>
       <h1 className={h1}>Open Source NPM Packages</h1>
+      {error && (
+        <p className={articleDesc}>
+          Couldn&apos;t load packages right now. Please try again in a moment.
+        </p>
+      )}
       {
         data.map((pkg) => (
           <div key={pkg.name} className={card}>
@@ -38,17 +43,32 @@ export default async function Packages() {
 
 // Fetched per-request (not statically cached), mirroring the previous getServerSideProps behavior
 async function getPackagesData() {
-  const res = await fetch(process.env.NPM_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-    body: JSON.stringify(process.env.PACKAGES.split(" ")),
-    cache: 'no-store',
-  });
-  const data = await res.json();
-  return getFormattedData(data);
+  try {
+    const res = await fetch(process.env.NPM_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(process.env.PACKAGES.split(" ")),
+      cache: 'no-store',
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!res.ok) {
+      throw new Error(`npms.io responded with ${res.status}`);
+    }
+    const data = await res.json();
+    return { data: getFormattedData(data), error: false };
+  } catch (err) {
+    // Next.js signals dynamic-rendering detection as a thrown error during the
+    // build's static-generation probe (e.g. digest "DYNAMIC_SERVER_USAGE") — that
+    // must propagate, not be swallowed as a real fetch failure.
+    if (err?.digest?.startsWith("NEXT_") || err?.digest === "DYNAMIC_SERVER_USAGE") {
+      throw err;
+    }
+    console.error("Failed to fetch package data:", err);
+    return { data: [], error: true };
+  }
 }
 
 function getFormattedData(data) {

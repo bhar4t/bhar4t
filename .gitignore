@@ -10,13 +10,9 @@ out/
 build/
 
 # generated at build time
-**/public/workbox-*.js
-**/public/sw.js
-**/public/worker-*.js
+**/public/sw*
+**/public/swe-worker*
 **/public/rss/
-
-# env files (all except example)
-# .env*.local
 
 # debug logs
 npm-debug.log*
