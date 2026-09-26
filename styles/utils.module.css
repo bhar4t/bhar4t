@@ -126,19 +126,22 @@
 }
 .articleKey {
   background-color: #d3bf00;
+  /* Bright gold background stays the same in both themes, so the label text must too
+     (var(--text-color) is unreadable against it in dark mode: ~1.5:1 contrast). */
+  color: #1a1a1a;
   border-radius: 5px;
   margin-left: 4px;
   padding: 3px 5px;
 }
 .articleAuthor {
   padding: 6px 3px;
-  color: #d3bf00;
+  color: var(--primary-readable);
   font-size: 14px;
 }
 
 /* BHAR4T */
 .git {
-  color: "gray";
+  color: var(--text-color);
   font-size: 11px;
-  user-select: "none";
+  user-select: none;
 }

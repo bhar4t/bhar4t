@@ -12,15 +12,15 @@
 
 ---
 
-[<img align="left" alt="webkoof.in" src="https://raw.githubusercontent.com/bhar4t/bhar4t/4133bf88d87644ec961294177c08c1136acde5a2/images/link-2.svg" crossorigin />][website]
+[<img align="left" alt="webkoof.in" src="https://raw.githubusercontent.com/bhar4t/bhar4t/4133bf88d87644ec961294177c08c1136acde5a2/images/link-2.svg" width="36" height="36" crossorigin />][website]
 
-[<img align="left" alt="twitter/bhar4t" src="https://raw.githubusercontent.com/bhar4t/bhar4t/4133bf88d87644ec961294177c08c1136acde5a2/images/twitter.svg" crossorigin />][twitter]
+[<img align="left" alt="twitter/bhar4t" src="https://raw.githubusercontent.com/bhar4t/bhar4t/4133bf88d87644ec961294177c08c1136acde5a2/images/twitter.svg" width="36" height="36" crossorigin />][twitter]
 
-[<img align="left" alt="linkedin/in/bhar4t" src="https://raw.githubusercontent.com/bhar4t/bhar4t/4133bf88d87644ec961294177c08c1136acde5a2/images/linkedin.svg" crossorigin />][linkedin]
+[<img align="left" alt="linkedin/in/bhar4t" src="https://raw.githubusercontent.com/bhar4t/bhar4t/4133bf88d87644ec961294177c08c1136acde5a2/images/linkedin.svg" width="36" height="36" crossorigin />][linkedin]
 
-[<img align="left" alt="instagram/bhar4t" src="https://raw.githubusercontent.com/bhar4t/bhar4t/4133bf88d87644ec961294177c08c1136acde5a2/images/instagram.svg" crossorigin />][instagram]
+[<img align="left" alt="instagram/bhar4t" src="https://raw.githubusercontent.com/bhar4t/bhar4t/4133bf88d87644ec961294177c08c1136acde5a2/images/instagram.svg" width="36" height="36" crossorigin />][instagram]
 
-[<img align="left" alt="github/bhar4t" src="https://raw.githubusercontent.com/bhar4t/bhar4t/4133bf88d87644ec961294177c08c1136acde5a2/images/github.svg" crossorigin />][github]
+[<img align="left" alt="github/bhar4t" src="https://raw.githubusercontent.com/bhar4t/bhar4t/4133bf88d87644ec961294177c08c1136acde5a2/images/github.svg" width="36" height="36" crossorigin />][github]
 
 <br/>
 

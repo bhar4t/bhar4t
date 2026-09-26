@@ -50,7 +50,7 @@ Once the command executed, multiple dependencies updated along with `react-scrip
    
    babel-preset-react-app is part of the create-react-app project, which is not maintianed anymore. It is thus unlikely that this bug will ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to your devDependencies to work around this error. This will make this message go away.
    ```
-   <img name="@babel/plugin-proposal-private-property-in-object" alt="babel-preset-react-app" src="/img/babel-warning.png"></img>
+   <img name="@babel/plugin-proposal-private-property-in-object" alt="babel-preset-react-app" src="/img/babel-warning.png" width="721" height="387"></img>
    - **Fix**: Added `@babel/plugin-proposal-private-property-in-object` to devDependencies.
    - **Result**: Warning resolved.
 
@@ -100,7 +100,7 @@ Once the command executed, multiple dependencies updated along with `react-scrip
         ERROR in [eslint] Failed to load config "prettier" to extend from.
         Referenced from: C:\Users\path\to\.eslintrc.js
       ```
-      <img name="@babel/plugin-proposal-private-property-in-object" alt="babel-preset-react-app" src="/img/prettier.png"></img>
+      <img name="@babel/plugin-proposal-private-property-in-object" alt="babel-preset-react-app" src="/img/prettier.png" width="559" height="54"></img>
 
       Removed:
         - `eslint-config-standard`: `^16.0.3`
@@ -156,7 +156,7 @@ Once the command executed, multiple dependencies updated along with `react-scrip
           at computeFullKey (react-refresh-devel...js)
           at ...
       ```
-      <img name="pinch" src="/img/react-refresh.png" width="100%"></img>
+      <img name="pinch" alt="Console error: Uncaught RangeError: Maximum call stack size exceeded, thrown from react-refresh-runtime.development.js" src="/img/react-refresh.png" width="656" height="185"></img>
 
 11. **Engine Specification**:
     - Added the following in `package.json`:
@@ -195,7 +195,7 @@ Once the command executed, multiple dependencies updated along with `react-scrip
       - [StackOverflow Reference 2][stackoverflow2]
       - [StackOverflow Reference 3][stackoverflow3].
 
-      <img name="pinch" width="100%" src="/img/middleware.png"></img>
+      <img name="pinch" alt="Webpack dev server deprecation warning for onAfterSetupMiddleware and onBeforeSetupMiddleware in the terminal" width="800" height="164" src="/img/middleware.png"></img>
       
 
 <!-- Links -->

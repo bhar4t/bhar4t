@@ -1,7 +1,9 @@
 import "../styles/global.css";
 import MouseContextProvider from "../context/mouse-context";
 import { ThemeProvider, THEME_BOOT_SCRIPT } from "../context/theme-context";
-import DotRing from "../components/DotRing/DotRing";
+// Purely a cursor-follow visual flourish, not part of page content: loaded client-side
+// only, so it doesn't count against LCP/TBT or "unused JavaScript" on initial load.
+import DotRing from "../components/DotRing/DotRingLoader";
 import RegisterServiceWorker from "../components/RegisterServiceWorker";
 import { SITE_URL, AUTHOR_NAME } from "../lib/seo";
 import { websiteSchema } from "../lib/structuredData";

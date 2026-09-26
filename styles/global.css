@@ -32,12 +32,16 @@
   --text-color: #30353a;
   --a-color: #000;
   --primary: #d3bf00;
+  /* Darkened brand gold: #d3bf00 on a light background is ~1.9:1 contrast (fails WCAG AA). */
+  --primary-readable: #786d00;
 }
 
 [data-theme="dark"] {
   --bg-color: #000;
   --text-color: #989898;
   --a-color: #fff;
+  /* #d3bf00 already has strong contrast against black, no need to darken it here. */
+  --primary-readable: #d3bf00;
 }
 
 html,
@@ -114,7 +118,7 @@ code {
     "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
     "Courier New";
   font-size: 18.5px;
-  color: var(--primary);
+  color: var(--primary-readable);
   white-space: pre;
 }
 
@@ -129,8 +133,19 @@ a:hover {
   background: var(--primary);
 }
 
+/* Inline prose links (article/README content) aren't otherwise visually distinguishable
+   as links (no button/pill styling), so they must not rely on color alone. */
+article a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 img {
   margin: 8px 0px 16px 0px;
+  /* Article images set intrinsic width/height attrs (for CLS); this scales them back down
+     responsively while the browser still reserves the correct aspect ratio before load. */
+  max-width: 100%;
+  height: auto;
 }
 
 ::selection {
