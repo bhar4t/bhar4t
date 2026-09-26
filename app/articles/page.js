@@ -4,6 +4,7 @@ import { getSortedPostsData } from "../../lib/articles";
 import generateRssFeed from "../../lib/rss";
 import { buildPageMetadata, SITE_URL } from "../../lib/seo";
 import { breadcrumbSchema } from "../../lib/structuredData";
+import Image from "next/image";
 import Link from "next/link";
 import Date from "../../components/date";
 
@@ -36,14 +37,14 @@ export default async function Articles() {
           <div key={id} className={card}>
             <div className={imgContainer}>
               <div className={img}>
-                <img
-                  loading={i === 0 ? "eager" : "lazy"}
-                  fetchPriority={i === 0 ? "high" : "auto"}
-                  height="100%"
-                  width="100%"
+                <Image
+                  fill
+                  sizes="(max-width: 768px) 40vw, 220px"
+                  style={{ objectFit: "contain" }}
+                  priority={i === 0}
                   src={`/img/${cover}`}
                   alt={title}
-                ></img>
+                />
               </div>
             </div>
             <div className={textContainer}>

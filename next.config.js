@@ -11,5 +11,21 @@ module.exports = withPWA({
   env: {
     PRE_TITLE: 'welcome to',
     TITLE: 'Webkoof.in',
-  }
+  },
+  // Baseline hardening. A full Content-Security-Policy is deliberately deferred:
+  // this app relies on inline scripts (theme boot, JSON-LD), next-pwa's SW registration,
+  // and a Google Docs iframe embed (/resume) that all need careful live testing first.
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+        ],
+      },
+    ];
+  },
 })

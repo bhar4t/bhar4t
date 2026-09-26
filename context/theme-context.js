@@ -14,7 +14,9 @@ export function ThemeProvider({ children }) {
   const [darkModeActive, setDarkModeActive] = useState(false);
 
   // Sync with the theme the inline boot script already applied to <html> before hydration.
+  // One-time read of an external (non-React) DOM mutation on mount, not a reactive subscription.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time DOM->state sync, see above
     setDarkModeActive(document.documentElement.getAttribute("data-theme") === "dark");
   }, []);
 

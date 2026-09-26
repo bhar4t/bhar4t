@@ -102,11 +102,11 @@
   padding: 4px;
 }
 .img {
+  position: relative;
   height: auto;
   width: 30vh;
   aspect-ratio: 1 / 1;
   padding: 2px;
-  object-fit: contain;
 }
 .textContainer {
   flex: 6;

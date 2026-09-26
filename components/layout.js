@@ -13,26 +13,46 @@ const buttons = [
   { label: "Packages", path: "/packages" },
 ];
 
+function NavButton({ path, label }) {
+  return (
+    <Link href={path} className={styles.simpleButton}>
+      {label}
+    </Link>
+  );
+}
+
+function Header({ children }) {
+  return (
+    <div className={styles.header}>
+      <div className={styles.headerButtons}>
+        {buttons.map((e, i) => (
+          <NavButton key={i} label={e.label} path={e.path} />
+        ))}
+      </div>
+      {children}
+    </div>
+  );
+}
+
 export default function Layout({ children, home, download }) {
   const { darkModeActive, switchToDarkMode, switchToLightMode } = useDarkMode();
-
-  const Header = () =>
-    useHeader(
-      <button
-        type="button"
-        className={styles.themeToggle}
-        onClick={darkModeActive ? switchToLightMode : switchToDarkMode}
-        aria-label={darkModeActive ? "Switch to light mode" : "Switch to dark mode"}
-        aria-pressed={darkModeActive}
-      >
-        <DayNight nightMode={darkModeActive} />
-      </button>
-    );
 
   return (
     <>
       <ProgressBar />
-      <header className={styles.header}>{<Header />}</header>
+      <header className={styles.header}>
+        <Header>
+          <button
+            type="button"
+            className={styles.themeToggle}
+            onClick={darkModeActive ? switchToLightMode : switchToDarkMode}
+            aria-label={darkModeActive ? "Switch to light mode" : "Switch to dark mode"}
+            aria-pressed={darkModeActive}
+          >
+            <DayNight nightMode={darkModeActive} />
+          </button>
+        </Header>
+      </header>
       <main>
         <div className={styles.container}>
           <div className={styles.row}>
@@ -53,23 +73,5 @@ export default function Layout({ children, home, download }) {
         </div>
       </main>
     </>
-  );
-}
-
-function useHeader(NightMode) {
-  const Button = ({ path, label }) => (
-    <Link href={path} className={styles.simpleButton}>
-      {label}
-    </Link>
-  );
-  return (
-    <div className={styles.header}>
-      <div className={styles.headerButtons}>
-        {buttons.map((e, i) => (
-          <Button key={i} label={e.label} path={e.path} />
-        ))}
-      </div>
-      {NightMode}
-    </div>
   );
 }
