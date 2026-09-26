@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next"
 import "../styles/global.css";
 import MouseContextProvider from "../context/mouse-context";
 import { ThemeProvider, THEME_BOOT_SCRIPT } from "../context/theme-context";
@@ -92,6 +93,7 @@ export default function RootLayout({ children }) {
           </MouseContextProvider>
         </ThemeProvider>
         <RegisterServiceWorker />
+        <Analytics />
       </body>
     </html>
   );
