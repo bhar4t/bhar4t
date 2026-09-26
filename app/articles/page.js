@@ -36,7 +36,14 @@ export default async function Articles() {
           <div key={id} className={card}>
             <div className={imgContainer}>
               <div className={img}>
-                <img loading="lazy" height="100%" width="100%" src={`/img/${cover}`} alt={title}></img>
+                <img
+                  loading={i === 0 ? "eager" : "lazy"}
+                  fetchPriority={i === 0 ? "high" : "auto"}
+                  height="100%"
+                  width="100%"
+                  src={`/img/${cover}`}
+                  alt={title}
+                ></img>
               </div>
             </div>
             <div className={textContainer}>

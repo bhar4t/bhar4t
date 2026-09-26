@@ -8,11 +8,12 @@ class ProgressBar extends Component {
     this.state = {
       width: null
     };
+    this.rafId = null;
   }
 
   componentDidMount() {
     try {
-      window.addEventListener("scroll", this.scrolling);
+      window.addEventListener("scroll", this.onScroll, { passive: true });
     } catch (oError) {
       console.log(oError);
     }
@@ -20,10 +21,20 @@ class ProgressBar extends Component {
 
   componentWillUnmount() {
     try {
-      window.removeEventListener("scroll", this.scrolling);
+      window.removeEventListener("scroll", this.onScroll);
     } catch (oError) {
       console.log(oError);
     }
+    if (this.rafId !== null) cancelAnimationFrame(this.rafId);
+  }
+
+  // Coalesce scroll events into at most one layout read/state update per frame.
+  onScroll = () => {
+    if (this.rafId !== null) return;
+    this.rafId = requestAnimationFrame(() => {
+      this.rafId = null;
+      this.scrolling();
+    });
   }
 
   scrolling = () => {

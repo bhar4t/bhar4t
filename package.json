@@ -15,9 +15,16 @@
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "remark": "^15.0.1",
-    "remark-html": "^16.0.1"
+    "remark-html": "^16.0.1",
+    "unist-util-visit": "^5.1.0"
   },
   "resolutions": {
     "@babel/core": "^7.29.7"
-  }
+  },
+  "browserslist": [
+    "> 0.3%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
 }

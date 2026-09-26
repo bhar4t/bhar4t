@@ -9,15 +9,16 @@ const DotRing = () => {
   const { cursorType, cursorChangeHandler } = useContext(MouseContext);
 
   const { x, y } = useMousePosition();
+  const transform = x === null ? undefined : `translate(${x}px, ${y}px) translate(-50%, -50%)`;
   return (
     <>
       <div
-        style={{ left: `${x}px`, top: `${y}px` }}
+        style={{ transform }}
         className={styles.ring +" "+ cursorType}
       ></div>
       <div
         className={styles.dot +" "+ cursorType}
-        style={{ left: `${x}px`, top: `${y}px` }}
+        style={{ transform }}
       ></div>
     </>
   );

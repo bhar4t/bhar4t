@@ -71,10 +71,10 @@ export default function RootLayout({ children }) {
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
         {/* Local fonts */}
-        <link rel="preload" href="/fonts/Sacramento/Sacramento-Regular.ttf" as="font" crossOrigin="" />
-        <link rel="preload" href="/fonts/Inter/static/Inter-Thin.ttf" as="font" crossOrigin="" />
-        <link rel="preload" href="/fonts/Inter/static/Inter-Light.ttf" as="font" crossOrigin="" />
-        <link rel="preload" href="/fonts/Inter/static/Inter-Regular.ttf" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/Sacramento/Sacramento-Regular.woff2" as="font" type="font/woff2" crossOrigin="" />
+        <link rel="preload" href="/fonts/Inter/static/Inter-Thin.woff2" as="font" type="font/woff2" crossOrigin="" />
+        <link rel="preload" href="/fonts/Inter/static/Inter-Light.woff2" as="font" type="font/woff2" crossOrigin="" />
+        <link rel="preload" href="/fonts/Inter/static/Inter-Regular.woff2" as="font" type="font/woff2" crossOrigin="" />
         {/* Applies the persisted theme before paint to avoid a flash */}
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
         <script

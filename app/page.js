@@ -19,9 +19,9 @@ export default async function Home() {
       <section key="home">
         {allPostsData.map(({ id, date, title }, i) => (
           <div key={id}>
-            <h3 className={utilStyles.listItem}>
+            <h2 className={utilStyles.listItem}>
               <Link href={`/articles/${id}`}>{title}</Link>
-            </h3>
+            </h2>
             <small className={utilStyles.lightText}>
               <Date dateString={date} />
             </small>

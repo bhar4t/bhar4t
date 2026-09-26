@@ -20,8 +20,8 @@ export default async function Packages() {
             <div className={textContainer}>
               <a href={pkg.npm} className={articleTitle}>{pkg.name}</a>
               <div style={{ display: "flex", justifyContent: "center", alignItems: 'center', position: "relative", float: "right", top: 0 }}>
-                <img style={{ display: 'inline', margin: 4 }} src="./images/npm.svg" alt="NPM" height="16px"></img>
-                {pkg.license && <img style={{ display: 'inline', margin: 4 }} src="./images/MIT_logo.svg" alt="MIT" height="14px"></img>}
+                <img style={{ display: 'inline', margin: 4 }} src="./images/npm.svg" alt="NPM" width="16" height="16"></img>
+                {pkg.license && <img style={{ display: 'inline', margin: 4 }} src="./images/MIT_logo.svg" alt="MIT" width="14" height="14"></img>}
               </div>
               <div className={articleDesc}>{pkg.description}</div>
               <div className={articleKeys}>

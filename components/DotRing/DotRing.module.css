@@ -6,27 +6,35 @@
     height: 22px;
     border: 2px solid var(--primary);
     border-radius: 100%;
-    transform: translate(-50%, -50%);
     -webkit-transition-duration: 100ms;
     transition-duration: 100ms;
+    transition-property: width, height, border;
     -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
-    will-change: width, height, transform, border;
+    will-change: transform;
     z-index: 999;
     pointer-events: none;
   }
   
   .dot {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 0;
+    left: 0;
     width: 8px;
     height: 8px;
     background-color: var(--text-color);
     border-radius: 100%;
-    transform: translate(-50%, -50%);
+    will-change: transform;
     z-index: 999;
     pointer-events: none;
+  }
+
+  /* No persistent hover point on touch/coarse pointers */
+  @media (pointer: coarse) {
+    .ring,
+    .dot {
+      display: none;
+    }
   }
   
   .ring.hovered {

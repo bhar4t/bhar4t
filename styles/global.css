@@ -1,27 +1,27 @@
 @font-face {
   font-family: "Sacramento";
-  src: url("/fonts/Sacramento/Sacramento-Regular.ttf");
+  src: url("/fonts/Sacramento/Sacramento-Regular.woff2") format("woff2");
   font-style: regular;
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/Inter/static/Inter-Thin.ttf");
+  src: url("/fonts/Inter/static/Inter-Thin.woff2") format("woff2");
   font-style: medium;
   font-weight: 100;
   font-display: swap;
 }
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/Inter/static/Inter-Light.ttf");
+  src: url("/fonts/Inter/static/Inter-Light.woff2") format("woff2");
   font-style: medium;
   font-weight: 300;
   font-display: swap;
 }
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/Inter/static/Inter-Regular.ttf");
+  src: url("/fonts/Inter/static/Inter-Regular.woff2") format("woff2");
   font-style: medium;
   font-weight: 400;
   font-display: swap;
@@ -55,7 +55,13 @@ body {
 
 * {
   box-sizing: border-box;
-  cursor: none;
+}
+
+/* Custom cursor (DotRing) only makes sense with a precise pointer; keep the native cursor on touch */
+@media (pointer: fine) {
+  * {
+    cursor: none;
+  }
 }
 
 h1 {
