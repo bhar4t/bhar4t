@@ -1,9 +1,10 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import Link from "next/link";
 import Layout from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
 import { getSortedPostsData } from "../lib/articles";
 import generateRssFeed from "../lib/rss";
 import { buildPageMetadata } from "../lib/seo";
-import Link from "next/link";
 import Date from "../components/date";
 
 export const metadata = buildPageMetadata();
@@ -14,6 +15,7 @@ export default async function Home() {
 
   return (
     <Layout home>
+      <SpeedInsights />
       <span className={utilStyles.preTitle}>{process.env.PRE_TITLE}</span>
       <h1 className={utilStyles.h1}>{process.env.TITLE}</h1>
       <section key="home">
