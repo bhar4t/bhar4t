@@ -7,7 +7,10 @@ export default defineSchema({
   rooms: defineTable({
     offer: v.optional(sdp),
     answer: v.optional(sdp),
-  }),
+    // Optional only to tolerate pre-existing dev rows created before this field
+    // existed; createRoom always sets it for every new room.
+    joinCode: v.optional(v.string()),
+  }).index("by_join_code", ["joinCode"]),
   callerCandidates: defineTable({
     roomId: v.id("rooms"),
     candidate: v.any(),

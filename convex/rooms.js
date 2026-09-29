@@ -3,10 +3,48 @@ import { v } from "convex/values";
 
 const sdp = v.object({ type: v.string(), sdp: v.string() });
 
+// Short word lists just for a memorable, spoken/typed-aloud meeting code —
+// not a security boundary, so entropy only needs to beat accidental collisions.
+const ADJECTIVES = ["amber", "brave", "calm", "danger", "eager", "fuzzy", "gentle", "happy", "icy", "jolly", "keen", "lucky", "misty", "noble", "quiet", "rapid", "sunny", "tidy", "urban", "vivid"];
+const NOUNS = ["otter", "falcon", "monkey", "tiger", "panda", "eagle", "koala", "rabbit", "dolphin", "badger", "heron", "lynx", "moose", "raven", "seal", "wombat", "zebra", "gecko", "crane", "otterhound"];
+const VERBS = ["jumping", "running", "gliding", "diving", "climbing", "floating", "dancing", "racing", "soaring", "drifting", "spinning", "leaping", "singing", "roaming", "sliding"];
+
+function randomWord(words) {
+  return words[Math.floor(Math.random() * words.length)];
+}
+
+function randomJoinCode() {
+  return `${randomWord(ADJECTIVES)}-${randomWord(NOUNS)}-${randomWord(VERBS)}`;
+}
+
+async function generateUniqueJoinCode(ctx) {
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const candidate = attempt < 4 ? randomJoinCode() : `${randomJoinCode()}-${Math.floor(Math.random() * 1000)}`;
+    const existing = await ctx.db
+      .query("rooms")
+      .withIndex("by_join_code", (q) => q.eq("joinCode", candidate))
+      .unique();
+    if (!existing) return candidate;
+  }
+  throw new Error("Could not generate a unique join code, please try again.");
+}
+
 export const createRoom = mutation({
   args: {},
   handler: async (ctx) => {
-    return await ctx.db.insert("rooms", {});
+    const joinCode = await generateUniqueJoinCode(ctx);
+    const roomId = await ctx.db.insert("rooms", { joinCode });
+    return { roomId, joinCode };
+  },
+});
+
+export const getRoomByJoinCode = query({
+  args: { joinCode: v.string() },
+  handler: async (ctx, { joinCode }) => {
+    return await ctx.db
+      .query("rooms")
+      .withIndex("by_join_code", (q) => q.eq("joinCode", joinCode))
+      .unique();
   },
 });
 

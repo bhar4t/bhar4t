@@ -20,7 +20,23 @@ const styles = {
     width: 'auto',
     borderRadius: '0px 0px 20px 20px',
   },
-  container: { height: '100%', width: '100%', backgroundColor: 'gray', borderRadius: 20 }
+  container: { height: '100%', width: '100%', backgroundColor: 'gray', borderRadius: 20, position: 'relative' },
+  pip: {
+    position: 'absolute',
+    top: 16,
+    right: 16,
+    zIndex: 10,
+    borderRadius: 20,
+    overflow: 'hidden',
+    cursor: 'move',
+  },
+  pipHeader: {
+    textAlign: 'center',
+    fontSize: 12,
+    color: 'white',
+    background: 'rgba(0,0,0,0.5)',
+    borderRadius: '20px 20px 0px 0px',
+  },
 }
 
 // STUN alone can't traverse symmetric NAT/CGNAT (common on mobile networks) — fetch
@@ -50,6 +66,7 @@ export default function Meet() {
   const appliedCandidateIds = React.useRef(new Set());
 
   const [roomId, setRoomId] = React.useState(null);
+  const [joinCode, setJoinCode] = React.useState(null);
   const [role, setRole] = React.useState(null); // "caller" | "callee"
   const [mediaReady, setMediaReady] = React.useState(false);
   const [busy, setBusy] = React.useState(false);
@@ -115,10 +132,11 @@ export default function Meet() {
     setBusy(true);
     appliedCandidateIds.current = new Set();
 
-    const newRoomId = await createRoomMutation({});
+    const { roomId: newRoomId, joinCode: newJoinCode } = await createRoomMutation({});
     console.log(newRoomId);
     setRole("caller");
     setRoomId(newRoomId);
+    setJoinCode(newJoinCode);
 
     const iceServers = await getIceServers();
     console.log("Create PeerConnection with iceServers: ", iceServers);
@@ -165,19 +183,20 @@ export default function Meet() {
 
   function joinRoom() {
     setBusy(true);
-    const id = prompt("Please Enter Key", "");
-    if (id) {
-      joinRoomById(id);
+    const code = prompt("Please Enter Room Code", "");
+    if (code) {
+      joinRoomById(code);
     } else {
       setBusy(false);
     }
   }
 
-  async function joinRoomById(id) {
-    const existingRoom = await convex.query(api.rooms.getRoom, { roomId: id });
+  async function joinRoomById(code) {
+    const existingRoom = await convex.query(api.rooms.getRoomByJoinCode, { joinCode: code });
     console.log("Got room:", !!existingRoom);
 
     if (existingRoom) {
+      const id = existingRoom._id;
       appliedCandidateIds.current = new Set();
 
       const iceServers = await getIceServers();
@@ -224,6 +243,7 @@ export default function Meet() {
 
       setRole("callee");
       setRoomId(id);
+      setJoinCode(code);
       // Listening for remote ICE candidates above
     } else {
       alert("Room not found");
@@ -318,6 +338,12 @@ export default function Meet() {
       function dragMouseDown(e) {
         e = e || window.event;
         e.preventDefault();
+        // pip starts anchored via top/right; left+right both set with no drag
+        // yet would over-constrain the box (it resizes instead of moving), so
+        // pin down its current position as explicit top/left before dragging.
+        elmnt.style.top = elmnt.offsetTop + "px";
+        elmnt.style.left = elmnt.offsetLeft + "px";
+        elmnt.style.right = "auto";
         // get the mouse cursor position at startup:
         pos3 = e.clientX;
         pos4 = e.clientY;
@@ -351,8 +377,8 @@ export default function Meet() {
     <>
       <div id='main' style={{ backgroundColor: 'rgb(24 80 97)', height: '100vh', width: '100vw', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
         <div style={styles.container} >
-          <div id="mydiv">
-            <div id="mydivheader">move</div>
+          <div id="mydiv" style={styles.pip}>
+            <div id="mydivheader" style={styles.pipHeader}>move</div>
             <video
               style={{ ...styles.localVideo, ...styles.layer }}
               ref={localVideo}
@@ -391,7 +417,7 @@ export default function Meet() {
         <button id="hangupBtn" onClick={hangUp} disabled={!mediaReady}>
           Hangup
         </button>
-        <div id="currentRoom">{roomId ? `room id: ${roomId}` : ""}</div>
+        <div id="currentRoom">{joinCode ? `room code: ${joinCode}` : ""}</div>
       </div>
       {mediaError && (
         <div style={{
