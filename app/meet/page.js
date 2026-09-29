@@ -44,6 +44,7 @@ export default function Meet() {
   const [role, setRole] = React.useState(null); // "caller" | "callee"
   const [mediaReady, setMediaReady] = React.useState(false);
   const [busy, setBusy] = React.useState(false);
+  const [mediaError, setMediaError] = React.useState(null);
 
   const convex = useConvex();
   const createRoomMutation = useMutation(api.rooms.createRoom);
@@ -220,17 +221,26 @@ export default function Meet() {
   }
 
   async function openUserMedia() {
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: true,
-      audio: true,
-    });
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true,
+      });
 
-    localVideo.current.srcObject = stream;
-    localStreamRef.current = stream;
-    remoteStreamRef.current = new MediaStream();
-    remoteVideo.current.srcObject = remoteStreamRef.current;
-    console.log("Stream:", localVideo.current.srcObject);
-    setMediaReady(true);
+      localVideo.current.srcObject = stream;
+      localStreamRef.current = stream;
+      remoteStreamRef.current = new MediaStream();
+      remoteVideo.current.srcObject = remoteStreamRef.current;
+      console.log("Stream:", localVideo.current.srcObject);
+      setMediaReady(true);
+    } catch (err) {
+      console.error("Failed to access camera/microphone:", err);
+      setMediaError(
+        err.name === "NotAllowedError"
+          ? "Camera/microphone access was denied. Please allow permissions and reload the page."
+          : "Could not access camera/microphone. Please check your device and browser settings."
+      );
+    }
   }
 
   async function hangUp(e) {
@@ -372,6 +382,20 @@ export default function Meet() {
         </button>
         <div id="currentRoom">{roomId ? `room id: ${roomId}` : ""}</div>
       </div>
+      {mediaError && (
+        <div style={{
+          position: 'absolute',
+          top: 20,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          background: 'rgba(178, 34, 34, 0.9)',
+          color: 'white',
+          padding: '10px 20px',
+          borderRadius: 8,
+        }}>
+          {mediaError}
+        </div>
+      )}
     </>
   );
 }

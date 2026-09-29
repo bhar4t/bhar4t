@@ -34,14 +34,27 @@ export default withSerwist({
   // this app relies on inline scripts (theme boot, JSON-LD), a service worker,
   // and a Google Docs iframe embed (/resume) that all need careful live testing first.
   async headers() {
+    const baseSecurityHeaders = [
+      { key: "X-Content-Type-Options", value: "nosniff" },
+      { key: "X-Frame-Options", value: "SAMEORIGIN" },
+      { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+    ];
+
     return [
       {
         source: "/:path*",
         headers: [
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "X-Frame-Options", value: "SAMEORIGIN" },
-          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          ...baseSecurityHeaders,
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+        ],
+      },
+      {
+        // /meet needs camera + microphone for its WebRTC video calls; this more
+        // specific rule overrides the blanket Permissions-Policy denial above.
+        source: "/meet/:path*",
+        headers: [
+          ...baseSecurityHeaders,
+          { key: "Permissions-Policy", value: "camera=(self), microphone=(self), geolocation=()" },
         ],
       },
     ];
