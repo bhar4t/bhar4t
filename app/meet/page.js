@@ -23,14 +23,23 @@ const styles = {
   container: { height: '100%', width: '100%', backgroundColor: 'gray', borderRadius: 20 }
 }
 
-const configuration = {
-  iceServers: [
-    {
-      urls: ["stun:stun1.l.google.com:19302", "stun:stun2.l.google.com:19302"],
-    },
-  ],
-  iceCandidatePoolSize: 10,
-};
+// STUN alone can't traverse symmetric NAT/CGNAT (common on mobile networks) — fetch
+// short-lived TURN relay credentials from Metered instead of embedding a static one.
+async function getIceServers() {
+  const apiUrl = process.env.NEXT_PUBLIC_TURN_CREDENTIALS_URL;
+  const apiKey = process.env.NEXT_PUBLIC_TURN_API_KEY;
+  if (!apiUrl || !apiKey) return [];
+
+  try {
+    const response = await fetch(`${apiUrl}?apiKey=${apiKey}`);
+    if (!response.ok) throw new Error(`Metered credentials request failed: ${response.status}`);
+    const iceServers = await response.json();
+    return iceServers;
+  } catch (err) {
+    console.error("Failed to fetch TURN credentials:", err);
+    return [];
+  }
+}
 
 export default function Meet() {
   const localVideo = React.useRef();
@@ -111,8 +120,9 @@ export default function Meet() {
     setRole("caller");
     setRoomId(newRoomId);
 
-    console.log("Create PeerConnection with configuration: ", configuration);
-    const pc = new RTCPeerConnection(configuration);
+    const iceServers = await getIceServers();
+    console.log("Create PeerConnection with iceServers: ", iceServers);
+    const pc = new RTCPeerConnection({ iceServers, iceCandidatePoolSize: 10 });
     peerConnectionRef.current = pc;
 
     registerPeerConnectionListeners(pc);
@@ -170,8 +180,9 @@ export default function Meet() {
     if (existingRoom) {
       appliedCandidateIds.current = new Set();
 
-      console.log("Create PeerConnection with configuration: ", configuration);
-      const pc = new RTCPeerConnection(configuration);
+      const iceServers = await getIceServers();
+      console.log("Create PeerConnection with iceServers: ", iceServers);
+      const pc = new RTCPeerConnection({ iceServers, iceCandidatePoolSize: 10 });
       peerConnectionRef.current = pc;
       registerPeerConnectionListeners(pc);
       localStreamRef.current.getTracks().forEach((track) => {

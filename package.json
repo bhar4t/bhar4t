@@ -5,7 +5,7 @@
   "packageManager": "yarn@1.22.22",
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "next build --webpack",
+    "build": "npx convex deploy --cmd-url-env-var-name NEXT_PUBLIC_CONVEX_URL --cmd \"next build --webpack\"",
     "start": "next start",
     "lint": "eslint .",
     "test": "vitest run"

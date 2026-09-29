@@ -21,6 +21,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# environment variables (secrets)
+.env
+.env*.local
+
 # editor / OS
 .vscode/
 .idea/
