@@ -3,6 +3,16 @@
 import React from "react";
 import { useMutation, useQuery, useConvex } from "convex/react";
 import { api } from "../../convex/_generated/api";
+import {
+  CreateMeetIcon,
+  JoinMeetIcon,
+  ShareIcon,
+  MicIcon,
+  MicOffIcon,
+  CameraSwitchIcon,
+  HangupIcon,
+  MoreIcon,
+} from "../../components/Icons";
 
 const styles = {
   layer: {
@@ -37,6 +47,74 @@ const styles = {
     background: 'rgba(0,0,0,0.5)',
     borderRadius: '20px 20px 0px 0px',
   },
+  iconButton: {
+    width: 56,
+    height: 56,
+    margin: '0 8px',
+    borderRadius: '50%',
+    border: 'none',
+    background: 'rgba(255,255,255,0.15)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+  },
+  iconButtonDisabled: {
+    opacity: 0.4,
+    cursor: 'not-allowed',
+  },
+  iconButtonActive: {
+    background: 'rgba(255,255,255,0.35)',
+  },
+  hangupButton: {
+    background: '#e53935',
+  },
+  menuWrapper: {
+    position: 'relative',
+    display: 'inline-flex',
+  },
+  menuOverlay: {
+    position: 'fixed',
+    inset: 0,
+    zIndex: 40,
+  },
+  menu: {
+    position: 'absolute',
+    bottom: 70,
+    left: '50%',
+    transform: 'translateX(-50%)',
+    background: 'rgba(30,30,30,0.95)',
+    borderRadius: 12,
+    padding: 8,
+    minWidth: 190,
+    boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+    zIndex: 50,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 4,
+  },
+  menuItem: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 10,
+    padding: '10px 12px',
+    borderRadius: 8,
+    border: 'none',
+    background: 'transparent',
+    color: '#fff',
+    cursor: 'pointer',
+    fontSize: 14,
+    width: '100%',
+    textAlign: 'left',
+  },
+  menuItemDisabled: {
+    opacity: 0.4,
+    cursor: 'not-allowed',
+  },
+}
+
+function iconButtonStyle(disabled, extra) {
+  return { ...styles.iconButton, ...(disabled ? styles.iconButtonDisabled : {}), ...extra };
 }
 
 // STUN alone can't traverse symmetric NAT/CGNAT (common on mobile networks) — fetch
@@ -90,6 +168,7 @@ export default function MeetRoom({ initialJoinCode } = {}) {
   const [facingMode, setFacingMode] = React.useState("user");
   const [switchingCamera, setSwitchingCamera] = React.useState(false);
   const [shareFeedback, setShareFeedback] = React.useState("");
+  const [openMenu, setOpenMenu] = React.useState(null); // "start" | "more" | null
 
   const convex = useConvex();
   const createRoomMutation = useMutation(api.rooms.createRoom);
@@ -154,6 +233,22 @@ export default function MeetRoom({ initialJoinCode } = {}) {
         pc.addIceCandidate(new RTCIceCandidate(doc.candidate));
       }
     });
+  }
+
+  function toggleMenu(name) {
+    setOpenMenu((prev) => (prev === name ? null : name));
+  }
+
+  function selectStartOption(action) {
+    setOpenMenu(null);
+    if (action === "create") createRoom();
+    else joinRoom();
+  }
+
+  function selectMoreOption(action) {
+    setOpenMenu(null);
+    if (action === "share" && joinCode) shareRoomLink();
+    else if (action === "switchCamera" && mediaReady && !switchingCamera) switchCamera();
   }
 
   async function createRoom() {
@@ -511,26 +606,102 @@ export default function MeetRoom({ initialJoinCode } = {}) {
         borderRadius: '10px 10px 0px 0px',
         border: '1px solid rgba( 255, 255, 255, 0.18 )'
       }}>
-        <button id="createBtn" onClick={createRoom} disabled={!mediaReady || busy}>
-          Create Meet
+        <div style={styles.menuWrapper}>
+          {openMenu === "start" && (
+            <>
+              <div style={styles.menuOverlay} onClick={() => setOpenMenu(null)} />
+              <div style={styles.menu} role="menu">
+                <button type="button" style={styles.menuItem} onClick={() => selectStartOption("create")}>
+                  <CreateMeetIcon size={20} /> Create Meet
+                </button>
+                <button type="button" style={styles.menuItem} onClick={() => selectStartOption("join")}>
+                  <JoinMeetIcon size={20} /> Join Meet
+                </button>
+              </div>
+            </>
+          )}
+          <button
+            id="startBtn"
+            onClick={() => toggleMenu("start")}
+            disabled={!mediaReady || busy}
+            style={iconButtonStyle(!mediaReady || busy)}
+            aria-label="Create or join a meet"
+            title="Create or join a meet"
+          >
+            <CreateMeetIcon />
+          </button>
+        </div>
+        <button
+          id="muteBtn"
+          onClick={toggleMute}
+          disabled={!mediaReady}
+          style={iconButtonStyle(!mediaReady, muted ? styles.iconButtonActive : undefined)}
+          aria-label={muted ? "Unmute" : "Mute"}
+          title={muted ? "Unmute" : "Mute"}
+        >
+          {muted ? <MicOffIcon /> : <MicIcon />}
         </button>
-        <button id="joinBtn" onClick={joinRoom} disabled={!mediaReady || busy}>
-          Join Meet
+        <div style={styles.menuWrapper}>
+          {openMenu === "more" && (
+            <>
+              <div style={styles.menuOverlay} onClick={() => setOpenMenu(null)} />
+              <div style={styles.menu} role="menu">
+                <button
+                  type="button"
+                  style={{ ...styles.menuItem, ...(!joinCode ? styles.menuItemDisabled : {}) }}
+                  disabled={!joinCode}
+                  onClick={() => selectMoreOption("share")}
+                >
+                  <ShareIcon size={20} /> Share
+                </button>
+                <button
+                  type="button"
+                  style={{ ...styles.menuItem, ...(!mediaReady || switchingCamera ? styles.menuItemDisabled : {}) }}
+                  disabled={!mediaReady || switchingCamera}
+                  onClick={() => selectMoreOption("switchCamera")}
+                >
+                  <CameraSwitchIcon size={20} /> Switch Camera
+                </button>
+              </div>
+            </>
+          )}
+          <button
+            id="moreBtn"
+            onClick={() => toggleMenu("more")}
+            disabled={!mediaReady}
+            style={iconButtonStyle(!mediaReady)}
+            aria-label="More options"
+            title="More options"
+          >
+            <MoreIcon />
+          </button>
+        </div>
+        <button
+          id="hangupBtn"
+          onClick={hangUp}
+          disabled={!mediaReady}
+          style={iconButtonStyle(!mediaReady, styles.hangupButton)}
+          aria-label="Hang up"
+          title="Hang up"
+        >
+          <HangupIcon />
         </button>
-        <button id="shareBtn" onClick={() => shareRoomLink()} disabled={!joinCode}>
-          Share
-        </button>
-        <button id="muteBtn" onClick={toggleMute} disabled={!mediaReady}>
-          {muted ? "Unmute" : "Mute"}
-        </button>
-        <button id="switchCameraBtn" onClick={switchCamera} disabled={!mediaReady || switchingCamera}>
-          Switch Camera
-        </button>
-        <button id="hangupBtn" onClick={hangUp} disabled={!mediaReady}>
-          Hangup
-        </button>
-        <div id="currentRoom">{joinCode ? `room code: ${joinCode}` : ""}{shareFeedback ? ` — ${shareFeedback}` : ""}</div>
       </div>
+      {shareFeedback && (
+        <div style={{
+          position: 'absolute',
+          bottom: 110,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          background: 'rgba(0,0,0,0.75)',
+          color: 'white',
+          padding: '6px 14px',
+          borderRadius: 8,
+          fontSize: 13,
+        }}>
+          {shareFeedback}
+        </div>
+      )}
       {mediaError && (
         <div style={{
           position: 'absolute',

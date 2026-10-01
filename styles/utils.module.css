@@ -133,6 +133,14 @@
   margin-left: 4px;
   padding: 3px 5px;
 }
+
+/* /tools: separates the "Tools" and "Packages" card lists */
+.sectionHeading {
+  font-size: 1.75rem;
+  font-weight: 400;
+  margin: 2rem 0 0.5rem;
+}
+
 .articleAuthor {
   padding: 6px 3px;
   color: var(--primary-readable);

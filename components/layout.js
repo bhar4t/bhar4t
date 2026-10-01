@@ -10,7 +10,7 @@ import styles from "./layout.module.css";
 const buttons = [
   { label: "Home", path: "/" },
   { label: "@bhar4t", path: "/bhar4t" },
-  { label: "Packages", path: "/packages" },
+  { label: "Tools", path: "/tools" },
 ];
 
 function NavButton({ path, label }) {

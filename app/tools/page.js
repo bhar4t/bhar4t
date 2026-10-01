@@ -1,20 +1,40 @@
 import Image from "next/image";
 import Layout from "../../components/layout";
 import { buildPageMetadata } from "../../lib/seo";
-import { articleKeys, articleKey, card, textContainer, articleTitle, articleDesc, h1 } from "../../styles/utils.module.css";
+import { articleKeys, articleKey, card, textContainer, articleTitle, articleDesc, h1, sectionHeading } from "../../styles/utils.module.css";
 
 export const metadata = buildPageMetadata({
-  title: "Open Source NPM Packages",
-  description: "Open source NPM packages built and published by Bharat Sahu for JavaScript and React developers.",
-  canonical: "packages",
+  title: "",
+  description: "Tools built by Bharat Sahu, including a peer-to-peer video meet app, plus open source NPM packages for JavaScript and React developers.",
+  canonical: "tools",
 });
 
-export default async function Packages() {
+const TOOLS = [
+  {
+    name: "Meet",
+    href: "/meet",
+    description: "Peer-to-peer WebRTC video calls — create or join a room instantly, no sign-up required.",
+  },
+];
+
+export default async function Tools() {
   const { data, error } = await getPackagesData();
 
   return (
     <Layout home>
-      <h1 className={h1}>Open Source NPM Packages</h1>
+      <h1 className={h1}>Tools & Packages</h1>
+
+      <h2 className={sectionHeading}>Tools</h2>
+      {TOOLS.map((tool) => (
+        <div key={tool.name} className={card}>
+          <div className={textContainer}>
+            <a href={tool.href} className={articleTitle}>{tool.name}</a>
+            <div className={articleDesc}>{tool.description}</div>
+          </div>
+        </div>
+      ))}
+
+      <h2 className={sectionHeading}>Packages</h2>
       {error && (
         <p className={articleDesc}>
           Couldn&apos;t load packages right now. Please try again in a moment.

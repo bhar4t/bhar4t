@@ -20,3 +20,97 @@ const DayNight = ({ nightMode }) => (
 );
 
 export { DayNight };
+
+// Shared outline style for the /meet call controls so every icon reads as one set.
+const strokeProps = (color, strokeWidth) => ({
+  fill: "none",
+  stroke: color,
+  strokeWidth,
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+});
+
+const CreateMeetIcon = ({ color = "#fff", size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...strokeProps(color, 2)}>
+    <rect x="3" y="6" width="12" height="12" rx="2" />
+    <polygon points="17 9 21 6.5 21 17.5 17 15" />
+  </svg>
+);
+
+const JoinMeetIcon = ({ color = "#fff", size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...strokeProps(color, 2)}>
+    <path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3" />
+    <polyline points="13 8 17 12 13 16" />
+    <line x1="17" y1="12" x2="7" y2="12" />
+  </svg>
+);
+
+const ShareIcon = ({ color = "#fff", size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...strokeProps(color, 2)}>
+    <circle cx="18" cy="5" r="2.5" />
+    <circle cx="6" cy="12" r="2.5" />
+    <circle cx="18" cy="19" r="2.5" />
+    <line x1="8.2" y1="10.7" x2="15.8" y2="6.3" />
+    <line x1="8.2" y1="13.3" x2="15.8" y2="17.7" />
+  </svg>
+);
+
+const MicIcon = ({ color = "#fff", size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...strokeProps(color, 2)}>
+    <rect x="9" y="2" width="6" height="11" rx="3" />
+    <path d="M5 11a7 7 0 0 0 14 0" />
+    <line x1="12" y1="18" x2="12" y2="22" />
+    <line x1="8" y1="22" x2="16" y2="22" />
+  </svg>
+);
+
+const MicOffIcon = ({ color = "#fff", size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...strokeProps(color, 2)}>
+    <rect x="9" y="2" width="6" height="11" rx="3" />
+    <path d="M5 11a7 7 0 0 0 14 0" />
+    <line x1="12" y1="18" x2="12" y2="22" />
+    <line x1="8" y1="22" x2="16" y2="22" />
+    <line x1="3" y1="3" x2="21" y2="21" />
+  </svg>
+);
+
+const CameraSwitchIcon = ({ color = "#fff", size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...strokeProps(color, 2)}>
+    <rect x="2" y="7" width="15" height="11" rx="2" />
+    <circle cx="9.5" cy="12.5" r="3" />
+    <path d="M18 8a4 4 0 0 0-4-4" />
+    <polyline points="14 1 14 4 17 4" />
+    <path d="M20 13a4 4 0 0 1-4 4" />
+    <polyline points="20 10 20 13 17 13" />
+  </svg>
+);
+
+const HangupIcon = ({ color = "#fff", size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill={color} stroke="none">
+    <path
+      d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z"
+      transform="rotate(135 12 12)"
+    />
+  </svg>
+);
+
+const MoreIcon = ({ color = "#fff", size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill={color} stroke="none">
+    <circle cx="5" cy="12" r="2.2" />
+    <circle cx="12" cy="12" r="2.2" />
+    <circle cx="19" cy="12" r="2.2" />
+  </svg>
+);
+
+export {
+  CreateMeetIcon,
+  JoinMeetIcon,
+  ShareIcon,
+  MicIcon,
+  MicOffIcon,
+  CameraSwitchIcon,
+  HangupIcon,
+  MoreIcon,
+};
+
+
