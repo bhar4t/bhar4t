@@ -1,0 +1,112 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 0 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.textarea {
+  width: 100%;
+  min-height: 320px;
+  padding: 12px;
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  resize: vertical;
+  border: 1px solid var(--primary-readable);
+  border-radius: 8px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.compareButton,
+.resetButton {
+  padding: 10px 28px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.compareButton {
+  background-color: var(--primary);
+  color: #1a1a1a;
+}
+
+.resetButton {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--primary-readable);
+}
+
+.errorPopup {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 90vw;
+  background: rgba(178, 34, 34, 0.95);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.errorPopupClose {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+}
+
+.success {
+  color: #2e7d32;
+  text-align: center;
+  font-weight: 600;
+}
+
+.diffList {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+.diffItem {
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.diffPath {
+  font-weight: 600;
+  margin-right: 6px;
+}

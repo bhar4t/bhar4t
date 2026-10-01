@@ -20,6 +20,11 @@ const TOOLS = [
     href: "/meet",
     description: "Peer-to-peer WebRTC video calls — create or join a room instantly, no sign-up required.",
   },
+  {
+    name: "JSON Compare",
+    href: "/json-compare",
+    description: "Paste two JSON values side by side and instantly see every added, removed, or changed field.",
+  },
 ];
 
 export default async function Tools() {
