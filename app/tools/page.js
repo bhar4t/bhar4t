@@ -9,6 +9,11 @@ export const metadata = buildPageMetadata({
   canonical: "tools",
 });
 
+// npms.io's bulk endpoint (the previous data source) is an unmaintained,
+// community-run service prone to outages; the official npm registry is far
+// more reliable, so package metadata is fetched from there per-request below.
+export const dynamic = "force-dynamic";
+
 const TOOLS = [
   {
     name: "Meet",
@@ -61,46 +66,44 @@ export default async function Tools() {
   );
 }
 
-// Fetched per-request (not statically cached), mirroring the previous getServerSideProps behavior
+// Fetched per-request (not statically cached) via `export const dynamic` above.
+// Each package is requested independently so one bad/renamed package name
+// doesn't blank out the whole section - the error banner only shows if every
+// request fails (e.g. a genuine registry outage).
 async function getPackagesData() {
-  try {
-    const res = await fetch(process.env.NPM_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify(process.env.PACKAGES.split(" ")),
-      cache: 'no-store',
-      signal: AbortSignal.timeout(8000),
-    });
-    if (!res.ok) {
-      throw new Error(`npms.io responded with ${res.status}`);
+  const names = (process.env.PACKAGES || "").split(" ").filter(Boolean);
+  if (!names.length) return { data: [], error: false };
+
+  const results = await Promise.allSettled(names.map(fetchPackageInfo));
+
+  const data = [];
+  results.forEach((result, i) => {
+    if (result.status === "fulfilled") {
+      data.push(result.value);
+    } else {
+      console.error(`Failed to fetch package info for "${names[i]}":`, result.reason);
     }
-    const data = await res.json();
-    return { data: getFormattedData(data), error: false };
-  } catch (err) {
-    // Next.js signals dynamic-rendering detection as a thrown error during the
-    // build's static-generation probe (e.g. digest "DYNAMIC_SERVER_USAGE") — that
-    // must propagate, not be swallowed as a real fetch failure.
-    if (err?.digest?.startsWith("NEXT_") || err?.digest === "DYNAMIC_SERVER_USAGE") {
-      throw err;
-    }
-    console.error("Failed to fetch package data:", err);
-    return { data: [], error: true };
-  }
+  });
+
+  return { data, error: data.length === 0 };
 }
 
-function getFormattedData(data) {
-  return Object.values(data).map(({ collected: { metadata } }) => {
-    return ({
-      description: metadata?.description || "Missing description",
-      keywords: metadata?.keywords || [],
-      npm: metadata.links?.npm || "Missing NPM url",
-      repository: metadata.links?.repository || "",
-      name: metadata.name || "Missing name",
-      license: metadata.license || "",
-      metadata,
-    })
-  })
+async function fetchPackageInfo(name) {
+  const res = await fetch(`https://registry.npmjs.org/${encodeURIComponent(name)}`, {
+    cache: "no-store",
+    signal: AbortSignal.timeout(8000),
+  });
+  if (!res.ok) {
+    throw new Error(`npm registry responded with ${res.status} for "${name}"`);
+  }
+  const doc = await res.json();
+  const license = typeof doc.license === "string" ? doc.license : doc.license?.type || "";
+
+  return {
+    name: doc.name || name,
+    description: doc.description || "Missing description",
+    keywords: doc.keywords || [],
+    npm: `https://www.npmjs.com/package/${doc.name || name}`,
+    license,
+  };
 }
