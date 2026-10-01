@@ -72,7 +72,12 @@ export default async function Tools() {
 // request fails (e.g. a genuine registry outage).
 async function getPackagesData() {
   const names = (process.env.PACKAGES || "").split(" ").filter(Boolean);
-  if (!names.length) return { data: [], error: false };
+  if (!names.length) {
+    // Silently rendering nothing here is indistinguishable from "intentionally no
+    // packages" - log loudly so a missing/misscoped env var is visible in prod logs.
+    console.error("PACKAGES env var is empty or unset - no package data will be fetched.");
+    return { data: [], error: false };
+  }
 
   const results = await Promise.allSettled(names.map(fetchPackageInfo));
 

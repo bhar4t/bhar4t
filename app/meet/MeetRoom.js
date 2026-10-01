@@ -27,12 +27,11 @@ const styles = {
     display: 'block',
     width: '100%',
     height: '100%',
-    borderRadius: 20
   },
   localVideo: {
     height: 130,
     width: 'auto',
-    borderRadius: '0px 0px 20px 20px',
+    borderRadius: 10,
     background: 'black',
     touchAction: 'none',
   },
@@ -44,16 +43,6 @@ const styles = {
     zIndex: 10,
     overflow: 'hidden',
     cursor: 'move',
-  },
-  pipHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '4px 0',
-    color: 'white',
-    background: 'rgba(0,0,0,0.5)',
-    borderRadius: '20px 20px 0px 0px',
-    touchAction: 'none',
   },
   pipVideoOffOverlay: {
     position: 'absolute',
@@ -694,9 +683,6 @@ export default function MeetRoom({ initialJoinCode } = {}) {
       <div id='main' style={{ height: '100vh', width: '100vw', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
         <div style={styles.container} >
           <div id="mydiv" style={styles.pip}>
-            <div id="mydivheader" style={styles.pipHeader}>
-              <MoveIcon size={16} />
-            </div>
             <video
               style={{ ...styles.localVideo, ...styles.layer }}
               ref={localVideo}
@@ -813,13 +799,14 @@ export default function MeetRoom({ initialJoinCode } = {}) {
                 {isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
               </button>
               <button
-                onClick={toggleVideo}
+                type="button"
+                style={{ ...styles.menuItem, ...(!mediaReady ? styles.menuItemDisabled : {}) }}
                 disabled={!mediaReady}
-                style={iconButtonStyle(!mediaReady, videoOff ? styles.iconButtonActive : undefined)}
                 aria-label={videoOff ? "Turn camera on" : "Turn camera off"}
-                // title={videoOff ? "Turn camera on" : "Turn camera off"}
+                onClick={toggleVideo}
               >
-                {videoOff ? <CameraOffIcon size={20} /> : <CameraIcon size={20} />} On/off Video
+                {videoOff ? <CameraOffIcon size={20} /> : <CameraIcon size={20} />}
+                {videoOff ? "Turn Camera On" : "Turn Camera Off"}
               </button>
             </div>
           )}
