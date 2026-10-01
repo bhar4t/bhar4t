@@ -10,6 +10,8 @@ import {
   MicIcon,
   MicOffIcon,
   CameraSwitchIcon,
+  CameraIcon,
+  CameraOffIcon,
   HangupIcon,
   MoreIcon,
 } from "../../components/Icons";
@@ -46,6 +48,18 @@ const styles = {
     color: 'white',
     background: 'rgba(0,0,0,0.5)',
     borderRadius: '20px 20px 0px 0px',
+  },
+  pipVideoOffOverlay: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 130,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: 'rgba(0,0,0,0.6)',
+    borderRadius: '0px 0px 20px 20px',
   },
   iconButton: {
     width: 56,
@@ -165,10 +179,12 @@ export default function MeetRoom({ initialJoinCode } = {}) {
   const [busy, setBusy] = React.useState(false);
   const [mediaError, setMediaError] = React.useState(null);
   const [muted, setMuted] = React.useState(false);
+  const [videoOff, setVideoOff] = React.useState(false);
   const [facingMode, setFacingMode] = React.useState("user");
   const [switchingCamera, setSwitchingCamera] = React.useState(false);
   const [shareFeedback, setShareFeedback] = React.useState("");
   const [openMenu, setOpenMenu] = React.useState(null); // "start" | "more" | null
+  const [remoteOrientation, setRemoteOrientation] = React.useState("landscape"); // "portrait" | "landscape"
 
   const convex = useConvex();
   const createRoomMutation = useMutation(api.rooms.createRoom);
@@ -412,6 +428,18 @@ export default function MeetRoom({ initialJoinCode } = {}) {
     setMuted(nextMuted);
   }
 
+  // Disabling (not stopping) the track keeps the call/audio alive and sends
+  // black frames instead, so the peer sees "paused" video without a renegotiation.
+  function toggleVideo() {
+    const stream = localStreamRef.current;
+    if (!stream) return;
+    const nextVideoOff = !videoOff;
+    stream.getVideoTracks().forEach((track) => {
+      track.enabled = !nextVideoOff;
+    });
+    setVideoOff(nextVideoOff);
+  }
+
   async function switchCamera() {
     if (!localStreamRef.current || switchingCamera) return;
     setSwitchingCamera(true);
@@ -424,6 +452,8 @@ export default function MeetRoom({ initialJoinCode } = {}) {
       });
       const newVideoTrack = newStream.getVideoTracks()[0];
       const oldVideoTrack = localStreamRef.current.getVideoTracks()[0];
+      // New tracks default to enabled - preserve the paused state across the swap.
+      newVideoTrack.enabled = !videoOff;
 
       // Swap the outgoing track so the peer sees the new camera without renegotiating.
       const sender = peerConnectionRef.current
@@ -520,6 +550,24 @@ export default function MeetRoom({ initialJoinCode } = {}) {
     });
   }
 
+  // The remote <video>'s intrinsic videoWidth/videoHeight already reflect the
+  // caller's real camera orientation (mobile browsers encode frames pre-rotated
+  // to match device orientation), so there's no need to signal it separately -
+  // just watch the standard "resize" event, which fires whenever those change
+  // (initial metadata load, camera switch, or the remote user rotating their phone).
+  React.useEffect(() => {
+    const video = remoteVideo.current;
+    if (!video) return;
+
+    function handleResize() {
+      if (!video.videoWidth || !video.videoHeight) return;
+      setRemoteOrientation(video.videoHeight > video.videoWidth ? "portrait" : "landscape");
+    }
+
+    video.addEventListener("resize", handleResize);
+    return () => video.removeEventListener("resize", handleResize);
+  }, []);
+
   React.useEffect(() => {
     dragElement(document.getElementById("mydiv"));
 
@@ -585,9 +633,28 @@ export default function MeetRoom({ initialJoinCode } = {}) {
               autoPlay
               playsInline
             ></video>
+            {videoOff && (
+              <div style={styles.pipVideoOffOverlay}>
+                <CameraOffIcon size={20} />
+              </div>
+            )}
           </div>
           <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', objectFit: 'cover' }}>
-            <video style={{ ...styles.video, ...styles.layer }} ref={remoteVideo} id="remoteVideo" autoPlay playsInline></video>
+            <video
+              style={{
+                ...styles.video,
+                ...styles.layer,
+                // Size to the caller's actual orientation instead of always filling
+                // a fixed landscape box, so portrait callers aren't letterboxed.
+                ...(remoteOrientation === "portrait"
+                  ? { width: "auto", height: "100%" }
+                  : { width: "100%", height: "auto" }),
+              }}
+              ref={remoteVideo}
+              id="remoteVideo"
+              autoPlay
+              playsInline
+            ></video>
           </div>
         </div>
       </div>
@@ -606,31 +673,34 @@ export default function MeetRoom({ initialJoinCode } = {}) {
         borderRadius: '10px 10px 0px 0px',
         border: '1px solid rgba( 255, 255, 255, 0.18 )'
       }}>
-        <div style={styles.menuWrapper}>
-          {openMenu === "start" && (
-            <>
-              <div style={styles.menuOverlay} onClick={() => setOpenMenu(null)} />
-              <div style={styles.menu} role="menu">
-                <button type="button" style={styles.menuItem} onClick={() => selectStartOption("create")}>
-                  <CreateMeetIcon size={20} /> Create Meet
-                </button>
-                <button type="button" style={styles.menuItem} onClick={() => selectStartOption("join")}>
-                  <JoinMeetIcon size={20} /> Join Meet
-                </button>
-              </div>
-            </>
-          )}
-          <button
-            id="startBtn"
-            onClick={() => toggleMenu("start")}
-            disabled={!mediaReady || busy}
-            style={iconButtonStyle(!mediaReady || busy)}
-            aria-label="Create or join a meet"
-            title="Create or join a meet"
-          >
-            <CreateMeetIcon />
-          </button>
-        </div>
+        {/* Hidden (not just disabled) once a call is joined; reappears after hangup resets roomId */}
+        {!roomId && (
+          <div style={styles.menuWrapper}>
+            {openMenu === "start" && (
+              <>
+                <div style={styles.menuOverlay} onClick={() => setOpenMenu(null)} />
+                <div style={styles.menu} role="menu">
+                  <button type="button" style={styles.menuItem} onClick={() => selectStartOption("create")}>
+                    <CreateMeetIcon size={20} /> Create Meet
+                  </button>
+                  <button type="button" style={styles.menuItem} onClick={() => selectStartOption("join")}>
+                    <JoinMeetIcon size={20} /> Join Meet
+                  </button>
+                </div>
+              </>
+            )}
+            <button
+              id="startBtn"
+              onClick={() => toggleMenu("start")}
+              disabled={!mediaReady || busy}
+              style={iconButtonStyle(!mediaReady || busy)}
+              aria-label="Create or join a meet"
+              title="Create or join a meet"
+            >
+              <CreateMeetIcon />
+            </button>
+          </div>
+        )}
         <button
           id="muteBtn"
           onClick={toggleMute}
@@ -640,6 +710,16 @@ export default function MeetRoom({ initialJoinCode } = {}) {
           title={muted ? "Unmute" : "Mute"}
         >
           {muted ? <MicOffIcon /> : <MicIcon />}
+        </button>
+        <button
+          id="videoBtn"
+          onClick={toggleVideo}
+          disabled={!mediaReady}
+          style={iconButtonStyle(!mediaReady, videoOff ? styles.iconButtonActive : undefined)}
+          aria-label={videoOff ? "Turn camera on" : "Turn camera off"}
+          title={videoOff ? "Turn camera on" : "Turn camera off"}
+        >
+          {videoOff ? <CameraOffIcon /> : <CameraIcon />}
         </button>
         <div style={styles.menuWrapper}>
           {openMenu === "more" && (

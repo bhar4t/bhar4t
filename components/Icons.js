@@ -85,6 +85,21 @@ const CameraSwitchIcon = ({ color = "#fff", size = 24 }) => (
   </svg>
 );
 
+const CameraIcon = ({ color = "#fff", size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...strokeProps(color, 2)}>
+    <rect x="2" y="6" width="14" height="12" rx="2" />
+    <polygon points="22 8 16 12 22 16" />
+  </svg>
+);
+
+const CameraOffIcon = ({ color = "#fff", size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...strokeProps(color, 2)}>
+    <rect x="2" y="6" width="14" height="12" rx="2" />
+    <polygon points="22 8 16 12 22 16" />
+    <line x1="2" y1="2" x2="22" y2="22" />
+  </svg>
+);
+
 const HangupIcon = ({ color = "#fff", size = 24 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill={color} stroke="none">
     <path
@@ -109,6 +124,8 @@ export {
   MicIcon,
   MicOffIcon,
   CameraSwitchIcon,
+  CameraIcon,
+  CameraOffIcon,
   HangupIcon,
   MoreIcon,
 };
