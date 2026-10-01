@@ -762,6 +762,7 @@ export default function MeetRoom({ initialJoinCode } = {}) {
                 type="button"
                 style={{ ...styles.menuItem, ...(!joinCode ? styles.menuItemDisabled : {}) }}
                 disabled={!joinCode}
+                aria-label="Share"
                 onClick={() => selectMoreOption("share")}
               >
                 <ShareIcon size={20} /> Share
@@ -770,6 +771,7 @@ export default function MeetRoom({ initialJoinCode } = {}) {
                 type="button"
                 style={{ ...styles.menuItem, ...(!mediaReady || switchingCamera ? styles.menuItemDisabled : {}) }}
                 disabled={!mediaReady || switchingCamera}
+                aria-label="Switch Camera"
                 onClick={() => selectMoreOption("switchCamera")}
               >
                 <CameraSwitchIcon size={20} /> Switch Camera
@@ -780,9 +782,9 @@ export default function MeetRoom({ initialJoinCode } = {}) {
                 disabled={!mediaReady}
                 style={iconButtonStyle(!mediaReady, videoOff ? styles.iconButtonActive : undefined)}
                 aria-label={videoOff ? "Turn camera on" : "Turn camera off"}
-                title={videoOff ? "Turn camera on" : "Turn camera off"}
+                // title={videoOff ? "Turn camera on" : "Turn camera off"}
               >
-                {videoOff ? <CameraOffIcon /> : <CameraIcon />} On/off Video
+                {videoOff ? <CameraOffIcon size={20} /> : <CameraIcon size={20} />} On/off Video
               </button>
             </div>
           )}
