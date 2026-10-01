@@ -31,7 +31,8 @@ const styles = {
     height: 130,
     width: 'auto',
     borderRadius: '0px 0px 20px 20px',
-    background: 'black'
+    background: 'black',
+    touchAction: 'none',
   },
   container: { height: '100%', width: '100%', backgroundColor: 'gray', borderRadius: 20, position: 'relative' },
   pip: {
@@ -174,6 +175,9 @@ export default function MeetRoom({ initialJoinCode } = {}) {
   const remoteStreamRef = React.useRef(null);
   const appliedCandidateIds = React.useRef(new Set());
   const autoJoinAttempted = React.useRef(false);
+  const cleanedUpRef = React.useRef(false); // guards against double-releasing tracks/connection
+  const roomIdRef = React.useRef(null); // mirrors roomId for the unmount-cleanup closure below
+  const roomDeletedRef = React.useRef(false); // guards against double-deleting the signaling room
 
   const [roomId, setRoomId] = React.useState(null);
   const [joinCode, setJoinCode] = React.useState(null);
@@ -210,6 +214,24 @@ export default function MeetRoom({ initialJoinCode } = {}) {
 
   React.useEffect(() => {
     openUserMedia();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  React.useEffect(() => {
+    roomIdRef.current = roomId;
+  }, [roomId]);
+
+  // Releases the camera/mic, peer connection and signaling room even if the user
+  // leaves via the browser back/forward button or any other route change instead
+  // of clicking Hang Up (which already does this explicitly before navigating).
+  React.useEffect(() => {
+    return () => {
+      releaseCallResources();
+      if (roomIdRef.current && !roomDeletedRef.current) {
+        roomDeletedRef.current = true;
+        deleteRoomMutation({ roomId: roomIdRef.current }).catch(() => {});
+      }
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -505,27 +527,34 @@ export default function MeetRoom({ initialJoinCode } = {}) {
     }
   }
 
-  async function hangUp(e) {
+  // Stops local/remote tracks, closes the peer connection and detaches the video
+  // elements. Shared by hangUp() and the unmount-cleanup effect; guarded so it's
+  // only ever applied once no matter which path triggers it.
+  function releaseCallResources() {
+    if (cleanedUpRef.current) return;
+    cleanedUpRef.current = true;
+
+    localStreamRef.current?.getTracks().forEach((track) => track.stop());
+    localStreamRef.current = null;
+
+    remoteStreamRef.current?.getTracks().forEach((track) => track.stop());
+    remoteStreamRef.current = null;
+
+    peerConnectionRef.current?.close();
+    peerConnectionRef.current = null;
+
+    if (localVideo.current) localVideo.current.srcObject = null;
+    if (remoteVideo.current) remoteVideo.current.srcObject = null;
+  }
+
+  async function hangUp() {
     console.log("async function hangup()", 0);
-    localStreamRef.current?.getTracks().forEach((track) => {
-      track.stop();
-    });
-
-    if (remoteStreamRef.current) {
-      remoteStreamRef.current.getTracks().forEach((track) => track.stop());
-    }
-
-    if (peerConnectionRef.current) {
-      peerConnectionRef.current.close();
-      peerConnectionRef.current = null;
-    }
-
-    localVideo.current.srcObject = null;
-    remoteVideo.current.srcObject = null;
+    releaseCallResources();
 
     // Delete room on hangup
-    if (roomId) {
-      await deleteRoomMutation({ roomId });
+    if (roomId && !roomDeletedRef.current) {
+      roomDeletedRef.current = true;
+      await deleteRoomMutation({ roomId }).catch((err) => console.error("Failed to delete room:", err));
     }
 
     document.location.href = "/meet";
@@ -577,9 +606,13 @@ export default function MeetRoom({ initialJoinCode } = {}) {
     function dragElement(elmnt) {
       var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
       const header = document.getElementById(elmnt.id + "header") || elmnt;
-      // Wire up both input types - mobile drags the PiP via touch, not mouse events.
-      header.onmousedown = dragStart;
-      header.ontouchstart = dragStart;
+      // The header starts the drag, but its sibling <video> covers most of the
+      // PiP's area, so it needs the same handlers or drags starting on it are ignored.
+      const video = elmnt.querySelector("video");
+      [header, video].filter(Boolean).forEach((el) => {
+        el.onmousedown = dragStart;
+        el.ontouchstart = dragStart;
+      });
 
       function getPoint(e) {
         const touch = e.touches && e.touches[0];
