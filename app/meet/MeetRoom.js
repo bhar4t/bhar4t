@@ -722,16 +722,6 @@ export default function MeetRoom({ initialJoinCode } = {}) {
         >
           {muted ? <MicOffIcon /> : <MicIcon />}
         </button>
-        <button
-          id="videoBtn"
-          onClick={toggleVideo}
-          disabled={!mediaReady}
-          style={iconButtonStyle(!mediaReady, videoOff ? styles.iconButtonActive : undefined)}
-          aria-label={videoOff ? "Turn camera on" : "Turn camera off"}
-          title={videoOff ? "Turn camera on" : "Turn camera off"}
-        >
-          {videoOff ? <CameraOffIcon /> : <CameraIcon />}
-        </button>
         <div style={styles.menuWrapper}>
           {openMenu === "more" && (
             <div style={styles.menu} role="menu">
@@ -750,6 +740,16 @@ export default function MeetRoom({ initialJoinCode } = {}) {
                 onClick={() => selectMoreOption("switchCamera")}
               >
                 <CameraSwitchIcon size={20} /> Switch Camera
+              </button>
+              <button
+                id="videoBtn"
+                onClick={toggleVideo}
+                disabled={!mediaReady}
+                style={iconButtonStyle(!mediaReady, videoOff ? styles.iconButtonActive : undefined)}
+                aria-label={videoOff ? "Turn camera on" : "Turn camera off"}
+                title={videoOff ? "Turn camera on" : "Turn camera off"}
+              >
+                {videoOff ? <CameraOffIcon /> : <CameraIcon />} On/off Video
               </button>
             </div>
           )}
