@@ -4,7 +4,7 @@ import { buildPageMetadata } from "../../lib/seo";
 import { articleKeys, articleKey, card, textContainer, articleTitle, articleDesc, h1, sectionHeading } from "../../styles/utils.module.css";
 
 export const metadata = buildPageMetadata({
-  title: "",
+  title: "Tools & Packages",
   description: "Tools built by Bharat Sahu, including a peer-to-peer video meet app, plus open source NPM packages for JavaScript and React developers.",
   canonical: "tools",
 });
@@ -27,8 +27,6 @@ export default async function Tools() {
 
   return (
     <Layout home>
-      <h1 className={h1}>Tools & Packages</h1>
-
       <h2 className={sectionHeading}>Tools</h2>
       {TOOLS.map((tool) => (
         <div key={tool.name} className={card}>
