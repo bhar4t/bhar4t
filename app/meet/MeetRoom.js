@@ -13,6 +13,8 @@ import {
   CameraIcon,
   CameraOffIcon,
   MoveIcon,
+  FullscreenIcon,
+  FullscreenExitIcon,
   HangupIcon,
   MoreIcon,
 } from "../../components/Icons";
@@ -192,6 +194,7 @@ export default function MeetRoom({ initialJoinCode } = {}) {
   const [shareFeedback, setShareFeedback] = React.useState("");
   const [openMenu, setOpenMenu] = React.useState(null); // "start" | "more" | null
   const [remoteOrientation, setRemoteOrientation] = React.useState("landscape"); // "portrait" | "landscape"
+  const [isFullscreen, setIsFullscreen] = React.useState(false);
 
   const convex = useConvex();
   const createRoomMutation = useMutation(api.rooms.createRoom);
@@ -233,6 +236,15 @@ export default function MeetRoom({ initialJoinCode } = {}) {
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Keeps the icon in sync when fullscreen is exited some other way (Esc key, browser UI).
+  React.useEffect(() => {
+    function handleFullscreenChange() {
+      setIsFullscreen(!!document.fullscreenElement);
+    }
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
   }, []);
 
   // Deep link (/meet/{code}): join automatically once media permissions are granted.
@@ -290,6 +302,21 @@ export default function MeetRoom({ initialJoinCode } = {}) {
     setOpenMenu(null);
     if (action === "share" && joinCode) shareRoomLink();
     else if (action === "switchCamera" && mediaReady && !switchingCamera) switchCamera();
+    else if (action === "fullscreen") toggleFullscreen();
+  }
+
+  // Fullscreens the whole page rather than just #main - the controls bar is a
+  // sibling element, not a child, so it would be hidden if only #main went fullscreen.
+  async function toggleFullscreen() {
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+      } else {
+        await document.exitFullscreen();
+      }
+    } catch (err) {
+      console.error("Failed to toggle fullscreen:", err);
+    }
   }
 
   async function createRoom() {
@@ -775,6 +802,15 @@ export default function MeetRoom({ initialJoinCode } = {}) {
                 onClick={() => selectMoreOption("switchCamera")}
               >
                 <CameraSwitchIcon size={20} /> Switch Camera
+              </button>
+              <button
+                type="button"
+                style={styles.menuItem}
+                aria-label={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
+                onClick={() => selectMoreOption("fullscreen")}
+              >
+                {isFullscreen ? <FullscreenExitIcon size={20} /> : <FullscreenIcon size={20} />}
+                {isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
               </button>
               <button
                 id="videoBtn"

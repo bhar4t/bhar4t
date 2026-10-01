@@ -111,6 +111,24 @@ const MoveIcon = ({ color = "#fff", size = 24 }) => (
   </svg>
 );
 
+const FullscreenIcon = ({ color = "#fff", size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...strokeProps(color, 2)}>
+    <polyline points="8 3 3 3 3 8" />
+    <polyline points="16 3 21 3 21 8" />
+    <polyline points="3 16 3 21 8 21" />
+    <polyline points="21 16 21 21 16 21" />
+  </svg>
+);
+
+const FullscreenExitIcon = ({ color = "#fff", size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...strokeProps(color, 2)}>
+    <polyline points="3 8 8 8 8 3" />
+    <polyline points="21 8 16 8 16 3" />
+    <polyline points="8 21 8 16 3 16" />
+    <polyline points="16 21 16 16 21 16" />
+  </svg>
+);
+
 const HangupIcon = ({ color = "#fff", size = 24 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill={color} stroke="none">
     <path
@@ -138,6 +156,8 @@ export {
   CameraIcon,
   CameraOffIcon,
   MoveIcon,
+  FullscreenIcon,
+  FullscreenExitIcon,
   HangupIcon,
   MoreIcon,
 };
