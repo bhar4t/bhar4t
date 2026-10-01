@@ -813,7 +813,6 @@ export default function MeetRoom({ initialJoinCode } = {}) {
                 {isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
               </button>
               <button
-                id="videoBtn"
                 onClick={toggleVideo}
                 disabled={!mediaReady}
                 style={iconButtonStyle(!mediaReady, videoOff ? styles.iconButtonActive : undefined)}
