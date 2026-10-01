@@ -5,16 +5,15 @@ const sdp = v.object({ type: v.string(), sdp: v.string() });
 
 // Short word lists just for a memorable, spoken/typed-aloud meeting code —
 // not a security boundary, so entropy only needs to beat accidental collisions.
-const ADJECTIVES = ["amber", "brave", "calm", "danger", "eager", "fuzzy", "gentle", "happy", "icy", "jolly", "keen", "lucky", "misty", "noble", "quiet", "rapid", "sunny", "tidy", "urban", "vivid"];
-const NOUNS = ["otter", "falcon", "monkey", "tiger", "panda", "eagle", "koala", "rabbit", "dolphin", "badger", "heron", "lynx", "moose", "raven", "seal", "wombat", "zebra", "gecko", "crane", "otterhound"];
-const VERBS = ["jumping", "running", "gliding", "diving", "climbing", "floating", "dancing", "racing", "soaring", "drifting", "spinning", "leaping", "singing", "roaming", "sliding"];
+const WORDS_A = ["fox", "cat", "dog", "owl", "bee", "ant", "cow", "pig", "hen", "bat", "elk", "ram", "yak", "rat", "emu"];
+const WORDS_B = ["jump", "run", "hop", "fly", "spin", "dive", "walk", "swim", "leap", "race", "roll", "glide"];
 
 function randomWord(words) {
   return words[Math.floor(Math.random() * words.length)];
 }
 
 function randomJoinCode() {
-  return `${randomWord(ADJECTIVES)}-${randomWord(NOUNS)}-${randomWord(VERBS)}`;
+  return `${randomWord(WORDS_A)}-${randomWord(WORDS_B)}`;
 }
 
 async function generateUniqueJoinCode(ctx) {
