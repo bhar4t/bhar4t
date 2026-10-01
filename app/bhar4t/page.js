@@ -5,7 +5,7 @@ import { personSchema } from "../../lib/structuredData";
 import utilStyles from "../../styles/utils.module.css";
 
 export const metadata = buildPageMetadata({
-  title: "Bharat Sahu (@bhar4t)",
+  title: "",
   description: "Bharat Sahu (@bhar4t) — Senior Software Developer building with JavaScript, React, Next.js and Node.js. Author of Webkoof.in.",
   canonical: "bhar4t",
 });

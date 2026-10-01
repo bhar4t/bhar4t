@@ -90,7 +90,7 @@ const styles = {
   menuOverlay: {
     position: 'fixed',
     inset: 0,
-    zIndex: 40,
+    zIndex: 15,
   },
   menu: {
     position: 'absolute',
@@ -658,9 +658,17 @@ export default function MeetRoom({ initialJoinCode } = {}) {
           </div>
         </div>
       </div>
+      {/* backdrop-filter on #buttons creates its own containing block for position:fixed
+          descendants, so this overlay must live outside it to actually cover the whole screen */}
+      {openMenu && (
+        <div style={styles.menuOverlay} onClick={() => setOpenMenu(null)} />
+      )}
       <div id="buttons" style={{
         position: 'absolute',
         bottom: 0,
+        // Explicit z-index needed: backdropFilter makes this its own stacking context,
+        // which must outrank the overlay's or the overlay would paint over the menu.
+        zIndex: 20,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -677,17 +685,14 @@ export default function MeetRoom({ initialJoinCode } = {}) {
         {!roomId && (
           <div style={styles.menuWrapper}>
             {openMenu === "start" && (
-              <>
-                <div style={styles.menuOverlay} onClick={() => setOpenMenu(null)} />
-                <div style={styles.menu} role="menu">
-                  <button type="button" style={styles.menuItem} onClick={() => selectStartOption("create")}>
-                    <CreateMeetIcon size={20} /> Create Meet
-                  </button>
-                  <button type="button" style={styles.menuItem} onClick={() => selectStartOption("join")}>
-                    <JoinMeetIcon size={20} /> Join Meet
-                  </button>
-                </div>
-              </>
+              <div style={styles.menu} role="menu">
+                <button type="button" style={styles.menuItem} onClick={() => selectStartOption("create")}>
+                  <CreateMeetIcon size={20} /> Create Meet
+                </button>
+                <button type="button" style={styles.menuItem} onClick={() => selectStartOption("join")}>
+                  <JoinMeetIcon size={20} /> Join Meet
+                </button>
+              </div>
             )}
             <button
               id="startBtn"
@@ -723,27 +728,24 @@ export default function MeetRoom({ initialJoinCode } = {}) {
         </button>
         <div style={styles.menuWrapper}>
           {openMenu === "more" && (
-            <>
-              <div style={styles.menuOverlay} onClick={() => setOpenMenu(null)} />
-              <div style={styles.menu} role="menu">
-                <button
-                  type="button"
-                  style={{ ...styles.menuItem, ...(!joinCode ? styles.menuItemDisabled : {}) }}
-                  disabled={!joinCode}
-                  onClick={() => selectMoreOption("share")}
-                >
-                  <ShareIcon size={20} /> Share
-                </button>
-                <button
-                  type="button"
-                  style={{ ...styles.menuItem, ...(!mediaReady || switchingCamera ? styles.menuItemDisabled : {}) }}
-                  disabled={!mediaReady || switchingCamera}
-                  onClick={() => selectMoreOption("switchCamera")}
-                >
-                  <CameraSwitchIcon size={20} /> Switch Camera
-                </button>
-              </div>
-            </>
+            <div style={styles.menu} role="menu">
+              <button
+                type="button"
+                style={{ ...styles.menuItem, ...(!joinCode ? styles.menuItemDisabled : {}) }}
+                disabled={!joinCode}
+                onClick={() => selectMoreOption("share")}
+              >
+                <ShareIcon size={20} /> Share
+              </button>
+              <button
+                type="button"
+                style={{ ...styles.menuItem, ...(!mediaReady || switchingCamera ? styles.menuItemDisabled : {}) }}
+                disabled={!mediaReady || switchingCamera}
+                onClick={() => selectMoreOption("switchCamera")}
+              >
+                <CameraSwitchIcon size={20} /> Switch Camera
+              </button>
+            </div>
           )}
           <button
             id="moreBtn"
