@@ -12,13 +12,13 @@ import {
   CameraSwitchIcon,
   CameraIcon,
   CameraOffIcon,
+  MoveIcon,
   HangupIcon,
   MoreIcon,
 } from "../../components/Icons";
 
 const styles = {
   layer: {
-    background: 'linear-gradient(328deg, rgba(0,0,0,1) 81%, rgba(0,77,93,1) 100%)',
     objectFit: 'contain',
   },
   video: {
@@ -31,6 +31,7 @@ const styles = {
     height: 130,
     width: 'auto',
     borderRadius: '0px 0px 20px 20px',
+    background: 'black'
   },
   container: { height: '100%', width: '100%', backgroundColor: 'gray', borderRadius: 20, position: 'relative' },
   pip: {
@@ -38,16 +39,18 @@ const styles = {
     top: 16,
     right: 16,
     zIndex: 10,
-    borderRadius: 20,
     overflow: 'hidden',
     cursor: 'move',
   },
   pipHeader: {
-    textAlign: 'center',
-    fontSize: 12,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '4px 0',
     color: 'white',
     background: 'rgba(0,0,0,0.5)',
     borderRadius: '20px 20px 0px 0px',
+    touchAction: 'none',
   },
   pipVideoOffOverlay: {
     position: 'absolute',
@@ -573,15 +576,17 @@ export default function MeetRoom({ initialJoinCode } = {}) {
 
     function dragElement(elmnt) {
       var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-      if (document.getElementById(elmnt.id + "header")) {
-        // if present, the header is where you move the DIV from:
-        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-      } else {
-        // otherwise, move the DIV from anywhere inside the DIV:
-        elmnt.onmousedown = dragMouseDown;
+      const header = document.getElementById(elmnt.id + "header") || elmnt;
+      // Wire up both input types - mobile drags the PiP via touch, not mouse events.
+      header.onmousedown = dragStart;
+      header.ontouchstart = dragStart;
+
+      function getPoint(e) {
+        const touch = e.touches && e.touches[0];
+        return touch ? { x: touch.clientX, y: touch.clientY } : { x: e.clientX, y: e.clientY };
       }
 
-      function dragMouseDown(e) {
+      function dragStart(e) {
         e = e || window.event;
         e.preventDefault();
         // pip starts anchored via top/right; left+right both set with no drag
@@ -590,41 +595,48 @@ export default function MeetRoom({ initialJoinCode } = {}) {
         elmnt.style.top = elmnt.offsetTop + "px";
         elmnt.style.left = elmnt.offsetLeft + "px";
         elmnt.style.right = "auto";
-        // get the mouse cursor position at startup:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
+        // get the pointer position at startup:
+        const point = getPoint(e);
+        pos3 = point.x;
+        pos4 = point.y;
+        document.onmouseup = dragEnd;
         document.onmousemove = elementDrag;
+        document.ontouchend = dragEnd;
+        document.ontouchmove = elementDrag;
       }
 
       function elementDrag(e) {
         e = e || window.event;
         e.preventDefault();
-        // calculate the new cursor position:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
+        // calculate the new pointer position:
+        const point = getPoint(e);
+        pos1 = pos3 - point.x;
+        pos2 = pos4 - point.y;
+        pos3 = point.x;
+        pos4 = point.y;
         // set the element's new position:
         elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
         elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
       }
 
-      function closeDragElement() {
-        // stop moving when mouse button is released:
+      function dragEnd() {
+        // stop moving when the mouse button/touch is released:
         document.onmouseup = null;
         document.onmousemove = null;
+        document.ontouchend = null;
+        document.ontouchmove = null;
       }
     }
   }, [])
 
   return (
     <>
-      <div id='main' style={{ backgroundColor: 'rgb(24 80 97)', height: '100vh', width: '100vw', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+      <div id='main' style={{ height: '100vh', width: '100vw', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
         <div style={styles.container} >
           <div id="mydiv" style={styles.pip}>
-            <div id="mydivheader" style={styles.pipHeader}>move</div>
+            <div id="mydivheader" style={styles.pipHeader}>
+              <MoveIcon size={16} />
+            </div>
             <video
               style={{ ...styles.localVideo, ...styles.layer }}
               ref={localVideo}
@@ -673,13 +685,7 @@ export default function MeetRoom({ initialJoinCode } = {}) {
         justifyContent: 'center',
         alignItems: 'center',
         height: 100,
-        width: '100vw',
-        background: 'rgba( 255, 255, 255, 0.05 )',
-        boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
-        backdropFilter: 'blur( 2.0px )',
-        WebkitBackdropFilter: 'blur( 2.0px )',
-        borderRadius: '10px 10px 0px 0px',
-        border: '1px solid rgba( 255, 255, 255, 0.18 )'
+        width: '100vw'
       }}>
         {/* Hidden (not just disabled) once a call is joined; reappears after hangup resets roomId */}
         {!roomId && (
